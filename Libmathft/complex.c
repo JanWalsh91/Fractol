@@ -6,40 +6,40 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 15:38:52 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/16 16:52:22 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/16 16:57:35 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libmathft.h"
 
-t_complex	cadd(t_complex x, t_complex y)
+t_complex	c_add(t_complex x, t_complex y)
 {
 	t_complex res;
 
-	res.real = x.real + y.real;
-	res.imag = x.imag + y.imag;
+	res.r = x.r + y.r;
+	res.i = x.i + y.i;
 	return (res);
 }
 
-t_complex cadd_float(t_complex x, double y, double z)
+t_complex c_add_float(t_complex x, double y, double z)
 {
 	t_complex res;
 	
-	res.real = x.real + y;
-	res.imag = x.imag + z;
+	res.r = x.r + y;
+	res.i = x.i + z;
 	return (res);
 }
 
-t_complex cproduct(t_complex x, t_complex y)
+t_complex c_product(t_complex x, t_complex y)
 {
 	t_complex res;
 
-	res.real = (x.real * y.real) - (x.imag * y.imag);
-	res.imag = (x.real * y.imag) + (x.imag * y.real);
+	res.r = (x.r * y.r) - (x.i * y.i);
+	res.i = (x.r * y.i) + (x.i * y.r);
 	return (res);
 }
 
-double	modulus(t_complex x)
+double	c_modulus(t_complex x)
 {
-	return (sqrt(pow(x.real, 2) + pow(x.imag, 2)));
+	return (sqrt(pow(x.r, 2) + pow(x.i, 2)));
 }
