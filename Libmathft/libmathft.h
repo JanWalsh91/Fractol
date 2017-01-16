@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/24 15:36:18 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/16 15:47:33 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/16 16:57:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct	s_vec3
 
 typedef struct	s_complex
 {
-	double		real;
-	double		imag;
+	double		r;
+	double		i;
 }				t_complex;
 
 typedef float	**t_matrix4;
@@ -74,13 +74,13 @@ t_matrix4		new_rotation_matrix4(float angle, char axis);
 t_matrix4		matrix4_translation(t_matrix4 m, t_vec3 v);
 
 /*
-**	Complex numbers functions
+** Complex numbers functions
 */
 
-t_complex		cadd(t_complex x, t_complex y);
-t_complex		cadd_float(t_complex x, double y, double z);
-t_complex		cproduct(t_complex x, t_complex y);
-double			modulus(t_complex x);
+t_complex		c_add(t_complex x, t_complex y);
+t_complex		c_add_float(t_complex x, double y, double z);
+t_complex		c_product(t_complex x, t_complex y);
+double			c_modulus(t_complex x);
 
 
 #endif
