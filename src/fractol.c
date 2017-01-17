@@ -14,29 +14,35 @@
 
 
 
-#include <stdlib.h>
-#include "../Libft/libft.h"
+#include <stdlib.h> // TODO
+#include "../Libft/libft.h" // TODO
 
-# define MAX_ARG 4
+# define MAX_ARG 4 // TODO
 
-int	main(int argc, char *argv[])
+void	usage_error(void)
+{
+	ft_putendl("usage: ./fractol <julia, mandelbrot, ?> [...]");
+	exit(1);
+}
+
+int		main(int argc, char *argv[])
 {
 	int i;
 
-	(void)argv;
-
 	if (argc > MAX_ARG || argc < 2)
-	{
-		ft_putendl("usage: ./fractol <julia, mandelbrot, ?> [...]");
-		exit(1);
-	}
+		usage_error();
 	i = 0;
 	while (++i < argc)
 	{
 		ft_strtoupper(argv[i]);
-		if (ft_strcmp(argv[i] != "JULIA")
-				|| ft_strcmp(argv[i] != "JULIA")
+		if (!ft_strcmp(argv[i], "JULIA")
+			;// julia();
+		else if (!ft_strcmp(argv[i], "MANDELBROT")
+			;// mandelbrot();
+		else if (ft_strcmp(argv[i], "?"))
+			;// ? ();
+		else	
+			usage_error();
 	}
-
 	return (0);
 }
