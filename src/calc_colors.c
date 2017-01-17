@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_increment_index.c                               :+:      :+:    :+:   */
+/*   calc_colors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 12:04:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 18:48:31 by tgros            ###   ########.fr       */
+/*   Created: 2017/01/17 16:44:40 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/17 19:26:32 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/fractol.h"
 
 /*
-**	Increment x and y. If x equals xmax, then the function increases y and
-**	set x to 0.
+** Draws fractal of index y to the image.
 */
 
-void	ft_increment_index(int *y, int *x, int xmax)
+int			calc_colors(t_fractal *f) //y is the fractal index
 {
-	(*x)++;
-	if (*x == xmax)
+	t_pt2	i;
+
+	printf("calc_colors\n");
+	i.y = 0;
+	i.x = 0;
+	while (i.y < f->e.h)
 	{
-		*x = 0;
-		(*y)++;
+		f->colors[i.y][i.x] = f->f(i, f);
+		ft_increment_index(&i.y, &i.x, f->e.w);
 	}
+	//display_colors(f->colors, f->e.w, f->e.h);
+	return (1);
 }

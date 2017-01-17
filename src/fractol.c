@@ -6,21 +6,36 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:24:13 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 18:10:21 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int	fractol(t_fractal **f, int y)
+int	fractol(t_names *names, int nb_frac)
 {
-	t_data d;
+	int			i;
+	void		*mlx;
+	t_fractal	*f;
 
-	d.f = *f;
-	d.mlx = mlx_init();
-	draw(&d, y);
-	d.f[y].e.win.win_mlx = mlx_new_window(d.mlx, d.f[y].e.win.h, d.f[y].e.win.w, "test");
-	mlx_put_image_to_window(d.mlx, d.f[y].e.win.win_mlx, d.f[y].e.win.img_mlx, 0, 0);
-	mlx_loop(d.mlx);
+	printf("fractol: nb: %i\n", nb_frac);
+	mlx = mlx_init();
+	if (!(f = ft_memalloc(sizeof(t_fractal) * nb_frac)))
+		return (0);
+	i = -1;
+	printf("check: names[i]: %u\n", names[0]);
+	// print instructions
+	while (++i < nb_frac && names[i])
+	{
+		printf("check2\n");
+		if (!init_fractal(&f[i], names[i]) ||
+				!calc_colors(&f[i]) ||
+				!init_win(&f[i], mlx) ||
+				!draw(&f[i], mlx))
+			return (0);
+	// mlx hook
+	}
+	printf("check3\n");
+	mlx_loop(mlx);
 	return (1);
 }

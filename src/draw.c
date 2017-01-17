@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:28:15 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 19:15:24 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,21 @@ static void	draw_pixel(t_draw_tools *t, int x, int y, int color);
 ** Draws fractal of index y to the image.
 */
 
-int			draw(t_data *d, t_fractals y) //y is the fractal index
+int			draw(t_fractal *f, void *mlx) //y is the fractal index
 {
 	t_pt2	i;
-	int color;
-
-	printf("win: (w, h) (%i, %i)\n", d->f[y].e.win.w, d->f[y].e.win.h);
-	d->f[y].e.win.img_mlx = mlx_new_image(d->mlx, d->f[y].e.win.w, d->f[y].e.win.h);
-	d->f[y].e.draw.image = mlx_get_data_addr(d->f[y].e.win.img_mlx,
-			&(d->f[y].e.draw.bpp),&(d->f[y].e.draw.size_line),
-			&(d->f[y].e.draw.endian));
-
+	
+	f->e.img_mlx = mlx_new_image(mlx, f->e.h, f->e.w);
+	f->e.draw.image = mlx_get_data_addr(f->e.img_mlx, 
+			&(f->e.draw.bpp), &(f->e.draw.size_line), &(f->e.draw.endian));
 	i.y = 0;
 	i.x = 0;
-	while (i.y < d->f[y].e.win.h)
+	while (i.y < f->e.h)
 	{
-		color = d->f[y].f(i);
-		draw_pixel(&d->f[y].e.draw, i.y, i.x, d->f[y].f(i));
-		ft_increment_index(&i.y, &i.x, d->f[y].e.win.w);
-		printf("(y: %i x: %i color: %x) ", i.y, i.x, color);
+		draw_pixel(&f->e.draw, i.y, i.x, f->colors[i.y][i.x]);
+		ft_increment_index(&i.y, &i.x, f->e.w);
 	}
-	printf("done with draw\n");
+	mlx_put_image_to_window(mlx, f->e.win_mlx, f->e.img_mlx, 0, 0);
 	return (1);
 }
 

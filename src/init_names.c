@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_increment_index.c                               :+:      :+:    :+:   */
+/*   init_names.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 12:04:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 18:48:31 by tgros            ###   ########.fr       */
+/*   Created: 2017/01/17 17:10:58 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/17 17:11:16 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/fractol.h"
 
-/*
-**	Increment x and y. If x equals xmax, then the function increases y and
-**	set x to 0.
-*/
-
-void	ft_increment_index(int *y, int *x, int xmax)
+int	init_names(t_names **names)
 {
-	(*x)++;
-	if (*x == xmax)
-	{
-		*x = 0;
-		(*y)++;
-	}
+	if (!(*names = ft_memalloc(sizeof(t_names) * 4)))
+		return (0);
+	return (1);
 }

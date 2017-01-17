@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:10:38 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 19:22:02 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	init_fractal(t_fractal *f, int y) //y is fractal index
 
 static int	init_mandelbrot(t_fractal *f)
 {
+	int i;
+
+	printf("init_fractol\n");
 	if (!(f->name = ft_strdup("Mandelbrot")))
 		return (0);
 	f->f = &mandelbrot;
@@ -39,7 +42,14 @@ static int	init_mandelbrot(t_fractal *f)
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
 	f->zoom = MANDELBROT_ZOOM;
-	f->e.win.h = (0.6 - -2.1) * f->zoom;
-	f->e.win.w = (1.2 - -1.2) * f->zoom;
+	f->e.h = (MANDELBROT_YMAX - MANDELBROT_YMIN) * f->zoom;
+	f->e.w = (MANDELBROT_XMAX - MANDELBROT_XMIN) * f->zoom;
+	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
+		return (0);
+	i = -1;
+	while (++i < f->e.h)
+		if(!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
+			return (0);
+	printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:23:55 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 18:06:20 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,41 @@ void	usage_error(void)
 
 int		main(int argc, char *argv[])
 {
-	int i;
-	t_fractal	*f;
+	int 	i;
+	int		y;
+	t_names	*names;
 
-	init_fractals(&f);
 	if (argc > MAX_ARG || argc < 2)
 		usage_error();
+	init_names(&names);
 	i = 1;
-	while (i < argc && i < 5)
+	y = 0;
+	while (i < argc && y < MAX_ARG)
 	{
 		ft_strtoupper(argv[i]);
-		if (ft_strcmp_percent(argv[i], "JULIA", 0.5))
-			init_fractal(&(f[i]), JULIA);
-		else if (ft_strcmp_percent(argv[i], "MANDELBROT", 0.5))
-			init_fractal(&(f[i]), MANDELBROT);
+		if (ft_strcmp_percent(argv[i], "MANDELBROT", 0.5))
+		{
+			printf("found mandel: y: %i\n", y);
+			names[y] = MANDELBROT;
+			++y;
+			//init_fractal(&(f[i]), MANDELBROT);
+		}
+		else if (ft_strcmp_percent(argv[i], "JULIA", 0.5))
+		{
+			names[y] = JULIA;
+			++y;
+		}
+			//init_fractal(&(f[i]), JULIA);
 		else if (ft_strcmp_percent(argv[i], "?", 1))
+		{
 			ft_putendl("?");
-		else	
+			++y;
+		}
+		else
 			usage_error();
 		++i;
 	}
-	i = 0;
-	while (i + 1 < argc)
-		fractol(&f, i++);
+	printf("main: nb_frac: %i\n", y);
+	fractol(names, y);
 	return (0);
 }

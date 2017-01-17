@@ -6,27 +6,27 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:12:14 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:21:49 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 19:52:34 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int	mandelbrot(t_pt2 j)
+int	mandelbrot(t_pt2 j, t_fractal *f)
 {
 	t_complex	z;
 	t_complex	c;
 	int			i;
 
-	c.r = j.x / 100 + -2.1;
-	c.i = j.y / 100 + -1.2;
-	z.r = 0;
-	z.i = 0;
+	c.r = j.x / f->zoom + MANDELBROT_XMIN;
+	c.i = j.y / f->zoom + MANDELBROT_YMIN;
+	z.r = MANDELBROT_C_I;
+	z.i = MANDELBROT_C_R;
 	i = 0;
-	while (c_modulus(z) < 2 && i < 50)
+	while (c_modulus(z) < 2000 && i < MANDELBROT_I)
 	{
 		z = c_add(c_product(z, z), c);
 		++i;
 	}
-	return (i == 50 ? WHITE : BLACK);
+	return (i == MANDELBROT_I ? BLACK : i * 1002);
 }

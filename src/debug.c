@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_fractals.c                                    :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 14:58:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:21:44 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/17 17:00:56 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/17 17:47:12 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int	init_fractals(t_fractal **f)
+void	display_colors(int **tab, int xmax, int ymax)
 {
-	if (!(*f = ft_memalloc(sizeof(t_fractal) * 4)))
-		return (0);
-	return (1);
+	int i;
+	int j;
+
+	j = -1;
+	while (++j < ymax)
+	{
+		i = -1;
+		while (++i < xmax)
+			printf("(y: %d; x: %d; color: %#x)\n", j, i, tab[j][i]);
+		printf("\n");
+	}
 }

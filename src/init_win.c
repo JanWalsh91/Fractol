@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_increment_index.c                               :+:      :+:    :+:   */
+/*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 12:04:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 18:48:31 by tgros            ###   ########.fr       */
+/*   Created: 2017/01/17 17:20:31 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/17 19:27:03 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/fractol.h"
 
-/*
-**	Increment x and y. If x equals xmax, then the function increases y and
-**	set x to 0.
-*/
-
-void	ft_increment_index(int *y, int *x, int xmax)
+int		init_win(t_fractal *f, void *mlx)
 {
-	(*x)++;
-	if (*x == xmax)
-	{
-		*x = 0;
-		(*y)++;
-	}
+	printf("init_win\n");
+	if (!(f->e.win_mlx = mlx_new_window(mlx, f->e.w, f->e.h, f->name)))
+		return (0);	
+	printf("init_win end\n");
+	return (1);
 }

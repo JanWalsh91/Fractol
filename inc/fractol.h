@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 15:07:42 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 19:49:57 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 # define MANDELBROT_ZOOM 100
-# define MANDELBROT_
-
+# define MANDELBROT_XMIN -2.1
+# define MANDELBROT_XMAX 0.6
+# define MANDELBROT_YMIN -1.2
+# define MANDELBROT_YMAX 1.2
 
 
 /*
@@ -83,10 +85,12 @@
 # define LINE9
 # define LINE10
 
-typedef enum		e_fractals
+typedef enum		e_names
 {
-	JULIA, MANDELBROT, OTHER
-}					t_fractals;
+	MANDELBROT = 1,
+	JULIA = 2,
+	OTHER = 3
+}					t_names;
 
 typedef struct		s_incr
 {
@@ -106,15 +110,6 @@ typedef struct		s_incr
 //	//t_pt2			pos; //position of image. Probaly useless since always (0, 0)
 //}					t_image;
 
-typedef struct		s_window //is separate struct needed since h and w will be
-// the same for win and img
-{
-	void			*win_mlx;
-	void			*img_mlx;
-	int				h;
-	int				w;
-}					t_window;
-
 typedef struct		s_draw_tools //values used for get_data_address
 {
 	int				bpp;
@@ -125,38 +120,38 @@ typedef struct		s_draw_tools //values used for get_data_address
 
 typedef struct		s_env // one win, img and draw tools per fractal
 {
-	t_window		win;
 	t_draw_tools	draw;
+	void			*win_mlx;
+	void			*img_mlx;
+	int				h;
+	int				w;
+
 }					t_env;
 
 typedef struct		s_fractal
 {
 	t_env			e;
 	char			*name; //fractal name
-	int				(*f)(t_pt2 j); //returns color for a point bases on its coords
+	int				(*f)(t_pt2 i, struct s_fractal *f); //returns color for a point bases on its coords
 	int				i; //number of iteratioms 
 	t_complex		c; // complex constant
 	int				zoom; //float?
 	t_pt2			win_size;// also image size;
+	int				**colors;
 }					t_fractal;
-
-typedef struct		s_data
-{
-	void			*mlx;
-	t_fractal		*f; //list of fractals
-
-
-}					t_data;
 
 /*
 ** Main
 */
 
-int					fractol(t_fractal **f, int y);
+int					fractol(t_names *names, int nb_frac);
 int					display_usage(void);
-int					init_fractals(t_fractal **f);
+int					init_names(t_names **names);
 int					init_fractal(t_fractal *f, int y);
-int					draw(t_data *d, t_fractals y);
-int					mandelbrot(t_pt2 j);
+int					init_win(t_fractal *f, void *mlx);
+int					calc_colors(t_fractal *f);
+int					draw(t_fractal *f, void *mlx);
+int					mandelbrot(t_pt2 j, t_fractal *f);
+void				display_colors(int **tab, int xmax, int ymax);
 
 #endif

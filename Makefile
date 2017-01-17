@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/17 15:11:10 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/17 17:29:36 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,10 @@ SRC_NAME = main \
 			draw \
 			mandelbrot \
 			init_fractal \
-			init_fractals
+			init_names \
+			init_win \
+			calc_colors \
+			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))
 SRC = $(addsuffix $(EXT), $(SRC_NAME_PATH))
