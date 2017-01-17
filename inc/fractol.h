@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 11:54:01 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/17 15:07:42 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,24 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+# include <stdio.h>
 
 # define USAGE "usage: ./fractol Julia Madelbrot ..."
 # define MAX_ARG 4
 # define WIN_WIDTH
 # define WIN_HEIGHT
 # define DEFAULT_I   //default amount of iterations to do
+
+/*
+** Mandelbrot
+*/
+
+# define MANDELBROT_I 50
+# define MANDELBROT_C_I 0
+# define MANDELBROT_C_R 0
+# define MANDELBROT_ZOOM 100
+# define MANDELBROT_
+
 
 
 /*
@@ -76,7 +88,6 @@ typedef enum		e_fractals
 	JULIA, MANDELBROT, OTHER
 }					t_fractals;
 
-
 typedef struct		s_incr
 {
 	float			steps;
@@ -118,10 +129,10 @@ typedef struct		s_env // one win, img and draw tools per fractal
 	t_draw_tools	draw;
 }					t_env;
 
-typedef struct		s_fracal
+typedef struct		s_fractal
 {
 	t_env			e;
-	int				name; //fractal name
+	char			*name; //fractal name
 	int				(*f)(t_pt2 j); //returns color for a point bases on its coords
 	int				i; //number of iteratioms 
 	t_complex		c; // complex constant
@@ -141,7 +152,11 @@ typedef struct		s_data
 ** Main
 */
 
-int					fractol(int file_count, char **file_names);
+int					fractol(t_fractal **f, int y);
 int					display_usage(void);
+int					init_fractals(t_fractal **f);
+int					init_fractal(t_fractal *f, int y);
+int					draw(t_data *d, t_fractals y);
+int					mandelbrot(t_pt2 j);
 
 #endif
