@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 17:16:03 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/18 17:23:13 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 ** Mandelbrot
 */
 
-# define MANDELBROT_I 50
+# define MANDELBROT_I 100
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 # define MANDELBROT_ZOOM 100
@@ -45,7 +45,7 @@
 # define MANDELBROT_YMIN -1.2
 # define MANDELBROT_YMAX 1.2
 
-# define IMG_SIZE 300
+# define IMG_SIZE 100
 # define IMG_SIZE_W IMG_SIZE * 2.7
 # define IMG_SIZE_H IMG_SIZE * 2.4
 # define ZOOM 1

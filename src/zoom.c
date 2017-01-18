@@ -6,16 +6,17 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 17:17:32 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/18 17:54:40 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	update_bound(double *m, double zoom, int x, int i);
+static void	update_bounds(t_fractal *f, int y, int x);
 
 int	zoom(t_fractal *f, int button, int y, int x)
 {
+	//check if out of window
 	//check max min zoom
 	//check time ?
 	//moidyf zoom
@@ -30,28 +31,41 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	x = (x - f->e.w / (2 * f->zoom) < f->e.w) ? x : f->e.w - f->e.w / (2 * f->zoom);
 	y = (y - f->e.h / (2 * f->zoom) < f->e.h) ? y : f->e.h - f->e.h / (2 * f->zoom);
 	//recalculate min max xy 
-	update_bound(&f->min.x, f->zoom, x, 1);
-	update_bound(&f->max.x, f->zoom, x, -1);
-	update_bound(&f->min.y, f->zoom, x, 1);
-	update_bound(&f->max.y, f->zoom, x, -1);
+
+	printf("min = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
+
+	update_bounds(f, y, x);
+	
+	printf("min = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 	//redisplay image
 	calc_colors(f);
 	draw(f);
 	return (1);
 }
 
-static void update_bound(double *m, double zoom, int x, int i)
+static void update_bounds(t_fractal *f, int y, int x)
 {
-	double	y;
+	/*double	y;
 
-	y = 2;
+	y = 2 * i;
 	if (zoom == 1)
 		return ;
 	while (zoom != 1)
 	{
-		*m = *m + i * y;
+		*m = *m + y;
 		y /= 2;
 		--zoom;
-	}
-	*m += ((double)x / IMG_SIZE + MANDELBROT_XMIN) / zoom;
+	}*/
+	f->max.x = MANDELBROT_XMAX * -pow((1 / f->e.w), f->zoom);
+	f->max.x += ((double)x / IMG_SIZE + MANDELBROT_XMIN) / f->zoom;
+	
+	f->max.y = MANDELBROT_YMAX * -pow((1 / f->e.h), f->zoom);
+	f->max.y += ((double)y / IMG_SIZE + MANDELBROT_XMIN) / f->zoom;
+	
+	f->min.x = MANDELBROT_XMIN * pow((1 / f->e.w), f->zoom);
+	f->min.x += ((double)x / IMG_SIZE + MANDELBROT_XMIN) / f->zoom;
+	
+	f->min.y = MANDELBROT_YMIN * pow((1 / f->e.h), f->zoom);
+	f->min.y += ((double)y / IMG_SIZE + MANDELBROT_XMIN) / f->zoom;
+
 }
