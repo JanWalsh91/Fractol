@@ -6,11 +6,11 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:10:58 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 17:11:16 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:30 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 int	init_names(t_names **names)
 {

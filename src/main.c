@@ -6,11 +6,11 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 18:06:20 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:01 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 void	usage_error(void)
 {

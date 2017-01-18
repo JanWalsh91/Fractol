@@ -6,11 +6,11 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:20:31 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 19:27:03 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:40 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 int		init_win(t_fractal *f, void *mlx)
 {

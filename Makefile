@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/18 11:20:52 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/18 11:44:32 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_NAME = main \
 			fractol \
 			draw \
 			mandelbrot \
+			julia \
 			init_fractal \
 			init_names \
 			init_win \

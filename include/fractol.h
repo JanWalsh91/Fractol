@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 10:25:00 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:45:51 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int					init_win(t_fractal *f, void *mlx);
 int					calc_colors(t_fractal *f);
 int					draw(t_fractal *f, void *mlx);
 int					mandelbrot(t_pt2 j, t_fractal *f);
+int					julia(t_pt2 j, t_fractal *f);
 int					key_released(int keycode, t_fractal *f);
 void				display_colors(int **tab, int xmax, int ymax);
 

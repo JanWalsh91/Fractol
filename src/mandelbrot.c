@@ -6,11 +6,11 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:12:14 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 19:52:34 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:20 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 int	mandelbrot(t_pt2 j, t_fractal *f)
 {

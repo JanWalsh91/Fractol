@@ -6,11 +6,11 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 16:44:40 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 19:26:32 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:49 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 /*
 ** Draws fractal of index y to the image.

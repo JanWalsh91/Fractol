@@ -6,11 +6,11 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 10:25:21 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:11 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 int	fractol(t_names *names, int nb_frac)
 {

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 17:00:56 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/18 11:50:58 by tgros            ###   ########.fr       */
+/*   Created: 2017/01/18 11:34:30 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/18 11:45:03 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	display_colors(int **tab, int xmax, int ymax)
+int	julia(t_pt2 j, t_fractal *f)
 {
+	t_complex old;
+	t_complex new;
 	int i;
-	int j;
 
-	j = -1;
-	while (++j < ymax)
+	new.r = 1.5 * (j.x - f->e.w / 2) / (0.5 * 1 * f->e.w);
+	new.i = (j.y - f->e.h / 2) / (0.5 * 1 * f->e.h);
+	i = 0;
+	while (i < 300 && c_modulus(new) < 2)
 	{
-		i = -1;
-		while (++i < xmax)
-			printf("(y: %d; x: %d; color: %#x)\n", j, i, tab[j][i]);
-		printf("\n");
+		old.r = new.r;
+		old.i = new.i;
+		new.r = old.r * old.r - old.i * old.i + f->c.r;
+		new.i = 2 * old.r * old.i + f->c.i;
+		i++;
 	}
+	return (i == 300 ? BLACK : WHITE);
 }
