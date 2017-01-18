@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 18:10:21 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 10:25:21 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	fractol(t_names *names, int nb_frac)
 				!init_win(&f[i], mlx) ||
 				!draw(&f[i], mlx))
 			return (0);
-	// mlx hook
+		mlx_key_hook(f[i].e.win_mlx, &key_released, f);
+		// mlx hook
 	}
 	printf("check3\n");
 	mlx_loop(mlx);
