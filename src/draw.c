@@ -6,11 +6,11 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 19:15:24 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 11:21:04 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "fractol.h"
 
 static void	draw_pixel(t_draw_tools *t, int x, int y, int color);
 

@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/18 10:25:16 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/18 11:20:52 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LIBFT_NAME = libft.a
 LIBMATHFT_NAME = libmathft.a
 
 SRC_PATH = src/
-INC_PATH = inc/
+INC_PATH = include/
 LIB_PATH = Libft/
 LIBMATH_PATH = Libmathft/
 
