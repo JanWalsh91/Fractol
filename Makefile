@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/18 11:44:32 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/18 17:11:34 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC_NAME = main \
 			init_win \
 			calc_colors \
 			key_released \
+			mouse_event \
+			zoom \
 			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 14:07:12 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/18 17:16:03 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define WIN_WIDTH
 # define WIN_HEIGHT
 # define DEFAULT_I   //default amount of iterations to do
+# define ZOOM_POW 2
 
 /*
 ** Mandelbrot
@@ -44,10 +45,10 @@
 # define MANDELBROT_YMIN -1.2
 # define MANDELBROT_YMAX 1.2
 
-# define IMG_SIZE 100
+# define IMG_SIZE 300
 # define IMG_SIZE_W IMG_SIZE * 2.7
 # define IMG_SIZE_H IMG_SIZE * 2.4
-# define ZOOM IMG_SIZE * 10
+# define ZOOM 1
 
 
 /*
@@ -126,6 +127,7 @@ typedef struct		s_draw_tools //values used for get_data_address
 typedef struct		s_env // one win, img and draw tools per fractal
 {
 	t_draw_tools	draw;
+	void			*mlx;
 	void			*win_mlx;
 	void			*img_mlx;
 	int				h;
@@ -140,8 +142,11 @@ typedef struct		s_fractal
 	int				(*f)(t_pt2 i, struct s_fractal *f); //returns color for a point bases on its coords
 	int				i; //number of iteratioms 
 	t_complex		c; // complex constant
-	int				zoom; //float?
+	double			zoom; //float?
 	t_pt2			win_size;// also image size;
+	t_dpt2			max;
+	t_dpt2			min;
+	int				mouse_on;
 	int				**colors;
 }					t_fractal;
 
@@ -152,13 +157,15 @@ typedef struct		s_fractal
 int					fractol(t_names *names, int nb_frac);
 int					display_usage(void);
 int					init_names(t_names **names);
-int					init_fractal(t_fractal *f, int y);
-int					init_win(t_fractal *f, void *mlx);
+int					init_fractal(t_fractal *f, void *mlx, int y);
+int					init_win(t_fractal *f);
 int					calc_colors(t_fractal *f);
-int					draw(t_fractal *f, void *mlx);
+int					draw(t_fractal *f);
 int					mandelbrot(t_pt2 j, t_fractal *f);
 int					julia(t_pt2 j, t_fractal *f);
 int					key_released(int keycode, t_fractal *f);
+int					mouse_event(int button, int x, int y, t_fractal *f);
+int					zoom(t_fractal *f, int button, int y, int x);
 void				display_colors(int **tab, int xmax, int ymax);
 
 #endif

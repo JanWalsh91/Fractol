@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 14:13:22 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/18 17:08:19 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ static int	init_julia(t_fractal *f);
 ** Sets the function
 */
 
-int	init_fractal(t_fractal *f, int y) //y is fractal index
+int	init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 {
+	f->e.mlx = mlx;
 	if (y == JULIA)
 		init_julia(f);	
 	if (y == MANDELBROT)
@@ -44,6 +45,10 @@ static int	init_mandelbrot(t_fractal *f)
 	f->zoom = ZOOM;
 	f->e.h = IMG_SIZE_H;
 	f->e.w = IMG_SIZE_W;
+	f->max.x = MANDELBROT_XMAX;
+	f->max.y = MANDELBROT_YMAX;
+	f->min.x = MANDELBROT_XMIN;
+	f->min.y = MANDELBROT_YMIN;
 	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
 		return (0);
 	i = -1;

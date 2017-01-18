@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_released.c                                     :+:      :+:    :+:   */
+/*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/18 10:22:53 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/18 15:50:31 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/18 17:11:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		key_released(int keycode, t_fractal *f)
+int		mouse_event(int button, int x, int y, t_fractal *f)
 {
 	(void)f;
-	if (keycode == KEY_ESCAPE)
-		exit(1);
+	if (button == MOUSE_UP || button == MOUSE_LMB ||
+			button == MOUSE_DOWN || button == MOUSE_RMB)
+		zoom(f, button, y, x);
+	printf("button: %i (y, x): (%i, %i)\n", button, y, x);
 	return (0);
 }

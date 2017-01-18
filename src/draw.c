@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 14:19:32 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/18 17:14:32 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,23 @@ static void	draw_pixel(t_draw_tools *t, int x, int y, int color);
 ** Draws fractal of index y to the image.
 */
 
-int			draw(t_fractal *f, void *mlx) //y is the fractal index
+int			draw(t_fractal *f) //y is the fractal index
 {
 	t_pt2	i;
-	
-	f->e.img_mlx = mlx_new_image(mlx, f->e.w, f->e.h);
-	f->e.draw.image = mlx_get_data_addr(f->e.img_mlx, 
-			&(f->e.draw.bpp), &(f->e.draw.size_line), &(f->e.draw.endian));
+
+	//printf("draw\n");
+	ft_memset(f->e.draw.image, 0, f->e.h * f->e.draw.size_line);
+	//printf("check1\n");
 	i.y = 0;
 	i.x = 0;
 	while (i.y < f->e.h)
 	{
+		//printf("check2\n");
 		draw_pixel(&f->e.draw, i.y, i.x, f->colors[i.y][i.x]);
 		ft_increment_index(&i.y, &i.x, f->e.w);
 	}
-	mlx_put_image_to_window(mlx, f->e.win_mlx, f->e.img_mlx, 0, 0);
+	//printf("check3\n");
+	mlx_put_image_to_window(f->e.mlx, f->e.win_mlx, f->e.img_mlx, 0, 0);
 	return (1);
 }
 

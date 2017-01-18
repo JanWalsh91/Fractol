@@ -6,13 +6,18 @@
 /*   By: jfortin <jfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 16:42:55 by jfortin           #+#    #+#             */
-/*   Updated: 2016/12/27 16:24:12 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/18 16:24:53 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYCODE_MAC_H
 # define KEYCODE_MAC_H
 
+# define MOUSE_LMB 1
+# define MOUSE_RMB 2
+# define MOUSE_MMB 3
+# define MOUSE_UP 4
+# define MOUSE_DOWN 5
 # define KEY_ESCAPE			53
 # define KEY_F1 			122
 # define KEY_F2				120
