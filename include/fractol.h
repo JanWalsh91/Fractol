@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 11:45:51 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/18 14:07:12 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@
 # define MANDELBROT_XMAX 0.6
 # define MANDELBROT_YMIN -1.2
 # define MANDELBROT_YMAX 1.2
+
+# define IMG_SIZE 100
+# define IMG_SIZE_W IMG_SIZE * 2.7
+# define IMG_SIZE_H IMG_SIZE * 2.4
+# define ZOOM IMG_SIZE * 10
 
 
 /*
