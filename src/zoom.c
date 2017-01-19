@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 13:56:48 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/19 15:50:54 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ static void update_bounds(t_fractal *f, int y, int x)
 		reset_bounds(f);
 	else
 	{
-		f->min.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_XMIN - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
-		f->min.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_YMIN - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
-		f->max.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_XMIN + (float)f->e.w / (2 * f->zoom * IMG_SIZE);
-		f->max.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_YMIN + (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+		f->min.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + f->min.x - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
+		f->min.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + f->min.y - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+		f->max.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + f->min.x + (float)f->e.w / (2 * f->zoom * IMG_SIZE);
+		f->max.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + f->min.y + (float)f->e.h / (2 * f->zoom * IMG_SIZE);
 	}
 
 	/*

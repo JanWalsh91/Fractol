@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 12:15:10 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/19 15:52:22 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ int					display_usage(void);
 int					init_names(t_names **names);
 int					init_fractal(t_fractal *f, void *mlx, int y);
 int					init_win(t_fractal *f);
+void				reset_bounds(t_fractal *f);
 int					calc_colors(t_fractal *f);
 int					draw(t_fractal *f);
 int					mandelbrot(t_pt2 j, t_fractal *f);
