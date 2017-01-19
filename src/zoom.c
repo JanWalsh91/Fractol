@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 19:26:29 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 12:26:43 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	//check max min zoom
 	//check time ?
 	//moidyf zoom
-		printf("xy = [%d ; %d]\n", x, y);
+	printf("event: button: %i, xy = [%d ; %d]\n", button, x, y);
 
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
@@ -33,7 +33,6 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	(f->zoom < 1) ? f->zoom = 1 : 0;
 	//check zoom coord valididty
 
-	printf("xy = [%d ; %d]\n", x, y);
 	//recalculate min max xy 
 
 	printf("min = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
@@ -51,8 +50,9 @@ static void	limit_mouse_coord(int *x, int *y, t_fractal *f)
 {
 	*x = (*x - f->e.w / (2 * f->zoom) > 0) ? *x : f->e.w / (2 * f->zoom);
 	*y = (*y - f->e.h / (2 * f->zoom) > 0) ? *y : f->e.h / (2 * f->zoom);
-	*x = (*x - f->e.w / (2 * f->zoom) < f->e.w) ? *x : f->e.w - f->e.w / (2 * f->zoom);
-	*y = (*y - f->e.h / (2 * f->zoom) < f->e.h) ? *y : f->e.h - f->e.h / (2 * f->zoom);
+	*x = (*x + f->e.w / (2 * f->zoom) < f->e.w) ? *x : f->e.w - f->e.w / (2 * f->zoom);
+	*y = (*y + f->e.h / (2 * f->zoom) < f->e.h) ? *y : f->e.h - f->e.h / (2 * f->zoom);
+	printf("limit mouse coords: xy = [%d ; %d]\n", *x, *y);
 }
 
 static void update_bounds(t_fractal *f, int y, int x)
