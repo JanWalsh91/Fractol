@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 19:17:42 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 12:10:58 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 ** Mandelbrot
 */
 
-# define MANDELBROT_I 100
+# define MANDELBROT_I 50
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 # define MANDELBROT_ZOOM 100
@@ -45,7 +45,7 @@
 # define MANDELBROT_YMIN -1.2
 # define MANDELBROT_YMAX 1.2
 
-# define IMG_SIZE 100
+# define IMG_SIZE 300
 # define IMG_SIZE_W IMG_SIZE * 2.7
 # define IMG_SIZE_H IMG_SIZE * 2.4
 # define ZOOM 1
@@ -165,6 +165,7 @@ int					mandelbrot(t_pt2 j, t_fractal *f);
 int					julia(t_pt2 j, t_fractal *f);
 int					key_released(int keycode, t_fractal *f);
 int					mouse_event(int button, int x, int y, t_fractal *f);
+int					mouse_motion(int x, int y, t_fractal *f);
 int					zoom(t_fractal *f, int button, int y, int x);
 void				display_colors(int **tab, int xmax, int ymax);
 

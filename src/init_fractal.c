@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 19:11:34 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 10:15:22 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static int	init_julia(t_fractal *f)
 	f->c.r = -0.25;
 	f->c.i = 0.04110;
 	f->zoom = 1;
-	f->e.h = 300;	
-	f->e.w = 400;
+	f->e.h = 240;	
+	f->e.w = 270;
 	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
 		return (0);
 	i = -1;

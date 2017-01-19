@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 17:13:31 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/19 10:29:57 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	fractol(t_names *names, int nb_frac)
 				!init_win(&f[i]) ||
 				!draw(&f[i]))
 			return (0);
+		if (names[i] == JULIA) // if julia, tracking mouse position
+			mlx_hook(f[i].e.win_mlx, MOTION, MOUSE_MASK, &mouse_motion, &f[i]);	
 		mlx_key_hook(f[i].e.win_mlx, &key_released, f);
 		mlx_mouse_hook(f[i].e.win_mlx, &mouse_event, f);
 		// mlx hook

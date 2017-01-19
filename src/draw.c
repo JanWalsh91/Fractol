@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 17:14:32 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/19 11:19:43 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,19 @@ int			draw(t_fractal *f) //y is the fractal index
 	i.x = 0;
 	while (i.y < f->e.h)
 	{
+		int color;
+
+		color = f->colors[i.y][i.x];
 		//printf("check2\n");
-		draw_pixel(&f->e.draw, i.y, i.x, f->colors[i.y][i.x]);
+		if (ft_strcmp(f->name, "julia") == 0)
+		{
+			draw_pixel(&f->e.draw, i.y, i.x, color);
+			draw_pixel(&f->e.draw, f->e.h - i.y, f->e.w - i.x, color);
+			if (i.y == f->e.h / 2 + 1)
+				break;
+		}
+		else
+			draw_pixel(&f->e.draw, i.y, i.x, color);
 		ft_increment_index(&i.y, &i.x, f->e.w);
 	}
 	//printf("check3\n");

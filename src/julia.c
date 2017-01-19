@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:34:30 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/18 14:03:26 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/19 10:13:22 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int	julia(t_pt2 j, t_fractal *f)
 	z.r = 1.5 * (j.x - f->e.w / 2) / (0.5 * 1 * f->e.w);
 	z.i = (j.y - f->e.h / 2) / (0.5 * 1 * f->e.h);
 	i = 0;
-	while (i < 3000 && c_modulus(z) < 2)
+	while (i < f->i && c_modulus(z) < 2)
 	{
 		z = c_add(c_product(z, z), f->c);
 		i++;
 	}
-	return (i == 3000 ? BLACK : WHITE);
+	//return (i == f->i ? BLACK : WHITE);
+	return (i * 1000);
 }
