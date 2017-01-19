@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 15:52:22 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 17:21:35 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 ** Mandelbrot
 */
 
-# define MANDELBROT_I 20
+# define MANDELBROT_I 30
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 # define MANDELBROT_ZOOM 100

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 17:20:30 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 17:27:06 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
 		f->zoom = f->zoom * ZOOM_POW;
-		f->i += 5 / f->zoom;
+		f->i += 20;
 		limit_mouse_coord(&x, &y, f);
 		update_bounds(f, y, x, 1);
 	}
 	else if (button == MOUSE_DOWN || button == MOUSE_RMB)
 	{
-		f->i -= 5 / f->zoom;
+		f->i -= 20;
 		f->zoom = f->zoom / ZOOM_POW;
 		(f->zoom < 1) ? f->zoom = 1 : 0;
 		x = f->e.w / 2.0;
