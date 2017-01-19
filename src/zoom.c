@@ -6,13 +6,13 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 15:50:54 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 17:20:30 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	update_bounds(t_fractal *f, int y, int x);
+static void	update_bounds(t_fractal *f, int y, int x, int is_zoom);
 static void	limit_mouse_coord(int *x, int *y, t_fractal *f);
 
 int	zoom(t_fractal *f, int button, int y, int x)
@@ -22,22 +22,29 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	//check time ?
 	//moidyf zoom
 	printf("zoom: button: %i, xy = [%d ; %d]\n", button, x, y);
+	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
 		f->zoom = f->zoom * ZOOM_POW;
+		f->i += 5 / f->zoom;
 		limit_mouse_coord(&x, &y, f);
+		update_bounds(f, y, x, 1);
 	}
 	else if (button == MOUSE_DOWN || button == MOUSE_RMB)
+	{
+		f->i -= 5 / f->zoom;
 		f->zoom = f->zoom / ZOOM_POW;
-	(f->zoom < 1) ? f->zoom = 1 : 0;
+		(f->zoom < 1) ? f->zoom = 1 : 0;
+		x = f->e.w / 2.0;
+		y = f->e.h / 2.0;
+		update_bounds(f, y, x, 0);
+	}
 	//check zoom coord valididty
 
 	//recalculate min max xy 
 
-	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 
-	update_bounds(f, y, x);
 	
 	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 	//redisplay image
@@ -55,40 +62,21 @@ static void	limit_mouse_coord(int *x, int *y, t_fractal *f)
 	printf("limit mouse coords: xy = [%d ; %d]\n", *x, *y);
 }
 
-static void update_bounds(t_fractal *f, int y, int x)
+static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
 {
-	/*double	y;
-
-	y = 2 * i;
-	if (zoom == 1)
-		return ;
-	while (zoom != 1)
-	{
-		*m = *m + y;
-		y /= 2;
-		--zoom;
-	}*/
 	if (f->zoom == 1)
 		reset_bounds(f);
 	else
 	{
-		f->min.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + f->min.x - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
-		f->min.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + f->min.y - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
-		f->max.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + f->min.x + (float)f->e.w / (2 * f->zoom * IMG_SIZE);
-		f->max.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + f->min.y + (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+		if (is_zoom)
+		{
+			f->min.x += ((float)x / (IMG_SIZE * 0.5 * f->zoom)) - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
+			f->min.y += ((float)y / (IMG_SIZE * 0.5 * f->zoom)) - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+		}
+		else
+		{
+			f->min.x -= (float)f->e.w / (2 * f->zoom * ZOOM_POW * IMG_SIZE);
+			f->min.y -= (float)f->e.h / (2 * f->zoom * ZOOM_POW * IMG_SIZE);
+		}
 	}
-
-	/*
-	f->max.x = MANDELBROT_XMAX * -pow((1 / f->e.w), f->zoom);
-	f->max.x += ((double)x / (double)IMG_SIZE + (double)MANDELBROT_XMIN) / f->zoom;
-	
-	f->max.y = MANDELBROT_YMAX * -pow((1 / f->e.h), f->zoom);
-	f->max.y += ((double)y / (double)IMG_SIZE + (double)MANDELBROT_XMIN) / f->zoom;
-	
-	f->min.x = MANDELBROT_XMIN * pow((1 / f->e.w), f->zoom);
-	f->min.x += ((double)x / (double)IMG_SIZE + (double)MANDELBROT_XMIN) / f->zoom;
-
-	f->min.y = MANDELBROT_YMIN * pow((1 / f->e.h), f->zoom);
-	f->min.y += ((double)y / (double)IMG_SIZE + (double)MANDELBROT_XMIN) / f->zoom;
-	*/
 }

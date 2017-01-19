@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:12:14 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 19:03:05 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 16:16:40 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	mandelbrot(t_pt2 j, t_fractal *f)
 	z.r = MANDELBROT_C_I;
 	z.i = MANDELBROT_C_R;
 	i = -1;
-	while (c_modulus(z) < 2 && ++i < MANDELBROT_I)
+	while (c_modulus(z) < 2 && ++i < f->i)
 		z = c_add(c_product(z, z), c);
 	//return (i == MANDELBROT_I ? HOT_PINK : WHITE);
 	return (i * 1000);
