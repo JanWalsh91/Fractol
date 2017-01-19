@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 11:50:01 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 12:44:59 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int		main(int argc, char *argv[])
 	while (i < argc && y < MAX_ARG)
 	{
 		ft_strtoupper(argv[i]);
-		if (ft_strcmp_percent(argv[i], "MANDELBROT", 0.5))
+		if (ft_strcmp_percent(argv[i], "MANDELBROT", 0.1))
 		{
 			printf("found mandel: y: %i\n", y);
 			names[y] = MANDELBROT;
 			++y;
 			//init_fractal(&(f[i]), MANDELBROT);
 		}
-		else if (ft_strcmp_percent(argv[i], "JULIA", 0.5))
+		else if (ft_strcmp_percent(argv[i], "JULIA", 0.1))
 		{
 			names[y] = JULIA;
 			++y;

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 10:15:22 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/19 12:42:09 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,9 @@ static int	init_mandelbrot(t_fractal *f)
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
 	f->zoom = ZOOM;
+	reset_bounds(f);
 	f->e.h = IMG_SIZE_H;
 	f->e.w = IMG_SIZE_W;
-	f->max.x = MANDELBROT_XMAX;
-	f->max.y = MANDELBROT_YMAX;
-	f->min.x = MANDELBROT_XMIN;
-	f->min.y = MANDELBROT_YMIN;
 	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
 		return (0);
 	i = -1;
@@ -80,4 +77,12 @@ static int	init_julia(t_fractal *f)
 			return (0);
 	return (1);
 
+}
+
+void	reset_bounds(t_fractal *f)
+{
+	f->max.x = MANDELBROT_XMAX;
+	f->max.y = MANDELBROT_YMAX;
+	f->min.x = MANDELBROT_XMIN;
+	f->min.y = MANDELBROT_YMIN;
 }

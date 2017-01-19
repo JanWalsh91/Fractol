@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 12:26:43 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/19 13:56:48 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	//check max min zoom
 	//check time ?
 	//moidyf zoom
-	printf("event: button: %i, xy = [%d ; %d]\n", button, x, y);
+	printf("zoom: button: %i, xy = [%d ; %d]\n", button, x, y);
 
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
@@ -35,11 +35,11 @@ int	zoom(t_fractal *f, int button, int y, int x)
 
 	//recalculate min max xy 
 
-	printf("min = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
+	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 
 	update_bounds(f, y, x);
 	
-	printf("min = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
+	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 	//redisplay image
 	calc_colors(f);
 	draw(f);
@@ -69,7 +69,16 @@ static void update_bounds(t_fractal *f, int y, int x)
 		--zoom;
 	}*/
 	if (f->zoom == 1)
-		return ;
+		reset_bounds(f);
+	else
+	{
+		f->min.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_XMIN - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
+		f->min.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_YMIN - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+		f->max.x = (float)x / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_XMIN + (float)f->e.w / (2 * f->zoom * IMG_SIZE);
+		f->max.y = (float)y / (IMG_SIZE * 0.5 * f->zoom) + MANDELBROT_YMIN + (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+	}
+
+	/*
 	f->max.x = MANDELBROT_XMAX * -pow((1 / f->e.w), f->zoom);
 	f->max.x += ((double)x / (double)IMG_SIZE + (double)MANDELBROT_XMIN) / f->zoom;
 	
@@ -81,4 +90,5 @@ static void update_bounds(t_fractal *f, int y, int x)
 
 	f->min.y = MANDELBROT_YMIN * pow((1 / f->e.h), f->zoom);
 	f->min.y += ((double)y / (double)IMG_SIZE + (double)MANDELBROT_XMIN) / f->zoom;
+	*/
 }
