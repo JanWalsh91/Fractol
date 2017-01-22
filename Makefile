@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/18 17:11:34 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/22 14:33:10 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,15 @@ SRC_NAME = main \
 			draw \
 			mandelbrot \
 			julia \
+			sierpinsky_carpet \
 			init_fractal \
 			init_names \
 			init_win \
-			calc_colors \
+			calc_colors2 \
 			key_released \
 			mouse_event \
 			zoom \
+			update_iteration \
 			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))
@@ -40,7 +42,7 @@ OBJ = $(SRC:.c=.o)
 
 EXT = .c
 CC	= gcc
-FLG = -Werror -Wextra -Wall
+FLG = -Werror -Wextra -Wall -Ofast
 MLX = -lmlx -framework OpenGL -framework AppKit 
 
 C_NONE = \033[0m
@@ -64,7 +66,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(LIB_PATH)
 	@make -C $(LIBMATH_PATH)
-	@$(CC) $(FLG) $(MLX) $(LIB_PATH)$(LIBFT_NAME) $(LIBMATH_PATH)$(LIBMATHFT_NAME) $(OBJ) -o $(NAME)
+	@$(CC) $(FLG) $(MLX) -lpthread $(LIB_PATH)$(LIBFT_NAME) $(LIBMATH_PATH)$(LIBMATHFT_NAME) $(OBJ) -o $(NAME)
 	@rm -rf src/*.o
 	@$(ECHO) "$(C_GREEN)Fractol compilation done.$(C_NONE)"
 

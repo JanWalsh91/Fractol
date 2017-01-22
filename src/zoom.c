@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 17:27:06 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/22 14:08:52 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	update_bounds(t_fractal *f, int y, int x, int is_zoom);
 static void	limit_mouse_coord(int *x, int *y, t_fractal *f);
+static void	reset(t_fractal *f);
 
 int	zoom(t_fractal *f, int button, int y, int x)
 {
@@ -27,19 +28,21 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
 		f->zoom = f->zoom * ZOOM_POW;
-		f->i += 20;
+		f->i += 2;
 		limit_mouse_coord(&x, &y, f);
 		update_bounds(f, y, x, 1);
 	}
-	else if (button == MOUSE_DOWN || button == MOUSE_RMB)
+	else if ((button == MOUSE_DOWN || button == MOUSE_RMB) && f->zoom > 1)
 	{
-		f->i -= 20;
+		f->i -= 2;
 		f->zoom = f->zoom / ZOOM_POW;
 		(f->zoom < 1) ? f->zoom = 1 : 0;
 		x = f->e.w / 2.0;
 		y = f->e.h / 2.0;
 		update_bounds(f, y, x, 0);
 	}
+	else if (button == KEY_SPACE)
+		reset(f);
 	//check zoom coord valididty
 
 	//recalculate min max xy 
@@ -79,4 +82,11 @@ static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
 			f->min.y -= (float)f->e.h / (2 * f->zoom * ZOOM_POW * IMG_SIZE);
 		}
 	}
+}
+
+static void	reset(t_fractal *f)
+{
+	reset_bounds(f);
+	f->zoom = ZOOM;
+	f->i = 20;
 }

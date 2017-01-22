@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 13:55:13 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/22 13:14:31 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,56 @@ static void	draw_pixel(t_draw_tools *t, int x, int y, int color);
 
 int			draw(t_fractal *f) //y is the fractal index
 {
-	t_pt2	i;
+	pthread_t	threads[THREAD_COUNT];
+	int			i;
+	t_th		*th;
+	void		**ret;
 
+	i = -1;
+	ret = NULL;
+	th = (t_th *)malloc(sizeof(t_th) * 8);
 	//printf("draw\n");
 	ft_memset(f->e.draw.image, 0, f->e.h * f->e.draw.size_line);
 	//printf("check1\n");
-	i.y = 0;
-	i.x = 0;
-	while (i.y < f->e.h)
+	while (++i < THREAD_COUNT)
 	{
-		int color;
-
-		color = f->colors[i.y][i.x];
-		//printf("check2\n");
-		if (ft_strcmp(f->name, "julia") == 0)
-		{
-			draw_pixel(&f->e.draw, i.y, i.x, color);
-			draw_pixel(&f->e.draw, f->e.h - i.y, f->e.w - i.x, color);
-			if (i.y == f->e.h / 2 + 1)
-				break;
-		}
-		else
-			draw_pixel(&f->e.draw, i.y, i.x, color);
-		ft_increment_index(&i.y, &i.x, f->e.w);
+		printf("new thread\n");
+		th[i].f = f;
+		th[i].i = i;
+		pthread_create(&threads[i], NULL, draw_section, &th[i]);
 	}
 	//printf("check3\n");
+	i = -1;
+	while (++i < THREAD_COUNT)
+		pthread_join(threads[i], ret);
+	//pthread_exit(NULL);
 	mlx_put_image_to_window(f->e.mlx, f->e.win_mlx, f->e.img_mlx, 0, 0);
 	return (1);
+}
+
+void		*draw_section(void *v)
+{
+	t_pt2	i;
+	int		max_x;
+	t_th	*th;
+	int		color;
+
+	th = (t_th *)v;
+	max_x = (th->f->e.w / THREAD_COUNT) * (th->i + 1);
+	//printf("thread %d\n", th->i);
+	i.y = -1;
+	while (++i.y < th->f->e.h)
+	{
+		i.x = (th->f->e.w / THREAD_COUNT) * th->i - 1;
+		while (++i.x < max_x)
+		{
+			//printf("draw pixel at : (y, x) (%i, %i) thread: %i\n", i.y, i.x, th->i);
+			color = th->f->colors[i.y][i.x];
+			draw_pixel(&th->f->e.draw, i.y, i.x, color);
+		}
+	}
+	//pthread_exit(NULL);
+	return (NULL);
 }
 
 /*

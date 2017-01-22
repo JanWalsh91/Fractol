@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 17:21:35 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/22 15:36:49 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h>
+# include <pthread.h>
 
 # define USAGE "usage: ./fractol Julia Madelbrot ..."
+# define THREAD_COUNT 8
 # define MAX_ARG 4
 # define WIN_WIDTH
 # define WIN_HEIGHT
@@ -39,15 +41,33 @@
 # define MANDELBROT_I 30
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
-# define MANDELBROT_ZOOM 100
+//# define MANDELBROT_ZOOM 100
 # define MANDELBROT_XMIN -2.1
 # define MANDELBROT_XMAX 0.6
 # define MANDELBROT_YMIN -1.2
 # define MANDELBROT_YMAX 1.2
+# define MANDELBROT_W (MANDELBROT_XMAX - MANDELBROT_XMIN)
+# define MANDELBROT_H (MANDELBROT_YMAX - MANDELBROT_YMIN)
+
+/*
+** Julia
+*/
+
+# define JULIA_I 50
+# define JULIA_C_I 0.04110
+# define JULIA_C_R -0.25
+
+/*
+** Sierpinsky's Carpet
+*/
+
+# define SIERPINSKY_CARPET_H 1
+# define SIERPINSKY_CARPET_W 1
+# define SIERPINSKY_CARPET_I 2
 
 # define IMG_SIZE 300
-# define IMG_SIZE_W IMG_SIZE * 2.7
-# define IMG_SIZE_H IMG_SIZE * 2.4
+//# define IMG_SIZE_W IMG_SIZE * 2.7
+//# define IMG_SIZE_H IMG_SIZE * 2.4
 # define ZOOM 1
 
 
@@ -95,7 +115,8 @@ typedef enum		e_names
 {
 	MANDELBROT = 1,
 	JULIA = 2,
-	OTHER = 3
+	SIERPINSKY_CARPET = 3,
+	OTHER = 4
 }					t_names;
 
 typedef struct		s_incr
@@ -115,6 +136,13 @@ typedef struct		s_incr
 //	int				w;
 //	//t_pt2			pos; //position of image. Probaly useless since always (0, 0)
 //}					t_image;
+
+typedef struct		s_seirpinsky_tools
+{
+	int	i;
+	int	w;
+	int	h;
+}					t_sierpinsky_tools;
 
 typedef struct		s_draw_tools //values used for get_data_address
 {
@@ -150,6 +178,12 @@ typedef struct		s_fractal
 	int				**colors;
 }					t_fractal;
 
+typedef struct		s_th
+{
+	t_fractal		*f;
+	int				i;
+}					t_th;
+
 /*
 ** Main
 */
@@ -162,12 +196,31 @@ int					init_win(t_fractal *f);
 void				reset_bounds(t_fractal *f);
 int					calc_colors(t_fractal *f);
 int					draw(t_fractal *f);
+void				display_colors(int **tab, int xmax, int ymax);
+
+/*
+** Fracal algorithms
+*/
+
 int					mandelbrot(t_pt2 j, t_fractal *f);
 int					julia(t_pt2 j, t_fractal *f);
+int					sierpinsky_carpet(t_pt2 j, t_fractal *f);
+
+/*
+** MLX functions
+*/
+
 int					key_released(int keycode, t_fractal *f);
 int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
 int					zoom(t_fractal *f, int button, int y, int x);
-void				display_colors(int **tab, int xmax, int ymax);
+int					update_iteration(t_fractal *f, int button);
+
+/*
+** new functions with multithreading (check which file is in use and update)
+*/
+
+void				*calc_colors_sections(void *v);
+//void				*draw_section(void *v);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:12:14 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 16:16:40 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/22 13:16:43 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	mandelbrot(t_pt2 j, t_fractal *f)
 	t_complex	c;
 	int			i;
 
-	(void)f;
 	//printf("(j.y, j.y)(%i, %i) -> ", j.y, j.x);
 	c.r = (float)j.x / IMG_SIZE / f->zoom + f->min.x;
 	c.i = (float)j.y / IMG_SIZE / f->zoom + f->min.y;

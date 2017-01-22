@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/19 12:42:09 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/22 15:34:11 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	init_mandelbrot(t_fractal *f);
 static int	init_julia(t_fractal *f);
-
+static int init_sierpinsky_carpet(t_fractal *f);
+static int	init_colors(t_fractal *f);
 /*
 ** Initalizes a fractal stucture based on the parameter y.
 ** Sets the function
@@ -25,18 +26,20 @@ int	init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 	f->e.mlx = mlx;
 	if (y == JULIA)
 		init_julia(f);	
-	if (y == MANDELBROT)
+	else if (y == MANDELBROT)
 		init_mandelbrot(f);
+	else if (y == SIERPINSKY_CARPET)
+		init_sierpinsky_carpet(f);
 	return (1);
 }
 
 
 static int	init_mandelbrot(t_fractal *f)
 {
-	int i;
-
 	printf("init_fractol\n");
-	if (!(f->name = ft_strdup("Mandelbrot")))
+	f->e.h = IMG_SIZE * MANDELBROT_H;
+	f->e.w = IMG_SIZE * MANDELBROT_W;
+	if (!(f->name = ft_strdup("Mandelbrot")) || !init_colors(f))
 		return (0);
 	f->f = &mandelbrot;
 	f->i = MANDELBROT_I;
@@ -44,31 +47,44 @@ static int	init_mandelbrot(t_fractal *f)
 	f->c.i = MANDELBROT_C_I;
 	f->zoom = ZOOM;
 	reset_bounds(f);
-	f->e.h = IMG_SIZE_H;
-	f->e.w = IMG_SIZE_W;
-	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
-		return (0);
-	i = -1;
-	while (++i < f->e.h)
-		if(!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
-			return (0);
 	printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
 	return (1);
 }
 
 static int	init_julia(t_fractal *f)
 {
-	int i;
-
-	if (!(f->name = ft_strdup("Julia")))
+	f->e.h = IMG_SIZE * MANDELBROT_H;
+	f->e.w = IMG_SIZE * MANDELBROT_W;
+	if (!(f->name = ft_strdup("Julia")) || !init_colors(f))
 		return (0);
 	f->f = &julia;
-	f->i = 50; 
-	f->c.r = -0.25;
-	f->c.i = 0.04110;
-	f->zoom = 1;
-	f->e.h = 240;	
-	f->e.w = 270;
+	f->i = JULIA_I; 
+	f->c.r = JULIA_C_R;
+	f->c.i = JULIA_C_I;
+	f->zoom = ZOOM;
+	return (1);
+
+}
+
+static int	init_sierpinsky_carpet(t_fractal *f)
+{
+	f->e.h = SIERPINSKY_CARPET_H * pow(3, IMG_SIZE / 50);
+	f->e.w = SIERPINSKY_CARPET_W * pow(3, IMG_SIZE / 50);
+	f->i = SIERPINSKY_CARPET_I;
+	if (!(f->name = ft_strdup("Sierpinsky Capret")) || !init_colors(f))
+		return (0);
+	f->f = &sierpinsky_carpet;
+	f->max.x = 2;
+	f->max.y = 2;
+	f->min.x = 0;
+	f->min.y = 0;
+	return (1);
+}
+
+static int	init_colors(t_fractal *f)
+{
+	int	i;
+
 	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
 		return (0);
 	i = -1;
@@ -76,7 +92,6 @@ static int	init_julia(t_fractal *f)
 		if(!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
 			return (0);
 	return (1);
-
 }
 
 void	reset_bounds(t_fractal *f)
