@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 15:24:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:44:28 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 11:51:24 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ size_t			ft_ustrlen(const unsigned char *s);
 char			*ft_strdupfree(char *dst, char *src);
 unsigned char	*ft_ustrdupfree(unsigned char *dst, unsigned char *src);
 void			ft_error_exit(char *error_msg);
+int				ft_strcmp_precent(char *src, char *cmp, float percent);
 
 #endif
