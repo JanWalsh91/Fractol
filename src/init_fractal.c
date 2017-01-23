@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 16:38:07 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 16:48:43 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 	f->e.mlx = mlx;
 	f->color_set = 0;
 	f->mouse_on = 1;
+	f->zoom = ZOOM;
 	if (y == JULIA)
 		init_julia(f);	
 	else if (y == MANDELBROT)
@@ -52,7 +53,6 @@ static int	init_mandelbrot(t_fractal *f)
 	f->i = MANDELBROT_I;
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
-	f->zoom = ZOOM;
 	reset_bounds(f);
 	printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
 	return (1);
@@ -73,7 +73,6 @@ static int	init_julia(t_fractal *f)
 	f->c.r = JULIA_C_R;
 	f->c.i = JULIA_C_I;
 	reset_bounds(f);
-	f->zoom = ZOOM;
 	return (1);
 
 }
@@ -120,7 +119,7 @@ void	reset_bounds(t_fractal *f)
 		f->min.x = MANDELBROT_XMIN;
 		f->min.y = MANDELBROT_YMIN;
 	}
-	else if (f->name == JULIA)
+	else if (f->name == JULIA || f->name == SIERPINSKY_CARPET)
 	{
 		f->min.x = 0;
 		f->min.y = 0;
