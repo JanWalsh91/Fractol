@@ -1,0 +1,8 @@
+*.o
+Libft/libft.a
+Libft/*.o
+Libmathft/*.o
+Libmathft/libmathft.a
+*.swp
+*.swo
+fractol
