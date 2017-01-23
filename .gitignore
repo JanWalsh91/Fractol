@@ -1,3 +1,4 @@
+.gitignore
 *.o
 Libft/libft.a
 Libft/*.o

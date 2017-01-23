@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 12:24:32 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 12:44:25 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define MANDELBROT_YMAX 1.2
 # define MANDELBROT_W (MANDELBROT_XMAX - MANDELBROT_XMIN)
 # define MANDELBROT_H (MANDELBROT_YMAX - MANDELBROT_YMIN)
+# define MANDELBROT_COLOR_SET_COUNT 1
 
 /*
 ** Julia
@@ -57,6 +58,7 @@
 # define JULIA_I 50
 # define JULIA_C_I 0.04110
 # define JULIA_C_R -0.25
+# define JULIA_COLOR_SET_COUNT 1
 
 /*
 ** Sierpinsky's Carpet
@@ -65,6 +67,7 @@
 # define SIERPINSKY_CARPET_H 1
 # define SIERPINSKY_CARPET_W 1
 # define SIERPINSKY_CARPET_I 1
+# define SIERPINSKY_COLOR_SET_COUNT 1
 
 /*
 ** Instructions
@@ -186,6 +189,9 @@ typedef struct		s_fractal
 	t_dpt2			min;
 	int				mouse_on;
 	int				**colors;
+	int				color_set;
+	int				color_set_count;
+	int				*(*get_color)(int i);
 }					t_fractal;
 
 typedef struct		s_th

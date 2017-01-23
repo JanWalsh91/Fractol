@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:59:38 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 12:43:56 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	init_mandelbrot(t_fractal *f);
 static int	init_julia(t_fractal *f);
-static int init_sierpinsky_carpet(t_fractal *f);
+static int	init_sierpinsky_carpet(t_fractal *f);
 static int	init_colors(t_fractal *f);
 /*
 ** Initalizes a fractal stucture based on the parameter y.
 ** Sets the function
 */
 
-int	init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
+int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 {
 	f->e.mlx = mlx;
 	if (y == JULIA)
@@ -40,6 +40,7 @@ static int	init_mandelbrot(t_fractal *f)
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
 	f->name = MANDELBROT;
+	f->color_set_count = MANDELBROT_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Mandelbrot")) || !init_colors(f))
 		return (0);
 	f->f = &mandelbrot;
@@ -57,6 +58,7 @@ static int	init_julia(t_fractal *f)
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
 	f->name = JULIA;
+	f->color_set_count = JULIA_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Julia")) || !init_colors(f))
 		return (0);
 	f->f = &julia;
@@ -74,6 +76,7 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 	f->e.w = SIERPINSKY_CARPET_W * pow(3, IMG_SIZE / 50);
 	f->i = SIERPINSKY_CARPET_I;
 	f->name = SIERPINSKY_CARPET;
+	f->color_set_count = SIERPINSKY_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Sierpinsky Capret")) || !init_colors(f))
 		return (0);
 	f->f = &sierpinsky_carpet;
@@ -94,6 +97,8 @@ static int	init_colors(t_fractal *f)
 	while (++i < f->e.h)
 		if(!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
 			return (0);
+	if (!(f->get_color = ft_memalloc(sizeof(*(f->get_color)) * f->color_set_count)))
+		return (0);
 	return (1);
 }
 
