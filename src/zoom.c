@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 14:08:52 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 11:30:14 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	//check max min zoom
 	//check time ?
 	//moidyf zoom
-	printf("zoom: button: %i, xy = [%d ; %d]\n", button, x, y);
-	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
+	//printf("zoom: button: %i, xy = [%d ; %d]\n", button, x, y);
+//	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
@@ -49,7 +49,7 @@ int	zoom(t_fractal *f, int button, int y, int x)
 
 
 	
-	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
+	//printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 	//redisplay image
 	calc_colors(f);
 	draw(f);
@@ -62,7 +62,7 @@ static void	limit_mouse_coord(int *x, int *y, t_fractal *f)
 	*y = (*y - f->e.h / (2 * f->zoom) > 0) ? *y : f->e.h / (2 * f->zoom);
 	*x = (*x + f->e.w / (2 * f->zoom) < f->e.w) ? *x : f->e.w - f->e.w / (2 * f->zoom);
 	*y = (*y + f->e.h / (2 * f->zoom) < f->e.h) ? *y : f->e.h - f->e.h / (2 * f->zoom);
-	printf("limit mouse coords: xy = [%d ; %d]\n", *x, *y);
+	//printf("limit mouse coords: xy = [%d ; %d]\n", *x, *y);
 }
 
 static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
@@ -88,5 +88,8 @@ static void	reset(t_fractal *f)
 {
 	reset_bounds(f);
 	f->zoom = ZOOM;
-	f->i = 20;
+	f->name == MANDELBROT ? f->i = MANDELBROT_I : 0;
+	f->name == JULIA ? f->i = JULIA_I : 0;
+	f->name == SIERPINSKY_CARPET ? f->i = SIERPINSKY_CARPET_I : 0;
+	//f->name == NEWTON ? f->i = NEWTON_I : 0;
 }

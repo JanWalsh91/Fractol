@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 15:36:49 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 11:29:38 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <pthread.h>
 
 # define USAGE "usage: ./fractol Julia Madelbrot ..."
-# define THREAD_COUNT 8
+# define THREAD_COUNT 20
 # define MAX_ARG 4
 # define WIN_WIDTH
 # define WIN_HEIGHT
@@ -63,7 +63,7 @@
 
 # define SIERPINSKY_CARPET_H 1
 # define SIERPINSKY_CARPET_W 1
-# define SIERPINSKY_CARPET_I 2
+# define SIERPINSKY_CARPET_I 1
 
 # define IMG_SIZE 300
 //# define IMG_SIZE_W IMG_SIZE * 2.7
@@ -116,7 +116,8 @@ typedef enum		e_names
 	MANDELBROT = 1,
 	JULIA = 2,
 	SIERPINSKY_CARPET = 3,
-	OTHER = 4
+	NEWTON = 4,
+	OTHER = 5
 }					t_names;
 
 typedef struct		s_incr
@@ -166,7 +167,8 @@ typedef struct		s_env // one win, img and draw tools per fractal
 typedef struct		s_fractal
 {
 	t_env			e;
-	char			*name; //fractal name
+	t_names			name;
+	char			*title; //fractal name
 	int				(*f)(t_pt2 i, struct s_fractal *f); //returns color for a point bases on its coords
 	int				i; //number of iteratioms 
 	t_complex		c; // complex constant

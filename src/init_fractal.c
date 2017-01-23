@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 17:45:26 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 11:24:41 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static int	init_mandelbrot(t_fractal *f)
 	printf("init_fractol\n");
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
-	if (!(f->name = ft_strdup("Mandelbrot")) || !init_colors(f))
+	f->name = MANDELBROT;
+	if (!(f->title = ft_strdup("Mandelbrot")) || !init_colors(f))
 		return (0);
 	f->f = &mandelbrot;
 	f->i = MANDELBROT_I;
@@ -55,7 +56,8 @@ static int	init_julia(t_fractal *f)
 {
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
-	if (!(f->name = ft_strdup("Julia")) || !init_colors(f))
+	f->name = JULIA;
+	if (!(f->title = ft_strdup("Julia")) || !init_colors(f))
 		return (0);
 	f->f = &julia;
 	f->i = JULIA_I; 
@@ -71,7 +73,8 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 	f->e.h = SIERPINSKY_CARPET_H * pow(3, IMG_SIZE / 50);
 	f->e.w = SIERPINSKY_CARPET_W * pow(3, IMG_SIZE / 50);
 	f->i = SIERPINSKY_CARPET_I;
-	if (!(f->name = ft_strdup("Sierpinsky Capret")) || !init_colors(f))
+	f->name = SIERPINSKY_CARPET;
+	if (!(f->title = ft_strdup("Sierpinsky Capret")) || !init_colors(f))
 		return (0);
 	f->f = &sierpinsky_carpet;
 	f->max.x = 2;

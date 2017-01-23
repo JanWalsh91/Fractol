@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 13:21:12 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 11:19:02 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		mouse_event(int button, int x, int y, t_fractal *f)
 {
-	(void)f;
+	if (x < 0 || y < 0 || x > f->e.w || y > f->e.h)
+		return (1);
 	//printf("button: %i (x, y): (%i, %i)\n", button, x, y);
 	if (button == MOUSE_UP || button == MOUSE_LMB ||
 			button == MOUSE_DOWN || button == MOUSE_RMB)
