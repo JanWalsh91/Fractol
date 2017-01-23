@@ -6,12 +6,16 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 17:30:21 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/13 19:04:40 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:13:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
+
+/*
+** UNFINISHED
+** work in progress...
+*/
 
 char	*ft_dtoa(double n)
 {
@@ -28,9 +32,7 @@ char	*ft_dtoa(double n)
 	while (n && ++count)
 	{
 		n = (n * 10) - (float)(int)(n * 10);
-		printf("%f\n", n);
 	}
-	printf("count: %i\n", count);
 	if (!(str = ft_strnew(count)))
 		return (NULL);
 	i = 1;

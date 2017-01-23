@@ -6,11 +6,12 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 12:11:44 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/07 12:14:10 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:55:26 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
+** Same as ft_strncpy, but with unsigned char strings.
 ** Copies at most len characters from unsigned char string src into dst.
 ** If src is less than len characters long, the remainder of dst is filled
 ** with \0. Otherwise, dst is not terminated.

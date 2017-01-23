@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_increment_index.c                               :+:      :+:    :+:   */
+/*   ft_error_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 12:04:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/18 14:17:51 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/23 11:41:29 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/23 11:45:13 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 /*
-**	Increment x and y. If x equals xmax, then the function increases y and
-**	set x to 0.
+** Puts the error message on the error output and exits the program.
 */
 
-void	ft_increment_index(int *y, int *x, int xmax)
+#include "libft.h"
+
+void	ft_error_exit(char *error_msg)
 {
-	(*x)++;
-	if (*x == xmax)
-	{
-		*x = 0;
-		(*y)++;
-	}
+	ft_putendl_fd(error_msg, 2);
+	exit(0);
 }

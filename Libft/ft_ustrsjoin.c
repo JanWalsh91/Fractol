@@ -6,14 +6,15 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 11:40:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/07 14:57:34 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:56:14 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Joins n unsigned char strings together.
+** Allocates memory for a new unsigned char string which joins n unsigned char
+** strings together.
 */
 
 unsigned char	*ft_ustrsjoin(size_t n, ...)

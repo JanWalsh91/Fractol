@@ -6,7 +6,7 @@
 #    By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 13:07:31 by jwalsh            #+#    #+#              #
-#    Updated: 2017/01/17 12:11:14 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/23 11:43:02 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,11 +77,8 @@ SRC = ft_memset.c \
 	ft_clamp.c \
 	get_next_line.c \
 	ft_range.c \
-	ft_power.c \
-	ft_abs.c \
 	ft_straddchar.c \
 	ft_straddcharfree.c \
-	ft_to_base.c \
 	ft_error.c \
 	ft_itoa_base.c \
 	ft_uitoa_base.c \
@@ -118,8 +115,7 @@ SRC = ft_memset.c \
 	ft_ustrlen.c \
 	ft_strdupfree.c \
 	ft_ustrdupfree.c \
-	ft_strcmp_percent.c \
-	ft_increment_index.c
+	ft_error_exit.c
 
 NAME = libft.a
 
