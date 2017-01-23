@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_released.c                                     :+:      :+:    :+:   */
+/*   init_instructions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/18 10:22:53 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/23 12:21:57 by tgros            ###   ########.fr       */
+/*   Created: 2017/01/23 12:01:04 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/23 12:28:20 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		key_released(int keycode, t_fractal *f)
+int	init_instructions(void *mlx)
 {
-	if (keycode == KEY_ESCAPE)
-		exit(1);
-	else if (keycode == KEY_MINUS || keycode == KEY_PAD_SUB ||
-			(keycode == KEY_EQUAL || keycode == KEY_PAD_ADD))
-		update_iteration(f, keycode);
-	else if (keycode == KEY_SPACE)
-		zoom(f, KEY_SPACE, 0, 0);
-	return (0);
-}
+	void	*win;
 
-int		exit_prog(int keycode, void *mlx)
-{
-	(void)mlx;
-	if (keycode == KEY_ESCAPE)
-		exit (1);
-	return (0);
+	if (!(win = mlx_new_window(mlx, INSTRUCTIONS_W, INSTRUCTIONS_H,
+				"Instructions")))
+		return (0);
+	mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "INSTRUCTIONS");
+	//mlx_key_hook(mlx, &exit_prog, &init_instructions);
+	return (1);
 }

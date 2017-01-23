@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:29:38 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 12:24:32 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define USAGE "usage: ./fractol Julia Madelbrot ..."
 # define THREAD_COUNT 20
+# define WIN_COUNT 4
 # define MAX_ARG 4
 # define WIN_WIDTH
 # define WIN_HEIGHT
@@ -64,6 +65,13 @@
 # define SIERPINSKY_CARPET_H 1
 # define SIERPINSKY_CARPET_W 1
 # define SIERPINSKY_CARPET_I 1
+
+/*
+** Instructions
+*/
+
+# define INSTRUCTIONS_H 512
+# define INSTRUCTIONS_W 512
 
 # define IMG_SIZE 300
 //# define IMG_SIZE_W IMG_SIZE * 2.7
@@ -195,6 +203,7 @@ int					display_usage(void);
 int					init_names(t_names **names);
 int					init_fractal(t_fractal *f, void *mlx, int y);
 int					init_win(t_fractal *f);
+int					init_instructions(void *mlx);
 void				reset_bounds(t_fractal *f);
 int					calc_colors(t_fractal *f);
 int					draw(t_fractal *f);
@@ -213,6 +222,7 @@ int					sierpinsky_carpet(t_pt2 j, t_fractal *f);
 */
 
 int					key_released(int keycode, t_fractal *f);
+int					exit_prog(int keycode, void *mlx);
 int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
 int					zoom(t_fractal *f, int button, int y, int x);

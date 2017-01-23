@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/22 17:45:29 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/23 12:07:14 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_NAME = main \
 			init_fractal \
 			init_names \
 			init_win \
+			init_instructions \
 			calc_colors2 \
 			key_released \
 			mouse_event \

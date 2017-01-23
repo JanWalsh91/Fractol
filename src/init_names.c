@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:10:58 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/22 13:45:23 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 12:09:52 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_names(t_names **names)
 {
-	if (!(*names = ft_memalloc(sizeof(t_names) * 4)))
+	if (!(*names = ft_memalloc(sizeof(t_names) * WIN_COUNT)))
 		return (0);
 	return (1);
 }

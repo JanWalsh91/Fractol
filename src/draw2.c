@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:07:03 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 12:24:14 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int			draw(t_fractal *f) //y is the fractal index
 
 	i = -1;
 	ret = NULL;
-	th = (t_th *)malloc(sizeof(t_th) * 8);
+	if(!(th = (t_th *)malloc(sizeof(t_th) * THREAD_COUNT)))
+		ft_error_exit("Malloc error");
 	//printf("draw\n");
 	ft_memset(f->e.draw.image, 0, f->e.h * f->e.draw.size_line);
 	//printf("check1\n");
