@@ -6,11 +6,15 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 14:52:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2016/11/30 15:48:18 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:50:00 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+/*
+** Creates and returns an array of int starting at start and ending with end.
+*/
 
 int	*ft_range(int start, int end)
 {

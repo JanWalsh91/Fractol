@@ -6,12 +6,13 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 15:55:31 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/09 15:55:41 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:52:50 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Copies the string src to dst, including the null-terminating character.
+** Copies the unsigned char string src to dst, including the null-terminating
+** character.
 ** src and dst should not overlap, as behavior is undefined.
 */
 

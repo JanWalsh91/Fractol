@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 15:24:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/17 12:11:00 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 11:51:24 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,8 @@ char			*ft_strjoinfree(char const *s1, char const *s2, char c);
 int				ft_clamp(int min, int max, int i);
 int				get_next_line(const int fd, char **line);
 int				*ft_range(int start, int end);
-long			ft_power(int n, int p);
-int				ft_abs(int n);
 char			*ft_straddchar(char const *s, char c);
 char			*ft_straddcharfree(char const *s, char c);
-char			*ft_to_base(int n, int b);
 int				ft_error(char *error_msg);
 char			*ft_itoa_base(long value, int base);
 char			*ft_uitoa_base(unsigned long value, int base);
@@ -137,7 +134,7 @@ void			ft_swap(int *a, int *b);
 size_t			ft_ustrlen(const unsigned char *s);
 char			*ft_strdupfree(char *dst, char *src);
 unsigned char	*ft_ustrdupfree(unsigned char *dst, unsigned char *src);
-int				ft_strcmp_percent(char *str, char *cmp, float percent);
-void			ft_increment_index(int *y, int *x, int xmax);
+void			ft_error_exit(char *error_msg);
+int				ft_strcmp_precent(char *src, char *cmp, float percent);
 
 #endif

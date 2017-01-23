@@ -6,13 +6,14 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 15:57:42 by jwalsh            #+#    #+#             */
-/*   Updated: 2016/12/27 14:52:34 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:57:27 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
+** Returns the next line in the file pointed to by file descriptor fd.
 ** Checks for valid fd values and line.
 ** Finds the appropriate static buffer or creates a new one.
 ** If there is a newline in the static buffer, reads from it.

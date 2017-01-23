@@ -6,12 +6,12 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 14:04:33 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/12 15:01:38 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:54:51 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Computes and returns the length of unsigned chat string s.
+** Computes and returns the length of unsigned char string s.
 ** Excludes the null terminating character.
 ** Unlike the standard library's strlen, it returns 0 if thr string is NULL;
 */

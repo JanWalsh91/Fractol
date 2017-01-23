@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 15:09:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/16 12:44:45 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 14:57:04 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static unsigned char	*get_4_bytes(wchar_t c);
 
 unsigned char			*ft_wctostr(wchar_t c)
 {
-	if (c <= 0x7F)
+	if (0 <= c && c <= 0x7F)
 		return (get_1_byte(c));
 	else if (0x7F < c && c <= 0x7FF)
 		return (get_2_bytes(c));

@@ -6,14 +6,14 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 16:52:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/05 17:10:09 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:51:03 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-** Joins n strings together. Frees the stirngs. Returns the new string.
+** Joins n strings together. Frees the strings. Returns the new string.
 */
 
 char	*ft_strsjoinfree(size_t n, ...)

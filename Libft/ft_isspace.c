@@ -6,11 +6,15 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 12:57:45 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/03 12:59:25 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/21 15:48:46 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** Returns 1 if char c is a space character, 0 if not.
+*/
 
 int	ft_isspace(char c)
 {
