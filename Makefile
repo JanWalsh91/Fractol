@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/23 12:07:14 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/23 16:39:53 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,10 @@ SRC_NAME = main \
 			mouse_event \
 			zoom \
 			update_iteration \
+			update_color_set \
+			mandelbrot_colors \
+			julia_colors \
+			sierpinsky_carpet_colors \
 			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))
@@ -74,11 +78,13 @@ $(NAME): $(OBJ)
 clean:
 	@/bin/rm -f $(OBJ)
 	@make -C $(LIB_PATH) clean
+	@make -C $(LIBMATH_PATH) clean
 	@$(ECHO) "$(C_GREEN)Fractol clean done.$(C_NONE)"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make -C $(LIB_PATH) fclean
+	@make -C $(LIBMATH_PATH) fclean
 	@$(ECHO) "$(C_GREEN)Fractol fclean done.$(C_NONE)"
 
 re: fclean all

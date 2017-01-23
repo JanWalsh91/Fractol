@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:19:02 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 16:31:44 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,23 @@ int		mouse_event(int button, int x, int y, t_fractal *f)
 
 int		mouse_motion(int x, int y, t_fractal *f)
 {
-	if (x < 0 || y < 0 || x > f->e.w || y > f->e.h)
+	if (!f->mouse_on || x < 0 || y < 0 || x > f->e.w || y > f->e.h)
 		return (1);
-	f->c.r = (double)x / 100 + MANDELBROT_XMIN;
-	f->c.i = (double)y / 100 + MANDELBROT_YMIN;
+	f->c.r = (double)x / IMG_SIZE + MANDELBROT_XMIN;
+	f->c.i = (double)y / IMG_SIZE + MANDELBROT_YMIN;
 	calc_colors(f);
 	draw(f);
 	(void)f;
 
 	return (0);
+}
+
+/*
+** Switches updating the julia fractal based on mouse position on or off.
+*/
+
+int	switch_julia_constant(t_fractal *f)
+{
+	f->mouse_on = f->mouse_on ? 0 : 1;
+		return (1);
 }

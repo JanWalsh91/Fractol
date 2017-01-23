@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 12:43:56 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 16:38:07 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	init_colors(t_fractal *f);
 int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 {
 	f->e.mlx = mlx;
+	f->color_set = 0;
+	f->mouse_on = 1;
 	if (y == JULIA)
 		init_julia(f);	
 	else if (y == MANDELBROT)
@@ -44,6 +46,9 @@ static int	init_mandelbrot(t_fractal *f)
 	if (!(f->title = ft_strdup("Mandelbrot")) || !init_colors(f))
 		return (0);
 	f->f = &mandelbrot;
+	f->get_color[0] = &col_0_0;
+	f->get_color[1] = &col_0_1;
+	f->get_color[2] = &col_0_2;
 	f->i = MANDELBROT_I;
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
@@ -62,9 +67,12 @@ static int	init_julia(t_fractal *f)
 	if (!(f->title = ft_strdup("Julia")) || !init_colors(f))
 		return (0);
 	f->f = &julia;
+	f->get_color[0] = &col_1_0;
+	f->get_color[1] = &col_1_1;
 	f->i = JULIA_I; 
 	f->c.r = JULIA_C_R;
 	f->c.i = JULIA_C_I;
+	reset_bounds(f);
 	f->zoom = ZOOM;
 	return (1);
 
@@ -80,6 +88,7 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 	if (!(f->title = ft_strdup("Sierpinsky Capret")) || !init_colors(f))
 		return (0);
 	f->f = &sierpinsky_carpet;
+	f->get_color[0] = &col_2_0;
 	f->max.x = 2;
 	f->max.y = 2;
 	f->min.x = 0;
@@ -104,8 +113,16 @@ static int	init_colors(t_fractal *f)
 
 void	reset_bounds(t_fractal *f)
 {
-	f->max.x = MANDELBROT_XMAX;
-	f->max.y = MANDELBROT_YMAX;
-	f->min.x = MANDELBROT_XMIN;
-	f->min.y = MANDELBROT_YMIN;
+	if (f->name == MANDELBROT)
+	{
+		f->max.x = MANDELBROT_XMAX;
+		f->max.y = MANDELBROT_YMAX;
+		f->min.x = MANDELBROT_XMIN;
+		f->min.y = MANDELBROT_YMIN;
+	}
+	else if (f->name == JULIA)
+	{
+		f->min.x = 0;
+		f->min.y = 0;
+	}
 }
