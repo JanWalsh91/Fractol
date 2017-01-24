@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 14:33:46 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 16:22:26 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 18:17:33 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,10 @@ int	sierpinsky_carpet(t_pt2 j, t_fractal *f)
 
 	cp = j;
 	t.i = f->i;
-	t.w = f->e.w;
-	t.h = f->e.h;
+	t.w = f->e.w / f->zoom + f->min.x;
+	t.h = f->e.h / f->zoom + f->min.y;
 	return (sierpinsky_carpet_iterations(&cp, &t));
 }
-/*
-int	sierpinsky_carpet(t_pt2 j, t_fractal *f)
-{
-	t_sierpinsky_tools t;
-
-	t.w = f->e.w;
-	t.h = f->e.h;
-	t.i = f->i;
-	if (t.i > 0)
-		return (sierpinsky_carpet_iterations(j, &t));
-	else
-		return (BLACK);
-}
-*/
-/*
-static int	sierpinsky_carpet_iterations(t_pt2 j, t_sierpinsky_tools *t)
-{
-	if (t->i > 0)
-	{
-		return (sierpinsky_carpet_iterations(j, t);
-	}
-	else if (t->w / 3 < j.x && j.x < 2 * t->w / 3 &&
-		t->h / 3 < j.y && j.y < 2 * t->h / 3)
-		return (HOT_PINK);
-	--t->i;
-	return (LAVENDER);
-}
-*/
 
 static int	sierpinsky_carpet_iterations(t_pt2 *j, t_sierpinsky_tools *t)
 {

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/24 11:13:22 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/24 17:23:28 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@
 # define MANDELBROT_YMAX 1.2
 # define MANDELBROT_W (MANDELBROT_XMAX - MANDELBROT_XMIN)
 # define MANDELBROT_H (MANDELBROT_YMAX - MANDELBROT_YMIN)
-# define MANDELBROT_COLOR_SET_COUNT 1
+# define MANDELBROT_COLOR_SET_COUNT 3
 
 /*
 ** Julia
 */
 
-# define JULIA_I 50
+# define JULIA_I 20
 # define JULIA_C_I 0.04110
 # define JULIA_C_R -0.25
-# define JULIA_COLOR_SET_COUNT 1
+# define JULIA_COLOR_SET_COUNT 2
 
 /*
 ** Sierpinsky's Carpet
@@ -200,7 +200,7 @@ typedef struct		s_fractal
 	int				**colors;
 	int				color_set;
 	int				color_set_count;
-	int				*(*get_color)(int i);
+	int				(*(*get_color))(int i, int i_max);
 }					t_fractal;
 
 typedef struct		s_th
@@ -243,6 +243,8 @@ int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
 int					zoom(t_fractal *f, int button, int y, int x);
 int					update_iteration(t_fractal *f, int button);
+int					update_color_set(t_fractal *f);
+int					switch_julia_constant(t_fractal *f);
 
 /*
 ** new functions with multithreading (check which file is in use and update)
@@ -250,5 +252,25 @@ int					update_iteration(t_fractal *f, int button);
 
 void				*calc_colors_sections(void *v);
 //void				*draw_section(void *v);
+//
+
+/*
+** Functions for different color sets.
+** First number refers to the fractal's index.
+** Second number refers to the color set's index.
+*/
+
+int		col_0_0(int i, int i_max);
+int		col_0_1(int i, int i_max);
+int		col_0_2(int i, int i_max);
+int		col_1_0(int i, int i_max);
+int		col_1_1(int i, int i_max);
+//int		col_1_2(int i, int i_max);
+int		col_2_0(int i, int i_max);
+//int		col_2_1(int i, int i_max);
+//int		col_2_2(int i, int i_max);
+//int		col_3_0(int i, int i_max);
+//int		col_3_1(int i, int i_max);
+//int		col_3_2(int i, int i_max);
 
 #endif

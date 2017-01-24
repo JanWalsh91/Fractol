@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:30:14 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 18:18:24 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
 		f->zoom = f->zoom * ZOOM_POW;
-		f->i += 2;
+		f->name != SIERPINSKY_CARPET ? f->i += 2 : 0;
 		limit_mouse_coord(&x, &y, f);
 		update_bounds(f, y, x, 1);
 	}
 	else if ((button == MOUSE_DOWN || button == MOUSE_RMB) && f->zoom > 1)
 	{
-		f->i -= 2;
+		f->name != SIERPINSKY_CARPET ? f->i -= 2 : 0;
 		f->zoom = f->zoom / ZOOM_POW;
 		(f->zoom < 1) ? f->zoom = 1 : 0;
 		x = f->e.w / 2.0;
@@ -43,12 +43,6 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	}
 	else if (button == KEY_SPACE)
 		reset(f);
-	//check zoom coord valididty
-
-	//recalculate min max xy 
-
-
-	
 	//printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
 	//redisplay image
 	calc_colors(f);
@@ -73,8 +67,8 @@ static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
 	{
 		if (is_zoom)
 		{
-			f->min.x += ((float)x / (IMG_SIZE * 0.5 * f->zoom)) - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
-			f->min.y += ((float)y / (IMG_SIZE * 0.5 * f->zoom)) - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
+			f->min.x += (float)x / (IMG_SIZE * (f->zoom / 2)) - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
+			f->min.y += (float)y / (IMG_SIZE * (f->zoom / 2)) - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
 		}
 		else
 		{

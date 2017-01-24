@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 10:22:53 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/23 12:21:57 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/23 16:28:01 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int		key_released(int keycode, t_fractal *f)
 		update_iteration(f, keycode);
 	else if (keycode == KEY_SPACE)
 		zoom(f, KEY_SPACE, 0, 0);
+	else if (keycode == KEY_C)
+		update_color_set(f);
+	else if (keycode == KEY_J && f->name == 2)
+		switch_julia_constant(f);
 	return (0);
 }
 
