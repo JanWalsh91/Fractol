@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 18:17:53 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/24 16:12:18 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@
 # define INSTRUCTIONS_H 512
 # define INSTRUCTIONS_W 512
 
-# define IMG_SIZE 300
+# define IMG_SIZE 100
 //# define IMG_SIZE_W IMG_SIZE * 2.7
 //# define IMG_SIZE_H IMG_SIZE * 2.4
 # define ZOOM 1
