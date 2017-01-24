@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 15:38:52 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/17 18:58:59 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/24 12:14:58 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@ t_complex	c_add(t_complex x, t_complex y)
 
 	res.r = x.r + y.r;
 	res.i = x.i + y.i;
+	return (res);
+}
+
+t_complex	c_minus(t_complex x, t_complex y)
+{
+	t_complex res;
+
+	res.r = x.r - y.r;
+	res.i = x.i - y.i;
+	return (res);
+}
+
+t_complex	c_minus_double(t_complex x, double y)
+{
+	t_complex res;
+
+	res.r = x.r - y;
+	res.i = x.i;
 	return (res);
 }
 
@@ -36,6 +54,24 @@ t_complex c_product(t_complex x, t_complex y)
 
 	res.r = (x.r * y.r) - (x.i * y.i);
 	res.i = (x.r * y.i) + (x.i * y.r);
+	return (res);
+}
+
+t_complex c_product_double(t_complex x, double y)
+{
+	t_complex res;
+
+	res.r = x.r * y;
+	res.i = x.i * y;
+	return (res);
+}
+
+t_complex c_divide(t_complex x, t_complex y)
+{
+	t_complex res;
+
+	res.r = (x.r * y.r + x.i * y.i) / (y.r * y.r + y.i * y.i);
+	res.i = (x.i * y.r - x.r * y.i) / (y.r * y.r + y.i * y.i);  
 	return (res);
 }
 

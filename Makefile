@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/23 12:07:14 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/23 13:03:33 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_NAME = main \
 			mandelbrot \
 			julia \
 			sierpinsky_carpet \
+			newton \
 			init_fractal \
 			init_names \
 			init_win \

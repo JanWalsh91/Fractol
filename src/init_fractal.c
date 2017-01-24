@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 12:43:56 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/24 12:27:19 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static int	init_mandelbrot(t_fractal *f);
 static int	init_julia(t_fractal *f);
 static int	init_sierpinsky_carpet(t_fractal *f);
+static int	init_newton(t_fractal *f);
 static int	init_colors(t_fractal *f);
+
 /*
 ** Initalizes a fractal stucture based on the parameter y.
 ** Sets the function
@@ -30,6 +32,8 @@ int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 		init_mandelbrot(f);
 	else if (y == SIERPINSKY_CARPET)
 		init_sierpinsky_carpet(f);
+	else if (y == NEWTON)
+		init_newton(f);
 	return (1);
 }
 
@@ -84,6 +88,22 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 	f->max.y = 2;
 	f->min.x = 0;
 	f->min.y = 0;
+	return (1);
+}
+
+static int	init_newton(t_fractal *f)
+{
+	f->e.h = 200 * (NEWTON_XMAX - NEWTON_XMIN);
+	f->e.w = 200 * (NEWTON_YMAX - NEWTON_YMIN);
+	f->i = 20;
+	f->name = NEWTON;
+	f->zoom = ZOOM;
+	f->min.x = NEWTON_XMIN;
+	f->min.y = NEWTON_XMIN;
+
+	if (!(f->title = ft_strdup("Newton")) || !init_colors(f))
+		return (0);
+	f->f = &newton;
 	return (1);
 }
 

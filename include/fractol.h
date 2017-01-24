@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 12:44:25 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/24 11:13:22 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,15 @@
 # define SIERPINSKY_CARPET_W 1
 # define SIERPINSKY_CARPET_I 1
 # define SIERPINSKY_COLOR_SET_COUNT 1
+
+/*
+** Newton
+*/
+
+# define NEWTON_XMIN -2.0
+# define NEWTON_YMIN -2.0
+# define NEWTON_XMAX 2.0
+# define NEWTON_YMAX 2.0
 
 /*
 ** Instructions
@@ -222,6 +231,7 @@ void				display_colors(int **tab, int xmax, int ymax);
 int					mandelbrot(t_pt2 j, t_fractal *f);
 int					julia(t_pt2 j, t_fractal *f);
 int					sierpinsky_carpet(t_pt2 j, t_fractal *f);
+int					newton(t_pt2 j, t_fractal *f);
 
 /*
 ** MLX functions

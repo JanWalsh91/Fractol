@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/24 15:36:18 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/18 14:29:58 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/23 15:17:50 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,12 @@ t_matrix4		matrix4_translation(t_matrix4 m, t_vec3 v);
 */
 
 t_complex		c_add(t_complex x, t_complex y);
+t_complex		c_minus(t_complex x, t_complex y);
+t_complex		c_minus_double(t_complex x, double y);
 t_complex		c_add_float(t_complex x, double y, double z);
 t_complex		c_product(t_complex x, t_complex y);
+t_complex		c_product_double(t_complex c, double y);
+t_complex		c_divide(t_complex x, t_complex y);
 double			c_modulus(t_complex x);
 
 
