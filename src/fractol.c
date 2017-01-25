@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/24 17:23:09 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 10:54:11 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	fractol(t_names *names, int nb_frac)
 			mlx_hook(f[i].e.win_mlx, MOTION, MOUSE_MASK, &mouse_motion, &f[i]);	
 		mlx_key_hook(f[i].e.win_mlx, &key_released, f);
 		mlx_mouse_hook(f[i].e.win_mlx, &mouse_event, f);
+		mlx_hook(f[i].e.win_mlx, DESTROY_EVENT, 0, &red_button_exit, f);
 		// mlx hook
 	}
 	//init_instructions(mlx);

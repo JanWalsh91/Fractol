@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 16:31:44 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 10:58:07 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,16 @@ int		mouse_motion(int x, int y, t_fractal *f)
 ** Switches updating the julia fractal based on mouse position on or off.
 */
 
-int	switch_julia_constant(t_fractal *f)
+int		switch_julia_constant(t_fractal *f)
 {
 	f->mouse_on = f->mouse_on ? 0 : 1;
 		return (1);
+}
+
+int		red_button_exit(int keycode, t_fractal *f)
+{
+	(void)keycode;
+	(void)f;
+	// TODO: free stuff
+	return (0);
 }

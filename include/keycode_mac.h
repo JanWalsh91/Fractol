@@ -6,7 +6,7 @@
 /*   By: jfortin <jfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 16:42:55 by jfortin           #+#    #+#             */
-/*   Updated: 2017/01/22 14:08:28 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 10:49:32 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define KEYCODE_MAC_H
 
 # define MOUSE_MASK			(1L<<6) 
+# define KEY_PRESS_MASK		(1L<<0)
 
 # define MOTION				6
+# define DESTROY_EVENT		17
 
 # define MOUSE_LMB			1
 # define MOUSE_RMB			2

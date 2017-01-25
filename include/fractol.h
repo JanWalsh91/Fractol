@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 10:16:19 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 10:54:10 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,7 @@ int					key_released(int keycode, t_fractal *f);
 int					exit_prog(int keycode, void *mlx);
 int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
+int					red_button_exit(int keycode, t_fractal *f);
 int					zoom(t_fractal *f, int button, int y, int x);
 int					update_iteration(t_fractal *f, int button);
 int					update_color_set(t_fractal *f);
