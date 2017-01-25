@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 10:54:10 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 12:08:58 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WIN_WIDTH
 # define WIN_HEIGHT
 # define DEFAULT_I   //default amount of iterations to do
-# define ZOOM_POW 2
+# define ZOOM_POW 2.0
 
 /*
 ** Mandelbrot
