@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:01:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/23 12:28:20 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 13:26:07 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,24 @@
 int	init_instructions(void *mlx)
 {
 	void	*win;
+	int		i;
+	int		h;
 
 	if (!(win = mlx_new_window(mlx, INSTRUCTIONS_W, INSTRUCTIONS_H,
 				"Instructions")))
 		return (0);
-	mlx_string_put(mlx, win, 10, 10, 0xFFFFFF, "INSTRUCTIONS");
-	//mlx_key_hook(mlx, &exit_prog, &init_instructions);
+	i = 0;
+	h = 19;
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_0);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_1);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_2);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_3);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_4);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_5);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_6);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_7);
+	mlx_string_put(mlx, win, 10, h * (i += 2), INSTRUCT_COLOR, LINE_8);
+	mlx_string_put(mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_JUJU);
+	mlx_key_hook(win, &exit_prog, &i);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 12:38:58 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 13:24:00 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,18 @@
 */
 
 # define INSTRUCTIONS_H 512
-# define INSTRUCTIONS_W 512
+# define INSTRUCTIONS_W 600
+# define LINE_0 "Fract'ol instructions:"
+# define LINE_1 "Zoom in:               left mouse button / scroll up"
+# define LINE_2 "Zoom out:              right mouse button / scroll down"
+# define LINE_3 "Change color set:      C"
+# define LINE_4 "Increase iterations:   +"
+# define LINE_5 "Decrease iterations:   -"
+# define LINE_6 "Reset:                 space"
+# define LINE_7 "Exit:                  esc"
+# define LINE_8 "Julia:"
+# define LINE_JUJU "Turn mouse on / off    J"
+# define INSTRUCT_COLOR MISTY_ROSE
 
 # define IMG_SIZE 100
 //# define IMG_SIZE_W IMG_SIZE * 2.7
