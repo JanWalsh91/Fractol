@@ -6,99 +6,79 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 12:30:16 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 12:52:23 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static void	update_bounds(t_fractal *f, int y, int x, int is_zoom);
-//static void	limit_mouse_coord(int *x, int *y, t_fractal *f);
 static int	reset(t_fractal *f);
 
 int	zoom(t_fractal *f, int button, int y, int x)
 {
 	//printf("zoom: button: %i, xy = [%d ; %d]\n", button, x, y);
-	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
+	//printf("minxy = [%f;%f]\tmax = [%f;%f]\n",
+	//	f->min.x, f->min.y, f->max.x, f->max.y);
 	if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
 		f->zoom = f->zoom * ZOOM_POW;
 		f->name != SIERPINSKY_CARPET ? f->i += 2 : 0;
 		//limit_mouse_coord(&x, &y, f);
-		//update_bounds(f, y, x, 1);
-		update_bounds(f, 120, 135, 1);
+		update_bounds(f, y, x, 1);
+		//update_bounds(f, 120, 135, 1);
 	}
 	else if ((button == MOUSE_DOWN || button == MOUSE_RMB) && f->zoom > 1)
 	{
 		f->name != SIERPINSKY_CARPET ? f->i -= 2 : 0;
 		f->zoom = f->zoom / ZOOM_POW;
 		(f->zoom < 1) ? f->zoom = 1 : 0;
-		x = f->e.w / 2.0;
-		y = f->e.h / 2.0;
 		update_bounds(f, y, x, 0);
 	}
 	else if (button == KEY_SPACE)
 		reset(f);
-	printf("minxy = [%f;%f]\tmax = [%f;%f]\n", f->min.x, f->min.y, f->max.x, f->max.y);
-	//redisplay image
+	//printf("minxy = [%f;%f]\tmax = [%f;%f]\n",
+	//		f->min.x, f->min.y, f->max.x, f->max.y);
 	calc_colors(f);
 	draw(f);
 	return (1);
 }
 
-// limits may not be needed
-/*
-static void	limit_mouse_coord(int *x, int *y, t_fractal *f)
-{
-	*x = (*x - f->e.w / (2 * f->zoom) > 0) ? *x : f->e.w / (2 * f->zoom);
-	*y = (*y - f->e.h / (2 * f->zoom) > 0) ? *y : f->e.h / (2 * f->zoom);
-	*x = (*x + f->e.w / (2 * f->zoom) < f->e.w) ? *x : f->e.w - f->e.w / (2 * f->zoom);
-	*y = (*y + f->e.h / (2 * f->zoom) < f->e.h) ? *y : f->e.h - f->e.h / (2 * f->zoom);
-	//printf("limit mouse coords: xy = [%d ; %d]\n", *x, *y);
-}
-*/
-
 static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
 {
 	double	width;
 	double	height;
-	double	zoomx, zoomy, jx, jy;
+	double	zoomx, zoomy, jx = 0, jy = 0;
 
 	if (f->zoom == 1)
 		return (reset_bounds(f));
 
-	printf("input: y: [%i] x: [%i] zoompow: [%f] zoom: [%f]\n", 
-			y, x, ZOOM_POW, f->zoom);
-	jx = (double)x / IMG_SIZE / f->zoom * (float)ZOOM_POW + f->min.x;
-	jy = (double)y / IMG_SIZE / f->zoom * (float)ZOOM_POW + f->min.y;
+	//printf("input: y: [%i] x: [%i] zoompow: [%f] zoom: [%f]\n", 
+	//		y, x, ZOOM_POW, f->zoom);
 	width = (f->max.x - f->min.x) / 2.0;
 	height = (f->max.y - f->min.y) / 2.0;
-	printf("j(yx) converted: [%f][%f]\n", jy, jx);
+	//printf("j(yx) converted: [%f][%f]\n", jy, jx);
 	if (is_zoom)
 	{
-		printf("width: [%f] height: [%f]\n", width, height);
+		jx = (double)x / IMG_SIZE / f->zoom * (float)ZOOM_POW + f->min.x;
+		jy = (double)y / IMG_SIZE / f->zoom * (float)ZOOM_POW + f->min.y;
+		//printf("width: [%f] height: [%f]\n", width, height);
 		zoomx = width * (((float)ZOOM_POW - 1) / (float)ZOOM_POW);
 		zoomy = height * (((float)ZOOM_POW - 1) / (float)ZOOM_POW);
-		//jx = -( (((double)jx * ZOOM_POW / (f->zoom)) + f->min.x + (width)));
-		//jy = -( (((double)jy * ZOOM_POW / (f->zoom)) + f->min.y + (height)));
-		jx = ((width - jx) + f->min.x) * (ZOOM_POW - 1) / (ZOOM_POW);
-		jy = ((height - jy) + f->min.y) * (ZOOM_POW - 1) / (ZOOM_POW);
-		//jy = jy * ZOOM_POW / (f->zoom) + f->min.y + height;
+		jx = (width - (jx - f->min.x)) * (ZOOM_POW - 1) / (ZOOM_POW);
+		jy = (height - (jy - f->min.y)) * (ZOOM_POW - 1) / (ZOOM_POW);
 		f->min.x += zoomx - jx;
 		f->min.y += zoomy - jy; //simplify with zom pow
-
-		//jx = -( (((double)jx * ZOOM_POW / (f->zoom)) + f->max.x + (width)));
-		//jy = -( (((double)jy * ZOOM_POW / (f->zoom)) + f->max.y + (height)));
 		f->max.x += -zoomx - jx;
 		f->max.y += -zoomy - jy;
 	}
 
 	else
 	{
-		printf("f->minx: [%f]\n", f->min.x);
+		jx = (double)x / IMG_SIZE / f->zoom / (float)ZOOM_POW + f->min.x;
+		jy = (double)y / IMG_SIZE / f->zoom / (float)ZOOM_POW + f->min.y;
 		zoomx = width * (ZOOM_POW - 1);
 		zoomy = height * (ZOOM_POW - 1);
-		printf("-----width - jx: [%f]\n", width - jx);
 		jx = ((width - jx) + f->min.x) * (ZOOM_POW - 1) / (ZOOM_POW);
 		jy = ((height - jy) + f->min.y) * (ZOOM_POW - 1) / (ZOOM_POW);
 		f->min.x += -zoomx - jx;
@@ -106,34 +86,15 @@ static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
 		f->max.x += zoomx - jx;
 		f->max.y += zoomy - jy;
 	}
+	/*
 	printf("zoomx = [%f]\n", zoomx);
 	printf("zoomy = [%f]\n", zoomy);
 	printf("jx = [%f]\n",jx);
 	printf("jy = [%f]\n", jy);
 	printf("width = [%f]\n", width);
 	printf("height = [%f]\n\n", height);
+	*/
 }
-
-/*
-static void update_bounds(t_fractal *f, int y, int x, int is_zoom)
-{
-	if (f->zoom == 1)
-		reset_bounds(f);
-	else
-	{
-		if (is_zoom)
-		{
-			f->min.x += (float)x / (IMG_SIZE * (f->zoom / 2)) - (float)f->e.w / (2 * f->zoom * IMG_SIZE);
-			f->min.y += (float)y / (IMG_SIZE * (f->zoom / 2)) - (float)f->e.h / (2 * f->zoom * IMG_SIZE);
-		}
-		else
-		{
-			f->min.x -= (float)f->e.w / (2 * f->zoom * ZOOM_POW * IMG_SIZE);
-			f->min.y -= (float)f->e.h / (2 * f->zoom * ZOOM_POW * IMG_SIZE);
-		}
-	}
-}
-*/
 
 static int	reset(t_fractal *f)
 {
