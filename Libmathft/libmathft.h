@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/24 15:36:18 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 15:17:50 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 17:13:46 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ t_complex		c_product(t_complex x, t_complex y);
 t_complex		c_product_double(t_complex c, double y);
 t_complex		c_divide(t_complex x, t_complex y);
 double			c_modulus(t_complex x);
-
+t_complex		c_abs(t_complex x);
 
 #endif

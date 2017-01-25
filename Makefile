@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/24 17:23:38 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/25 17:15:26 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_NAME = main \
 			julia \
 			sierpinsky_carpet \
 			newton \
+			burning_ship \
 			init_fractal \
 			init_names \
 			init_win \
@@ -34,6 +35,7 @@ SRC_NAME = main \
 			key_released \
 			mouse_event \
 			zoom \
+			zoom_sierpinsky \
 			update_iteration \
 			update_color_set \
 			mandelbrot_colors \

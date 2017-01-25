@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 15:38:52 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/24 12:14:58 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 17:12:26 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,11 @@ t_complex c_divide(t_complex x, t_complex y)
 double	c_modulus(t_complex x)
 {
 	return (sqrt(pow(x.r, 2) + pow(x.i, 2)));
+}
+
+t_complex	c_abs(t_complex x)
+{
+	x.r < 0 ? x.r *= -1 : 0;
+	x.i < 0 ? x.i *= -1 : 0;
+	return (x);
 }

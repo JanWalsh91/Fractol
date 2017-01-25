@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/17 12:12:14 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 16:37:37 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/25 17:12:43 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/25 17:18:56 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mandelbrot(t_pt2 j, t_fractal *f)
+int	burning_ship(t_pt2 j, t_fractal *f)
 {
 	t_complex	z;
 	t_complex	c;
@@ -28,7 +28,10 @@ int	mandelbrot(t_pt2 j, t_fractal *f)
 	z.i = MANDELBROT_C_R;
 	i = -1;
 	while (c_modulus(z) < 2 && ++i < f->i)
+	{
+		z = c_abs(z);
 		z = c_add(c_product(z, z), c);
+	}
 	//return (i == MANDELBROT_I ? HOT_PINK : WHITE);
 	return (f->get_color[f->color_set](i, f->i));
 }
