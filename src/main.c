@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 12:59:29 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 10:27:16 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int		main(int argc, char *argv[])
 		++i;
 	}
 	printf("main: nb_frac: %i\n", y);
-	fractol(names, y);
+	y == 0 ? usage_error() : fractol(names, y);
 	return (0);
 }

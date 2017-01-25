@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 10:22:53 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/23 16:28:01 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 10:23:54 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int		exit_prog(int keycode, void *mlx)
 {
 	(void)mlx;
 	if (keycode == KEY_ESCAPE)
-		exit (1);
+		exit(1);
 	return (0);
 }

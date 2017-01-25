@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/24 18:17:45 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 10:30:05 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 	f->mouse_on = 1;
 	f->zoom = ZOOM;
 	if (y == JULIA)
-		init_julia(f);	
+		init_julia(f);
 	else if (y == MANDELBROT)
 		init_mandelbrot(f);
 	else if (y == SIERPINSKY_CARPET)
@@ -39,7 +39,6 @@ int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 		init_newton(f);
 	return (1);
 }
-
 
 static int	init_mandelbrot(t_fractal *f)
 {
@@ -73,12 +72,11 @@ static int	init_julia(t_fractal *f)
 	f->f = &julia;
 	f->get_color[0] = &col_1_0;
 	f->get_color[1] = &col_1_1;
-	f->i = JULIA_I; 
+	f->i = JULIA_I;
 	f->c.r = JULIA_C_R;
 	f->c.i = JULIA_C_I;
 	reset_bounds(f);
 	return (1);
-
 }
 
 static int	init_sierpinsky_carpet(t_fractal *f)
@@ -108,7 +106,6 @@ static int	init_newton(t_fractal *f)
 	f->zoom = ZOOM;
 	f->min.x = NEWTON_XMIN;
 	f->min.y = NEWTON_XMIN;
-
 	if (!(f->title = ft_strdup("Newton")) || !init_colors(f))
 		return (0);
 	f->f = &newton;
@@ -119,13 +116,14 @@ static int	init_colors(t_fractal *f)
 {
 	int	i;
 
-	if(!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
+	if (!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
 		return (0);
 	i = -1;
 	while (++i < f->e.h)
-		if(!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
+		if (!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
 			return (0);
-	if (!(f->get_color = ft_memalloc(sizeof(*(f->get_color)) * f->color_set_count)))
+	if (!(f->get_color = ft_memalloc(sizeof(*(f->get_color)) *
+					f->color_set_count)))
 		return (0);
 	return (1);
 }

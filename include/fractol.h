@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/24 18:17:20 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 10:16:19 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@
 # define NEWTON_YMIN -2.0
 # define NEWTON_XMAX 2.0
 # define NEWTON_YMAX 2.0
+# define EPSILON	0.001
 
 /*
 ** Instructions
