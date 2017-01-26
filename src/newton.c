@@ -6,13 +6,18 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:42:26 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 12:12:01 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:57:36 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 static void	init_roots(t_complex *r1, t_complex *r2, t_complex *r3);
+
+/*
+** Determines which root a point approaches in the newton set and returns
+** the corresponding color.
+*/
 
 int			newton(t_pt2 j, t_fractal *f)
 {
@@ -34,8 +39,6 @@ int			newton(t_pt2 j, t_fractal *f)
 			z = c_minus(z, c_divide(c_minus_double(c_product(c_product(z, z),
 						z), 1.0), (c_product_double(c_product(z, z), 3))));
 	}
-	if (j.x == 20 && j.y == 20)
-		printf("%d\n", f->i);
 	if (c_modulus(c_minus(z, r1)) < EPSILON)
 		return (f->get_color[f->color_set](i, f->i));
 	if (c_modulus(c_minus(z, r2)) <= EPSILON)
@@ -44,6 +47,10 @@ int			newton(t_pt2 j, t_fractal *f)
 		return (f->get_color[f->color_set + 2](i, f->i));
 	return (0x0F0F0F);
 }
+
+/*
+** Sets the three roots of the Newton fractal.
+*/
 
 static void	init_roots(t_complex *r1, t_complex *r2, t_complex *r3)
 {

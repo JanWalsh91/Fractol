@@ -6,14 +6,14 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:57:48 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:22:59 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 12:55:09 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-** This file inclues functions for different color sets for the Sierpinsky
+** This file includes functions for different color sets for the Sierpinsky
 ** Carpet fractal.
 */
 

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:56:46 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 16:27:28 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 12:39:29 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 int	col_1_0(int i, int i_max)
 {
 	int color;
-	(void)i_max;
 
+	(void)i_max;
 	color = i * 100;
 	return (color);
 }
@@ -38,6 +38,5 @@ int	col_1_1(int i, int i_max)
 	(mod == 2) ? color = BEIGE : 0;
 	(mod == 3) ? color = PALE_GREEN : 0;
 	(mod == 4) ? color = GOLD : 0;
-	
 	return (color);
 }
