@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 14:33:46 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:55:42 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 14:59:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,17 @@ static int	sierpinsky_carpet_iterations(t_pt2 *j, t_sierpinsky_tools *t,
 {
 	t->w /= 3;
 	t->h /= 3;
-	if (((j->y / t->h) % 3 == 1 && (j->x / t->w) % 3 == 1))
-		return (f->get_color[f->color_set](t->i, 1));
+	if ( ((j->y / t->h) % 3 == 1 && (j->x / t->w) % 3 == 1))
+	{
+		f->mouse_on = 1;
+		return (f->get_color[f->color_set](t->i, f));
+	}
 	--t->i;
 	if (!t->i || (t->w < 3) || t->h < 3)
-		return (f->get_color[f->color_set](t->i, 0));
+	{
+		f->mouse_on = 0;
+		return (f->get_color[f->color_set](t->i, f));
+	}
 	else
 		return (sierpinsky_carpet_iterations(j, t, f));
 	return (0);

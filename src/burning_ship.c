@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:12:43 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:46:17 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 14:46:08 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int	burning_ship(t_pt2 j, t_fractal *f)
 		z = c_abs(z);
 		z = c_add(c_product(z, z), c);
 	}
-	return (f->get_color[f->color_set](i, f->i));
+	return (f->get_color[f->color_set](i, f));
 }

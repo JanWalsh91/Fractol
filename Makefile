@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/26 13:24:33 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/26 15:01:46 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC_NAME = main \
 			sierpinsky_carpet_colors \
 			newton_colors \
 			reset_bounds \
+			burning_ship_colors \
 			free \
 			debug
 

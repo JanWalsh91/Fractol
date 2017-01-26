@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:42:26 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 12:57:36 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 15:00:28 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int			newton(t_pt2 j, t_fractal *f)
 						z), 1.0), (c_product_double(c_product(z, z), 3))));
 	}
 	if (c_modulus(c_minus(z, r1)) < EPSILON)
-		return (f->get_color[f->color_set](i, f->i));
+		return (f->get_color[f->color_set](i, f));
 	if (c_modulus(c_minus(z, r2)) <= EPSILON)
-		return (f->get_color[f->color_set + 1](i, f->i));
+		return (f->get_color[f->color_set + 1](i, f));
 	if (c_modulus(c_minus(z, r3)) <= EPSILON)
-		return (f->get_color[f->color_set + 2](i, f->i));
+		return (f->get_color[f->color_set + 2](i, f));
 	return (0x0F0F0F);
 }
 
