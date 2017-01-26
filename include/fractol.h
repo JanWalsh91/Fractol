@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 13:07:13 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 14:36:20 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ typedef struct		s_fractal
 	t_dpt2			min;
 	int				mouse_on;
 	int				**colors;
+	int				index;
 	int				color_set;
 	int				color_set_count;
 	int				(*(*get_color))(int i, int i_max);
@@ -211,11 +212,17 @@ int					key_released(int keycode, t_fractal *f);
 int					exit_prog(int keycode, void *mlx);
 int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
-int					red_button_exit(int *nb_frac);
+int					red_button_exit(t_win_manager *nb_frac);
 int					zoom(t_fractal *f, int button, int y, int x);
 int					update_iteration(t_fractal *f, int button);
 int					update_color_set(t_fractal *f);
 int					switch_julia_constant(t_fractal *f);
+
+/*
+** Free functions
+*/
+
+int					free_fractals(t_win_manager *f);
 
 /*
 ** Functions for different color sets.

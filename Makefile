@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/26 13:02:32 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/26 13:24:33 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC_NAME = main \
 			sierpinsky_carpet_colors \
 			newton_colors \
 			reset_bounds \
+			free \
 			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))

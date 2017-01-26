@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 13:02:54 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 14:36:10 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ int		switch_julia_constant(t_fractal *f)
 ** Close the current window, and exit the programm if all of them are closed.
 */
 
-int		red_button_exit(int *frac)
+int		red_button_exit(t_win_manager *f_list)
 {
 	static int nb = -1;
-
 	if (nb == -1)
-		nb = *frac;
+		nb = f_list->nb_frac;
 	if (--nb == 0)
+	{
+		free_fractals(f_list);
 		exit(0);
+	}
 	// TODO: free stuff
 	return (0);
 }
