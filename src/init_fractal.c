@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 10:27:31 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:12:27 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 
 static int	init_newton(t_fractal *f)
 {
-	f->e.h = 100 * (NEWTON_XMAX - NEWTON_XMIN);
-	f->e.w = 100 * (NEWTON_YMAX - NEWTON_YMIN);
+	f->e.h = NEWTON_DIM;//100 * (NEWTON_XMAX - NEWTON_XMIN);
+	f->e.w = NEWTON_DIM;//100 * (NEWTON_YMAX - NEWTON_YMIN);
 	f->i = NEWTON_I;
 	f->name = NEWTON;
 	f->zoom = ZOOM;

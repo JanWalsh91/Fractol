@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:42:26 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 10:29:54 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:12:01 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int			newton(t_pt2 j, t_fractal *f)
 	int			i;
 
 	init_roots(&r1, &r2, &r3);
-	z.r = (double)j.x / 100 / f->zoom + f->min.x;
-	z.i = (double)j.y / 100 / f->zoom + f->min.y;
+	z.r = (double)j.x / (NEWTON_DIM / 4.0) / f->zoom + f->min.x;
+	z.i = (double)j.y / (NEWTON_DIM / 4.0) / f->zoom + f->min.y;
 	i = -1;
 	while (++i < f->i && (c_modulus(c_minus(z, r1)) >= EPSILON &&
 		c_modulus(c_minus(z, r2)) >= EPSILON &&
@@ -34,6 +34,8 @@ int			newton(t_pt2 j, t_fractal *f)
 			z = c_minus(z, c_divide(c_minus_double(c_product(c_product(z, z),
 						z), 1.0), (c_product_double(c_product(z, z), 3))));
 	}
+	if (j.x == 20 && j.y == 20)
+		printf("%d\n", f->i);
 	if (c_modulus(c_minus(z, r1)) < EPSILON)
 		return (f->get_color[f->color_set](i, f->i));
 	if (c_modulus(c_minus(z, r2)) <= EPSILON)
