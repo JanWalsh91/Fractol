@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 10:27:16 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/25 17:16:18 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int		main(int argc, char *argv[])
 		else if (ft_strcmp_percent(argv[i], "SIERPINSKY", 0.2))
 			names[y++] = SIERPINSKY_CARPET;
 		else if (ft_strcmp_percent(argv[i], "NEWTON", 0.2))
-			names[y++] = NEWTON;
+			names[y++] = NEWTON;	
+		else if (ft_strcmp_percent(argv[i], "BURNING", 0.2))
+			names[y++] = BURNING_SHIP;
 		else if (ft_strcmp_percent(argv[i], "CARPET", 0.1) && ++y)
 			--y;
 		else

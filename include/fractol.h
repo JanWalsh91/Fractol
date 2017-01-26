@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 10:23:39 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 10:25:47 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WIN_WIDTH
 # define WIN_HEIGHT
 # define DEFAULT_I   //default amount of iterations to do
-# define ZOOM_POW 1.5
+# define ZOOM_POW 3
 
 /*
 ** Mandelbrot
@@ -151,7 +151,8 @@ typedef enum		e_names
 	JULIA = 2,
 	SIERPINSKY_CARPET = 3,
 	NEWTON = 4,
-	OTHER = 5
+	BURNING_SHIP = 5,
+	OTHER = 6
 }					t_names;
 
 typedef struct		s_incr
@@ -246,6 +247,7 @@ int					mandelbrot(t_pt2 j, t_fractal *f);
 int					julia(t_pt2 j, t_fractal *f);
 int					sierpinsky_carpet(t_pt2 j, t_fractal *f);
 int					newton(t_pt2 j, t_fractal *f);
+int					burning_ship(t_pt2 j, t_fractal *f);
 
 /*
 ** MLX functions
@@ -257,6 +259,7 @@ int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
 int					red_button_exit(int keycode, t_fractal *f);
 int					zoom(t_fractal *f, int button, int y, int x);
+int					zoom_sierpinsky(t_fractal *f, int button, int y, int x);
 int					update_iteration(t_fractal *f, int button);
 int					update_color_set(t_fractal *f);
 int					switch_julia_constant(t_fractal *f);
