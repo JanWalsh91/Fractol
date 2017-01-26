@@ -5,46 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 12:54:48 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 14:44:22 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/26 17:44:27 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/26 17:44:37 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-** This file inclues functions for different color sets for the Mandelbrot
+** This file inclues functions for different color sets for the Burning Ship
 ** fractal.
 */
 
+static	int	get_color(t_incr incr, int i);
+
 int	col_0_0(int i, t_fractal *f)
 {
-	int color;
+	int	color;
+	int	y;
 
-	color = ((i % f->i) * 0x70102) % 0xAFFFFF;
+	color = 0;
+	y = -1;
+	while (++y < COLORS_PER_SET - 1)
+	{
+		if (i < f->i * (y + 1) / (COLORS_PER_SET - 1))
+			return (get_color(f->incr[0][y], i - (float)f->i * y /
+				(COLORS_PER_SET - 1)));
+	}
 	return (color);
 }
 
 int	col_0_1(int i, t_fractal *f)
 {
-	int color;
-	int mod;
+	int	color;
+	int	y;
 
 	color = 0;
-	mod = ((i % f->i) % 5);
-	(mod == 0) ? color = GOLDEN_ROD : 0;
-	(mod == 1) ? color = LAVENDER : 0;
-	(mod == 2) ? color = STEEL_BLUE : 0;
-	(mod == 3) ? color = INDIAN_RED : 0;
-	(mod == 4) ? color = LAWN_GREEN : 0;
+	y = -1;
+	while (++y < COLORS_PER_SET - 1)
+	{
+		if (i < f->i * (y + 1) / (COLORS_PER_SET - 1))
+			return (get_color(f->incr[1][y], i - (float)f->i * y /
+				(COLORS_PER_SET - 1)));
+	}
 	return (color);
 }
 
 int	col_0_2(int i, t_fractal *f)
 {
-	int color;
+	int	color;
+	int	y;
 
-	(void)f->i;
-	color = i * 3.12;
+	color = 0;
+	y = -1;
+	while (++y < COLORS_PER_SET - 1)
+	{
+		if (i < f->i * (y + 1) / (COLORS_PER_SET - 1))
+			return (get_color(f->incr[2][y], i - (float)f->i * y /
+				(COLORS_PER_SET - 1)));
+	}
 	return (color);
+}
+
+static	int	get_color(t_incr incr, int i)
+{
+	return(incr.c_1 + ft_round((i * incr.r)) * 0x10000 +
+		ft_round((i * incr.g)) * 0x100 +
+		ft_round((i * incr.b)));
 }

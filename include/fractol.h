@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 15:01:30 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 17:58:01 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@
 # define MAX_ARG 4
 # define IMG_SIZE 201
 # define ZOOM 1
-# define ZOOM_POW 1.1
+# define ZOOM_POW 2
+# define COLORS_PER_SET 4
+# define COLOR_SET_COUNT 3
 
 /*
 ** Mandelbrot
 */
 
-# define MANDELBROT_I 50
+# define MANDELBROT_I 20
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 # define MANDELBROT_XMIN -2.1
@@ -47,7 +49,6 @@
 # define MANDELBROT_YMAX 1.2
 # define MANDELBROT_W (MANDELBROT_XMAX - MANDELBROT_XMIN)
 # define MANDELBROT_H (MANDELBROT_YMAX - MANDELBROT_YMIN)
-# define MANDELBROT_COLOR_SET_COUNT 3
 
 /*
 ** Julia
@@ -56,7 +57,6 @@
 # define JULIA_I 20
 # define JULIA_C_I 0.04110
 # define JULIA_C_R -0.25
-# define JULIA_COLOR_SET_COUNT 3
 
 /*
 ** Sierpinsky's Carpet
@@ -83,6 +83,18 @@
 */
 
 # define BURNING_SHIP_COLOR_SET_COUNT 3
+# define COL_00 GOLDEN_ROD
+# define COL_01 GOLD
+# define COL_02 CRIMSON
+# define COL_03 SILVER
+# define COL_10 AQUA_MARINE
+# define COL_11 INDIGO
+# define COL_12 SEA_GREEN
+# define COL_13 SILVER
+# define COL_20 SILVER
+# define COL_21 SKY_BLUE
+# define COL_22 HOT_PINK
+# define COL_23 BLACK
 
 /*
 ** Instructions
@@ -114,9 +126,8 @@ typedef enum		e_names
 
 typedef struct		s_incr
 {
-	float			steps;
-	float			x;
-	float			y;
+	int				c_1;
+	int				c_2;
 	float			r;
 	float			g;
 	float			b;
@@ -161,6 +172,7 @@ typedef struct		s_fractal
 	t_dpt2			min;
 	int				mouse_on;
 	int				**colors;
+	t_incr			**incr;
 	int				index;
 	int				color_set;
 	int				color_set_count;
@@ -198,7 +210,8 @@ int					init_instructions(void *mlx);
 void				reset_bounds(t_fractal *f);
 int					calc_colors(t_fractal *f);
 int					draw(t_fractal *f);
-void				display_colors(int **tab, int xmax, int ymax);
+int					reset_color_sets(t_fractal *f);
+void				display_colors(int **tab, int xmax, int ymax); /////
 
 /*
 ** Fractal algorithms

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 14:05:10 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/22 14:17:12 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 17:51:58 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	update_iteration(t_fractal *f, int button)
 		--f->i;
 	else if (button == KEY_EQUAL || button == KEY_PAD_ADD)
 		++f->i;
+	if (f->name != SIERPINSKY_CARPET && f->name != NEWTON)
+		reset_color_sets(f);
 	calc_colors(f);
 	draw(f);
 	return (1);

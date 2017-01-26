@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:53:05 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 14:57:04 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 17:34:13 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,59 @@
 ** fractal.
 */
 
+static	int	get_color(t_incr incr, int i);
+
 int	col_3_0(int i, t_fractal *f)
 {
-	int		color;
-	int		index;
-	int		channels[4];
+	int	color;
+	int	y;
 
-	index = i + 1 - (log(2) / abs(f->i) / log (2));
-	channels[0] = (unsigned char)(sin(0.017 * index + 4) * 230);
-	channels[1] = (unsigned char)(sin(0.013 * index + 2) * 230);
-	channels[2] = (unsigned char)(sin(0.01 * index + 1) * 230);
-	channels[3] = 200;
-	color = channels[0] + (channels[1] << 2) + (channels[2] << 4) +
-		(channels[3] << 6);
+	color = 0;
+	y = -1;
+	while (++y < COLORS_PER_SET - 1)
+	{
+		if (i < f->i * (y + 1) / (COLORS_PER_SET - 1))
+			return (get_color(f->incr[0][y], i - (float)f->i * y /
+				(COLORS_PER_SET - 1)));
+	}
 	return (color);
 }
 
 int	col_3_1(int i, t_fractal *f)
 {
-	int color;
-	int mod;
+	int	color;
+	int	y;
 
 	color = 0;
-	mod = ((i % f->i) % 5);
-	(mod == 0) ? color = GOLDEN_ROD : 0;
-	(mod == 1) ? color = LAVENDER : 0;
-	(mod == 2) ? color = STEEL_BLUE : 0;
-	(mod == 3) ? color = INDIAN_RED : 0;
-	(mod == 4) ? color = LAWN_GREEN : 0;
+	y = -1;
+	while (++y < COLORS_PER_SET - 1)
+	{
+		if (i < f->i * (y + 1) / (COLORS_PER_SET - 1))
+			return (get_color(f->incr[1][y], i - (float)f->i * y /
+				(COLORS_PER_SET - 1)));
+	}
 	return (color);
 }
 
 int	col_3_2(int i, t_fractal *f)
 {
-	int color;
+	int	color;
+	int	y;
 
-	(void)f->i;
-	color = i * 3.12;
+	color = 0;
+	y = -1;
+	while (++y < COLORS_PER_SET - 1)
+	{
+		if (i < f->i * (y + 1) / (COLORS_PER_SET - 1))
+			return (get_color(f->incr[2][y], i - (float)f->i * y /
+				(COLORS_PER_SET - 1)));
+	}
 	return (color);
+}
+
+static	int	get_color(t_incr incr, int i)
+{
+	return(incr.c_1 + ft_round((i * incr.r)) * 0x10000 +
+		ft_round((i * incr.g)) * 0x100 +
+		ft_round((i * incr.b)));
 }

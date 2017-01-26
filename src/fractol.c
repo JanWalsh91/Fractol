@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 13:35:45 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 17:57:01 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ int	fractol(t_names *names, int nb_frac)
 	f_list.nb_frac = nb_frac;
 	while (++i < nb_frac && names[i])
 	{
-		if (!init_fractal(&f[i], mlx, names[i]) ||
-				!calc_colors(&f[i]) ||
-				!init_win(&f[i]) ||
-				!draw(&f[i]))
+		if (!init_fractal(&f[i], mlx, names[i]) || !calc_colors(&f[i]) ||
+				!init_win(&f[i]) || !draw(&f[i]))
 			return (0);
 		f[i].index = i;
 		if (names[i] == JULIA)
