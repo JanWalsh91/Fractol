@@ -6,11 +6,15 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 10:22:53 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 12:23:26 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 13:19:41 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+** MLX functions for responding to user keyboard input.
+*/
 
 int		key_released(int keycode, t_fractal *f)
 {
@@ -27,6 +31,10 @@ int		key_released(int keycode, t_fractal *f)
 		switch_julia_constant(f);
 	return (0);
 }
+
+/*
+** Exit the program when the escape key is hit.
+*/
 
 int		exit_prog(int keycode, void *mlx)
 {

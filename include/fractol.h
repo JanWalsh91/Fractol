@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 13:07:13 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 14:54:45 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 ** Julia
 */
 
-# define JULIA_I 50
+# define JULIA_I 20
 # define JULIA_C_I 0.04110
 # define JULIA_C_R -0.25
 # define JULIA_COLOR_SET_COUNT 3
@@ -77,6 +77,12 @@
 # define NEWTON_I 20
 # define EPSILON 0.01
 # define NEWTON_COLOR_SET_COUNT 3
+
+/*
+** Burning Ship
+*/
+
+# define BURNING_SHIP_COLOR_SET_COUNT 3
 
 /*
 ** Instructions
@@ -157,7 +163,7 @@ typedef struct		s_fractal
 	int				**colors;
 	int				color_set;
 	int				color_set_count;
-	int				(*(*get_color))(int i, int i_max);
+	int				(*(*get_color))(int i, struct s_fractal *f);
 }					t_fractal;
 
 typedef struct		s_th
@@ -223,21 +229,21 @@ int					switch_julia_constant(t_fractal *f);
 ** Second number refers to the color set's index.
 */
 
-int		col_0_0(int i, int i_max);
-int		col_0_1(int i, int i_max);
-int		col_0_2(int i, int i_max);
-int		col_1_0(int i, int i_max);
-int		col_1_1(int i, int i_max);
-int		col_1_2(int i, int i_max);
-int		col_2_0(int i, int i_max);
-int		col_2_1(int i, int i_max);
-int		col_2_2(int i, int i_max);
-//int		col_3_0(int i, int i_max);
-//int		col_3_1(int i, int i_max);
-//int		col_3_2(int i, int i_max);
-int		col_4_0(int i, int i_max);
-int		col_4_1(int i, int i_max);
-int		col_4_2(int i, int i_max);
-int		col_5_0(int i, int i_max);
+int		col_0_0(int i, t_fractal *f);
+int		col_0_1(int i, t_fractal *f);
+int		col_0_2(int i, t_fractal *f);
+int		col_1_0(int i, t_fractal *f);
+int		col_1_1(int i, t_fractal *f);
+int		col_1_2(int i, t_fractal *f);
+int		col_2_0(int i, t_fractal *f);
+int		col_2_1(int i, t_fractal *f);
+int		col_2_2(int i, t_fractal *f);
+int		col_3_0(int i, t_fractal *f);
+int		col_3_1(int i, t_fractal *f);
+int		col_3_2(int i, t_fractal *f);
+int		col_4_0(int i, t_fractal *f);
+int		col_4_1(int i, t_fractal *f);
+int		col_4_2(int i, t_fractal *f);
+int		col_5_0(int i, t_fractal *f);
 
 #endif

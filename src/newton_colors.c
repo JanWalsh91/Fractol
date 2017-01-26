@@ -6,19 +6,19 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 16:49:57 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 10:22:46 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 14:45:24 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	col_4_0(int i, int max)
+int	col_4_0(int i, t_fractal *f)
 {
 	int color;
 	int mod;
 
 	color = 0;
-	mod = ((i % max) % 5);
+	mod = ((i % f->i) % 5);
 	(mod == 0) ? color = 0xFE0000 : 0;
 	(mod == 1) ? color = 0xEE0000 : 0;
 	(mod == 2) ? color = 0xDD0000 : 0;
@@ -27,13 +27,13 @@ int	col_4_0(int i, int max)
 	return (color);
 }
 
-int	col_4_1(int i, int max)
+int	col_4_1(int i, t_fractal *f)
 {
 	int color;
 	int mod;
 
 	color = 0;
-	mod = ((i % max) % 5);
+	mod = ((i % f->i) % 5);
 	(mod == 0) ? color = 0x00FE00 : 0;
 	(mod == 1) ? color = 0x00EE00 : 0;
 	(mod == 2) ? color = 0x00DD00 : 0;
@@ -42,13 +42,13 @@ int	col_4_1(int i, int max)
 	return (color);
 }
 
-int	col_4_2(int i, int max)
+int	col_4_2(int i, t_fractal *f)
 {
 	int color;
 	int mod;
 
 	color = 0;
-	mod = ((i % max) % 5);
+	mod = ((i % f->i) % 5);
 	(mod == 0) ? color = 0x0000FE : 0;
 	(mod == 1) ? color = 0x0000EE : 0;
 	(mod == 2) ? color = 0x0000DD : 0;

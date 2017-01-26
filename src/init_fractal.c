@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 13:07:15 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 13:22:04 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ int	init_burning_ship(t_fractal *f)
 {
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
-	f->name = MANDELBROT;
-	f->color_set_count = MANDELBROT_COLOR_SET_COUNT;
+	f->name = BURNING_SHIP;
+	f->color_set_count = BURNING_SHIP_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Burning Ship")) || !init_colors(f))
 		return (0);
 	f->f = &burning_ship;
-	f->get_color[0] = &col_0_0;
-	f->get_color[1] = &col_0_1;
-	f->get_color[2] = &col_0_2;
+	f->get_color[0] = &col_3_0;
+	f->get_color[1] = &col_3_1;
+	f->get_color[2] = &col_3_2;
 	f->i = MANDELBROT_I;
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;

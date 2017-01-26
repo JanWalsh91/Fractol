@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:42:26 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 12:12:01 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 14:48:59 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int			newton(t_pt2 j, t_fractal *f)
 	if (j.x == 20 && j.y == 20)
 		printf("%d\n", f->i);
 	if (c_modulus(c_minus(z, r1)) < EPSILON)
-		return (f->get_color[f->color_set](i, f->i));
+		return (f->get_color[f->color_set](i, f));
 	if (c_modulus(c_minus(z, r2)) <= EPSILON)
-		return (f->get_color[f->color_set + 1](i, f->i));
+		return (f->get_color[f->color_set + 1](i, f));
 	if (c_modulus(c_minus(z, r3)) <= EPSILON)
-		return (f->get_color[f->color_set + 2](i, f->i));
+		return (f->get_color[f->color_set + 2](i, f));
 	return (0x0F0F0F);
 }
 

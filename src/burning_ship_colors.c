@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_colors.c                                :+:      :+:    :+:   */
+/*   burning_ship_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 12:54:48 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 14:44:22 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/26 14:53:05 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/26 14:57:04 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-** This file inclues functions for different color sets for the Mandelbrot
+** This file inclues functions for different color sets for the Burning Ship
 ** fractal.
 */
 
-int	col_0_0(int i, t_fractal *f)
+int	col_3_0(int i, t_fractal *f)
 {
-	int color;
+	int		color;
+	int		index;
+	int		channels[4];
 
-	color = ((i % f->i) * 0x70102) % 0xAFFFFF;
+	index = i + 1 - (log(2) / abs(f->i) / log (2));
+	channels[0] = (unsigned char)(sin(0.017 * index + 4) * 230);
+	channels[1] = (unsigned char)(sin(0.013 * index + 2) * 230);
+	channels[2] = (unsigned char)(sin(0.01 * index + 1) * 230);
+	channels[3] = 200;
+	color = channels[0] + (channels[1] << 2) + (channels[2] << 4) +
+		(channels[3] << 6);
 	return (color);
 }
 
-int	col_0_1(int i, t_fractal *f)
+int	col_3_1(int i, t_fractal *f)
 {
 	int color;
 	int mod;
@@ -40,7 +48,7 @@ int	col_0_1(int i, t_fractal *f)
 	return (color);
 }
 
-int	col_0_2(int i, t_fractal *f)
+int	col_3_2(int i, t_fractal *f)
 {
 	int color;
 
