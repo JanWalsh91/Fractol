@@ -6,7 +6,7 @@
 #    By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 13:07:31 by jwalsh            #+#    #+#              #
-#    Updated: 2017/01/16 15:48:04 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/26 15:08:46 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,12 @@ SRC = 	ft_round.c \
 		vec3_add.c \
 		vec3_subtract.c \
 		vec3_product.c \
-		complex.c
+		c_abs.c \
+		c_add.c \
+		c_divide.c \
+		c_minus.c \
+		c_modulus.c \
+		c_product.c
 
 
 NAME = libmathft.a
