@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/26 11:33:38 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/26 13:02:32 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRC_NAME = main \
 			sierpinsky_carpet \
 			newton \
 			burning_ship \
+			init_fractals \
 			init_fractal \
+			init_colors \
 			init_names \
 			init_win \
 			calc_colors \
@@ -41,6 +43,7 @@ SRC_NAME = main \
 			julia_colors \
 			sierpinsky_carpet_colors \
 			newton_colors \
+			reset_bounds \
 			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))

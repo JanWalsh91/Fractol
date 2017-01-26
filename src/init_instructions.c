@@ -6,11 +6,15 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:01:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/25 13:26:07 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 13:04:19 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+** Initializes and opens the instructions window.
+*/
 
 int	init_instructions(void *mlx)
 {
@@ -19,7 +23,7 @@ int	init_instructions(void *mlx)
 	int		h;
 
 	if (!(win = mlx_new_window(mlx, INSTRUCTIONS_W, INSTRUCTIONS_H,
-				"Instructions")))
+		"Instructions")))
 		return (0);
 	i = 0;
 	h = 19;

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:43:40 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 13:07:13 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 # define JULIA_I 50
 # define JULIA_C_I 0.04110
 # define JULIA_C_R -0.25
-# define JULIA_COLOR_SET_COUNT 2
+# define JULIA_COLOR_SET_COUNT 3
 
 /*
 ** Sierpinsky's Carpet
@@ -180,6 +180,12 @@ int					fractol(t_names *names, int nb_frac);
 int					display_usage(void);
 int					init_names(t_names **names);
 int					init_fractal(t_fractal *f, void *mlx, int y);
+int					init_mandelbrot(t_fractal *f);
+int					init_julia(t_fractal *f);
+int					init_sierpinsky_carpet(t_fractal *f);
+int					init_newton(t_fractal *f);
+int					init_burning_ship(t_fractal *f);
+int					init_colors(t_fractal *f);
 int					init_win(t_fractal *f);
 int					init_instructions(void *mlx);
 void				reset_bounds(t_fractal *f);
@@ -188,7 +194,7 @@ int					draw(t_fractal *f);
 void				display_colors(int **tab, int xmax, int ymax);
 
 /*
-** Fracal algorithms
+** Fractal algorithms
 */
 
 int					mandelbrot(t_pt2 j, t_fractal *f);
@@ -212,12 +218,6 @@ int					update_color_set(t_fractal *f);
 int					switch_julia_constant(t_fractal *f);
 
 /*
-** Multithreading
-*/
-
-void				*calc_colors_sections(void *v);
-
-/*
 ** Functions for different color sets.
 ** First number refers to the fractal's index.
 ** Second number refers to the color set's index.
@@ -228,7 +228,7 @@ int		col_0_1(int i, int i_max);
 int		col_0_2(int i, int i_max);
 int		col_1_0(int i, int i_max);
 int		col_1_1(int i, int i_max);
-//int		col_1_2(int i, int i_max);
+int		col_1_2(int i, int i_max);
 int		col_2_0(int i, int i_max);
 int		col_2_1(int i, int i_max);
 int		col_2_2(int i, int i_max);
