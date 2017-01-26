@@ -6,11 +6,15 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:12:14 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 16:37:37 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 12:26:22 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+** Determines is a point is in the mandelbrot set and returns a color.
+*/
 
 int	mandelbrot(t_pt2 j, t_fractal *f)
 {

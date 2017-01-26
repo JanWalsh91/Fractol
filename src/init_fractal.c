@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:12:27 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:31:23 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	init_colors(t_fractal *f);
 ** Sets the function
 */
 
-int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
+int			init_fractal(t_fractal *f, void *mlx, int y)
 {
 	f->e.mlx = mlx;
 	f->color_set = 0;
@@ -46,7 +46,7 @@ int			init_fractal(t_fractal *f, void *mlx, int y) //y is fractal index
 
 static int	init_mandelbrot(t_fractal *f)
 {
-	printf("init_fractol\n");
+	//printf("init_fractol\n");
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
 	f->name = MANDELBROT;
@@ -61,7 +61,7 @@ static int	init_mandelbrot(t_fractal *f)
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
 	reset_bounds(f);
-	printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
+	//printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
 	return (1);
 }
 
@@ -89,9 +89,8 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 	IMG_SIZE >= 10 ? f->e.h = 81 : 0;
 	IMG_SIZE >= 50 ? f->e.h = 243 : 0;
 	IMG_SIZE >= 150 ? f->e.h = 729 : 0;
-	IMG_SIZE > 200 ? f->e.h = 2187 : 0;
 	f->e.w = f->e.h;
-	printf("(h, w): ([%i][%i])\n", f->e.h, f->e.w);
+	//printf("(h, w): ([%i][%i])\n", f->e.h, f->e.w);
 	f->i = SIERPINSKY_CARPET_I;
 	f->name = SIERPINSKY_CARPET;
 	f->color_set_count = SIERPINSKY_COLOR_SET_COUNT;
@@ -99,6 +98,8 @@ static int	init_sierpinsky_carpet(t_fractal *f)
 		return (0);
 	f->f = &sierpinsky_carpet;
 	f->get_color[0] = &col_2_0;
+	f->get_color[1] = &col_2_1;
+	f->get_color[2] = &col_2_2;
 	f->max.x = f->e.h;
 	f->max.y = f->e.h;
 	f->min.x = 0;
@@ -142,7 +143,7 @@ static int	init_burning_ship(t_fractal *f)
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
 	reset_bounds(f);
-	printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
+	//printf("init_fractol end. (h, w) (%i, %d)\n", f->e.h, f->e.w);
 	return (1);
 }
 
@@ -176,13 +177,6 @@ void	reset_bounds(t_fractal *f)
 	{
 		f->min.x = 0;
 		f->min.y = 0;
-	}
-	else if (f->name == SIERPINSKY_CARPET)
-	{
-		f->min.x = 0;
-		f->min.y = 0;
-		f->max.x = f->e.h;
-		f->max.y = f->e.h;
 	}
 	else if (f->name == NEWTON)
 	{

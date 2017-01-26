@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:14:14 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:31:33 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # define THREAD_COUNT 10
 # define WIN_COUNT 4
 # define MAX_ARG 4
-# define WIN_WIDTH
-# define WIN_HEIGHT
 # define DEFAULT_I   //default amount of iterations to do
 # define ZOOM_POW 1.1
 
@@ -67,7 +65,7 @@
 # define SIERPINSKY_CARPET_H 1
 # define SIERPINSKY_CARPET_W 1
 # define SIERPINSKY_CARPET_I 1
-# define SIERPINSKY_COLOR_SET_COUNT 1
+# define SIERPINSKY_COLOR_SET_COUNT 3
 
 /*
 ** Newton
@@ -100,7 +98,7 @@
 # define LINE_JUJU "Turn mouse on / off    J"
 # define INSTRUCT_COLOR MISTY_ROSE
 
-# define IMG_SIZE 100
+# define IMG_SIZE 201
 //# define IMG_SIZE_W IMG_SIZE * 2.7
 //# define IMG_SIZE_H IMG_SIZE * 2.4
 # define ZOOM 1
@@ -291,8 +289,8 @@ int		col_1_0(int i, int i_max);
 int		col_1_1(int i, int i_max);
 //int		col_1_2(int i, int i_max);
 int		col_2_0(int i, int i_max);
-//int		col_2_1(int i, int i_max);
-//int		col_2_2(int i, int i_max);
+int		col_2_1(int i, int i_max);
+int		col_2_2(int i, int i_max);
 //int		col_3_0(int i, int i_max);
 //int		col_3_1(int i, int i_max);
 //int		col_3_2(int i, int i_max);
