@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 10:25:47 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 11:35:36 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@
 # include <pthread.h>
 
 # define USAGE "usage: ./fractol Julia Madelbrot ..."
-# define THREAD_COUNT 20
+# define THREAD_COUNT 10
 # define WIN_COUNT 4
 # define MAX_ARG 4
 # define WIN_WIDTH
 # define WIN_HEIGHT
 # define DEFAULT_I   //default amount of iterations to do
-# define ZOOM_POW 3
+# define ZOOM_POW 1.1
 
 /*
 ** Mandelbrot
 */
 
-# define MANDELBROT_I 30
+# define MANDELBROT_I 50
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 //# define MANDELBROT_ZOOM 100
@@ -55,7 +55,7 @@
 ** Julia
 */
 
-# define JULIA_I 20
+# define JULIA_I 50
 # define JULIA_C_I 0.04110
 # define JULIA_C_R -0.25
 # define JULIA_COLOR_SET_COUNT 2
@@ -78,7 +78,7 @@
 # define NEWTON_XMAX 2.0
 # define NEWTON_YMAX 2.0
 # define NEWTON_I 20
-# define EPSILON	0.001
+# define EPSILON 0.001
 # define NEWTON_COLOR_SET_COUNT 3
 
 /*
@@ -224,6 +224,13 @@ typedef struct		s_th
 	int				i;
 }					t_th;
 
+typedef struct		s_win_manager
+{
+	t_fractal		*f;
+	int				nb_frac;
+}					t_win_manager;
+
+
 /*
 ** Main
 */
@@ -257,9 +264,8 @@ int					key_released(int keycode, t_fractal *f);
 int					exit_prog(int keycode, void *mlx);
 int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);
-int					red_button_exit(int keycode, t_fractal *f);
+int					red_button_exit(int *nb_frac);
 int					zoom(t_fractal *f, int button, int y, int x);
-int					zoom_sierpinsky(t_fractal *f, int button, int y, int x);
 int					update_iteration(t_fractal *f, int button);
 int					update_color_set(t_fractal *f);
 int					switch_julia_constant(t_fractal *f);
@@ -269,7 +275,6 @@ int					switch_julia_constant(t_fractal *f);
 */
 
 void				*calc_colors_sections(void *v);
-//void				*draw_section(void *v);
 //
 
 /*
@@ -293,5 +298,6 @@ int		col_2_0(int i, int i_max);
 int		col_4_0(int i, int i_max);
 int		col_4_1(int i, int i_max);
 int		col_4_2(int i, int i_max);
+int		col_5_0(int i, int i_max);
 
 #endif

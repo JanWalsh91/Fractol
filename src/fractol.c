@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 10:26:04 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 11:23:10 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	fractol(t_names *names, int nb_frac)
 {
-	int			i;
-	void		*mlx;
-	t_fractal	*f;
+	int				i;
+	void			*mlx;
+	t_fractal		*f;
 
 	printf("fractol: nb: %i\n", nb_frac);
 	mlx = mlx_init();
@@ -35,12 +35,12 @@ int	fractol(t_names *names, int nb_frac)
 			return (0);
 		if (names[i] == JULIA) // if julia, tracking mouse position
 			mlx_hook(f[i].e.win_mlx, MOTION, MOUSE_MASK, &mouse_motion, &f[i]);	
-		mlx_key_hook(f[i].e.win_mlx, &key_released, f);
-		mlx_mouse_hook(f[i].e.win_mlx, &mouse_event, f);
-		mlx_hook(f[i].e.win_mlx, DESTROY_EVENT, 0, &red_button_exit, f);
+		mlx_key_hook(f[i].e.win_mlx, &key_released, &f[i]);
+		mlx_mouse_hook(f[i].e.win_mlx, &mouse_event, &f[i]);
+		mlx_hook(f[i].e.win_mlx, DESTROY_EVENT, 0, &red_button_exit, &nb_frac);
 		// mlx hook
 	}
-	//init_instructions(mlx);
+	init_instructions(mlx);
 	printf("check3\n");
 	mlx_loop(mlx);
 	return (1);

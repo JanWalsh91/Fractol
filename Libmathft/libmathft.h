@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/24 15:36:18 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 17:13:46 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 11:40:39 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct	s_pt2
 
 typedef struct	s_vec2
 {
-	float		x;
-	float		y;
+	double		x;
+	double		y;
 }				t_vec2;
 
 typedef	struct	s_dpt2

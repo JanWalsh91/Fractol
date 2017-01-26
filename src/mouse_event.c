@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 15:58:43 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 11:21:22 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,14 @@ int		switch_julia_constant(t_fractal *f)
 		return (1);
 }
 
-int		red_button_exit(int keycode, t_fractal *f)
+int		red_button_exit(int *frac)
 {
-	(void)keycode;
-	(void)f;
+	static int nb = -1;
+
+	if (nb == -1)
+		nb = *frac;
+	if (--nb == 0)
+		exit(0);
 	// TODO: free stuff
 	return (0);
 }
