@@ -6,11 +6,16 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 16:49:57 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 14:45:24 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 15:00:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+** This file includes functions for the r g and b values of the Newton fracal.
+*/
+
 
 int	col_4_0(int i, t_fractal *f)
 {

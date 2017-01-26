@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/22 14:33:46 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 14:48:48 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 14:59:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static int	sierpinsky_carpet_iterations(t_pt2 *j, t_sierpinsky_tools *t,
 		t_fractal *f);
 
-int	sierpinsky_carpet(t_pt2 j, t_fractal *f)
+int			sierpinsky_carpet(t_pt2 j, t_fractal *f)
 {
 	t_sierpinsky_tools	t;
 	t_pt2				cp;
