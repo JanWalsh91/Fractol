@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   newton_colors.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/25 16:49:57 by tgros             #+#    #+#             */
+/*   Updated: 2017/01/26 10:22:46 by tgros            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fractol.h"
+
+int	col_4_0(int i, int max)
+{
+	int color;
+	int mod;
+
+	color = 0;
+	mod = ((i % max) % 5);
+	(mod == 0) ? color = 0xFE0000 : 0;
+	(mod == 1) ? color = 0xEE0000 : 0;
+	(mod == 2) ? color = 0xDD0000 : 0;
+	(mod == 3) ? color = 0xCC0000 : 0;
+	(mod == 4) ? color = 0xBB0000 : 0;
+	return (color);
+}
+
+int	col_4_1(int i, int max)
+{
+	int color;
+	int mod;
+
+	color = 0;
+	mod = ((i % max) % 5);
+	(mod == 0) ? color = 0x00FE00 : 0;
+	(mod == 1) ? color = 0x00EE00 : 0;
+	(mod == 2) ? color = 0x00DD00 : 0;
+	(mod == 3) ? color = 0x00CC00 : 0;
+	(mod == 4) ? color = 0x00BB00 : 0;
+	return (color);
+}
+
+int	col_4_2(int i, int max)
+{
+	int color;
+	int mod;
+
+	color = 0;
+	mod = ((i % max) % 5);
+	(mod == 0) ? color = 0x0000FE : 0;
+	(mod == 1) ? color = 0x0000EE : 0;
+	(mod == 2) ? color = 0x0000DD : 0;
+	(mod == 3) ? color = 0x0000CC : 0;
+	(mod == 4) ? color = 0x0000BB : 0;
+	return (color);
+}

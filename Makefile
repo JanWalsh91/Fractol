@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/24 17:23:38 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/26 10:13:56 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC_NAME = main \
 			mandelbrot_colors \
 			julia_colors \
 			sierpinsky_carpet_colors \
+			newton_colors \
 			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))

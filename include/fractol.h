@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 13:24:00 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 10:23:39 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@
 # define NEWTON_YMIN -2.0
 # define NEWTON_XMAX 2.0
 # define NEWTON_YMAX 2.0
+# define NEWTON_I 20
 # define EPSILON	0.001
+# define NEWTON_COLOR_SET_COUNT 3
 
 /*
 ** Instructions
@@ -285,5 +287,8 @@ int		col_2_0(int i, int i_max);
 //int		col_3_0(int i, int i_max);
 //int		col_3_1(int i, int i_max);
 //int		col_3_2(int i, int i_max);
+int		col_4_0(int i, int i_max);
+int		col_4_1(int i, int i_max);
+int		col_4_2(int i, int i_max);
 
 #endif

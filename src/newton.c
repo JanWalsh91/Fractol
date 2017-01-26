@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:42:26 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/25 10:37:41 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 10:23:14 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,22 @@ int			newton(t_pt2 j, t_fractal *f)
 	z.r = (double)j.x / 100 / f->zoom + f->min.x;
 	z.i = (double)j.y / 100 / f->zoom + f->min.y;
 	i = -1;
-	while (++i < f->i && c_modulus(c_minus(z, r1)) >= EPSILON &&
+	while (++i < f->i && (c_modulus(c_minus(z, r1)) >= EPSILON &&
 		c_modulus(c_minus(z, r2)) >= EPSILON &&
-		c_modulus(c_minus(z, r3)) >= EPSILON)
+		c_modulus(c_minus(z, r3)) >= EPSILON))
 	{
 		if (c_modulus(z) > 0)
 			z = c_minus(z, c_divide(c_minus_double(c_product(c_product(z, z),
 						z), 1.0), (c_product_double(c_product(z, z), 3))));
 	}
+	if (i > 20)
+		i = 20;
 	if (c_modulus(c_minus(z, r1)) < EPSILON)
-		return (0xFF0000 - (i << 16) * 10);
+		return (f->get_color[f->color_set](i, f->i));
 	if (c_modulus(c_minus(z, r2)) <= EPSILON)
-		return (0x00FF00 - (i << 8) * 10);
+		return (f->get_color[f->color_set + 1](i, f->i));
 	if (c_modulus(c_minus(z, r3)) <= EPSILON)
-		return (0x0000FF - i * 10);
+		return (f->get_color[f->color_set + 2](i, f->i));
 	return (0x0F0F0F);
 }
 

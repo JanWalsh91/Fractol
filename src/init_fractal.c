@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 10:37:39 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 10:23:54 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,17 @@ static int	init_newton(t_fractal *f)
 {
 	f->e.h = 100 * (NEWTON_XMAX - NEWTON_XMIN);
 	f->e.w = 100 * (NEWTON_YMAX - NEWTON_YMIN);
-	f->i = 20;
+	f->i = NEWTON_I;
 	f->name = NEWTON;
 	f->zoom = ZOOM;
 	f->min.x = NEWTON_XMIN;
 	f->min.y = NEWTON_XMIN;
+	f->color_set_count = NEWTON_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Newton")) || !init_colors(f))
 		return (0);
+	f->get_color[0] = &col_4_0;
+	f->get_color[1] = &col_4_1;
+	f->get_color[2] = &col_4_2;
 	f->f = &newton;
 	return (1);
 }
@@ -141,5 +145,10 @@ void	reset_bounds(t_fractal *f)
 	{
 		f->min.x = 0;
 		f->min.y = 0;
+	}
+	else if (f->name == NEWTON)
+	{
+		f->min.x = NEWTON_XMIN;
+		f->min.y = NEWTON_YMIN;
 	}
 }

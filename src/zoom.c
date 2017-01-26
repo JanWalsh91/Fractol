@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/25 12:52:23 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/25 15:19:00 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ static int	reset(t_fractal *f)
 	f->name == MANDELBROT ? f->i = MANDELBROT_I : 0;
 	f->name == JULIA ? f->i = JULIA_I : 0;
 	f->name == SIERPINSKY_CARPET ? f->i = SIERPINSKY_CARPET_I : 0;
+	f->name == NEWTON ? f->i = NEWTON_I : 0;
 	//f->name == NEWTON ? f->i = NEWTON_I : 0;
 	return (1);
 }
