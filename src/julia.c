@@ -6,11 +6,15 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 11:34:30 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/25 10:22:25 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:26:53 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+** Determines if a point is in the julia set and returns a color.
+*/
 
 int	julia(t_pt2 j, t_fractal *f)
 {

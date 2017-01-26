@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 12:57:48 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 13:17:47 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/26 12:22:59 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,24 @@
 
 int	col_2_0(int i, int i_max)
 {
-	int color;
-	(void)i_max;
+	(void)i;
+	if (!i_max)
+		return (STEEL_BLUE);
+	return (FOREST_GREEN);
+}
 
-	color = i * 1000;
-	return (color);
+int	col_2_1(int i, int i_max)
+{
+	(void)i;
+	if (!i_max)
+		return (GOLDEN_ROD);
+	return (SILVER);
+}
+
+int	col_2_2(int i, int i_max)
+{
+	(void)i;
+	if (!i_max)
+		return (INDIGO);
+	return (ORCHID);
 }

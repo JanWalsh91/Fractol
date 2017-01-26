@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 11:52:06 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:18:32 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int	zoom(t_fractal *f, int button, int y, int x)
 	//printf("zoom: button: %i, xy = [%d ; %d]\n", button, x, y);
 	//printf("minxy = [%f;%f]\tmax = [%f;%f]\n",
 	//	f->min.x, f->min.y, f->max.x, f->max.y);
-	if (f->name == SIERPINSKY_CARPET)
+	if (button == KEY_SPACE)
+		reset(f);
+	else if (f->name == SIERPINSKY_CARPET)
 		return (1);
-	if (button == MOUSE_UP || button == MOUSE_LMB)
+	else if (button == MOUSE_UP || button == MOUSE_LMB)
 	{
 		f->zoom = f->zoom * ZOOM_POW;
 		update_bounds(f, &y, &x, 1);
@@ -35,10 +37,8 @@ int	zoom(t_fractal *f, int button, int y, int x)
 		(f->zoom < 1) ? f->zoom = 1 : 0;
 		update_bounds(f, &y, &x, 0);
 	}
-	else if (button == KEY_SPACE)
-		reset(f);
-	printf("minxy = [%f;%f]\tmax = [%f;%f]\n",
-			f->min.x, f->min.y, f->max.x, f->max.y);
+	//printf("minxy = [%f;%f]\tmax = [%f;%f]\n",
+	//		f->min.x, f->min.y, f->max.x, f->max.y);
 	calc_colors(f);
 	draw(f);
 	return (1);
