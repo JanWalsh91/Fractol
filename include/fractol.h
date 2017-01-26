@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:31:33 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/26 12:43:40 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 # define THREAD_COUNT 10
 # define WIN_COUNT 4
 # define MAX_ARG 4
-# define DEFAULT_I   //default amount of iterations to do
+# define IMG_SIZE 201
+# define ZOOM 1
 # define ZOOM_POW 1.1
 
 /*
@@ -40,7 +41,6 @@
 # define MANDELBROT_I 50
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
-//# define MANDELBROT_ZOOM 100
 # define MANDELBROT_XMIN -2.1
 # define MANDELBROT_XMAX 0.6
 # define MANDELBROT_YMIN -1.2
@@ -62,9 +62,7 @@
 ** Sierpinsky's Carpet
 */
 
-# define SIERPINSKY_CARPET_H 1
-# define SIERPINSKY_CARPET_W 1
-# define SIERPINSKY_CARPET_I 1
+# define SIERPINSKY_CARPET_I 2
 # define SIERPINSKY_COLOR_SET_COUNT 3
 
 /*
@@ -98,52 +96,6 @@
 # define LINE_JUJU "Turn mouse on / off    J"
 # define INSTRUCT_COLOR MISTY_ROSE
 
-# define IMG_SIZE 201
-//# define IMG_SIZE_W IMG_SIZE * 2.7
-//# define IMG_SIZE_H IMG_SIZE * 2.4
-# define ZOOM 1
-
-
-/*
-** Colors for 4 sets.
-*/
-
-# define P0C0 DARK_GREEN
-# define P0C1 GREEN
-# define P0C2 SADDLEBROWN
-# define P0C3 GAINSBORO
-
-# define P1C0 STEEL_BLUE
-# define P1C1 0xAAAAFF
-# define P1C2 DEEP_PINK
-# define P1C3 HOT_PINK
-
-# define P2C0 MAROON
-# define P2C1 INDIAN_RED
-# define P2C2 SALMON
-# define P2C3 GOLD
-
-# define P3C0 GOLDEN_ROD
-# define P3C1 LIGHT_SEA_GREEN
-# define P3C2 TEAL
-# define P3C3 HOT_PINK
-
-/*
-** Instructions
-*/
-
-# define HEADER
-# define LINE1 
-# define LINE2
-# define LINE3
-# define LINE4
-# define LINE5
-# define LINE6
-# define LINE7
-# define LINE8
-# define LINE9
-# define LINE10
-
 typedef enum		e_names
 {
 	MANDELBROT = 1,
@@ -164,22 +116,14 @@ typedef struct		s_incr
 	float			b;
 }					t_incr;
 
-//typedef struct		s_image
-//{
-//	void			*mlx;
-//	int				h;
-//	int				w;
-//	//t_pt2			pos; //position of image. Probaly useless since always (0, 0)
-//}					t_image;
-
 typedef struct		s_seirpinsky_tools
 {
-	int	i;
-	int	w;
-	int	h;
+	int				i;
+	int				w;
+	int				h;
 }					t_sierpinsky_tools;
 
-typedef struct		s_draw_tools //values used for get_data_address
+typedef struct		s_draw_tools
 {
 	int				bpp;
 	int				size_line;
@@ -187,7 +131,7 @@ typedef struct		s_draw_tools //values used for get_data_address
 	char			*image;
 }					t_draw_tools;
 
-typedef struct		s_env // one win, img and draw tools per fractal
+typedef struct		s_env
 {
 	t_draw_tools	draw;
 	void			*mlx;
@@ -195,19 +139,18 @@ typedef struct		s_env // one win, img and draw tools per fractal
 	void			*img_mlx;
 	int				h;
 	int				w;
-
 }					t_env;
 
 typedef struct		s_fractal
 {
 	t_env			e;
 	t_names			name;
-	char			*title; //fractal name
-	int				(*f)(t_pt2 i, struct s_fractal *f); //returns color for a point bases on its coords
-	int				i; //number of iteratioms 
-	t_complex		c; // complex constant
-	double			zoom; //float?
-	t_pt2			win_size;// also image size;
+	char			*title;
+	int				(*f)(t_pt2 i, struct s_fractal *f);
+	int				i;
+	t_complex		c;
+	double			zoom;
+	t_pt2			win_size;
 	t_dpt2			max;
 	t_dpt2			min;
 	int				mouse_on;
@@ -228,7 +171,6 @@ typedef struct		s_win_manager
 	t_fractal		*f;
 	int				nb_frac;
 }					t_win_manager;
-
 
 /*
 ** Main
@@ -270,11 +212,10 @@ int					update_color_set(t_fractal *f);
 int					switch_julia_constant(t_fractal *f);
 
 /*
-** new functions with multithreading (check which file is in use and update)
+** Multithreading
 */
 
 void				*calc_colors_sections(void *v);
-//
 
 /*
 ** Functions for different color sets.
