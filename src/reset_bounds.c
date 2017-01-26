@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   burning_ship.c                                     :+:      :+:    :+:   */
+/*   reset_bounds.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/25 17:12:43 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 12:46:17 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/26 12:53:07 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/26 12:54:32 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-** Determines if a point is in the burning ship set and returns a color.
+** Resets bounds for Mandelbrot, Burning Ship, Julia and Newton fractals.
 */
 
-int	burning_ship(t_pt2 j, t_fractal *f)
+void	reset_bounds(t_fractal *f)
 {
-	t_complex	z;
-	t_complex	c;
-	int			i;
-
-	c.r = (float)j.x / IMG_SIZE / f->zoom + f->min.x;
-	c.i = (float)j.y / IMG_SIZE / f->zoom + f->min.y;
-	z.r = MANDELBROT_C_I;
-	z.i = MANDELBROT_C_R;
-	i = -1;
-	while (c_modulus(z) < 2 && ++i < f->i)
+	if (f->name == MANDELBROT || f->name == BURNING_SHIP)
 	{
-		z = c_abs(z);
-		z = c_add(c_product(z, z), c);
+		f->max.x = MANDELBROT_XMAX;
+		f->max.y = MANDELBROT_YMAX;
+		f->min.x = MANDELBROT_XMIN;
+		f->min.y = MANDELBROT_YMIN;
 	}
-	return (f->get_color[f->color_set](i, f->i));
+	else if (f->name == JULIA)
+	{
+		f->min.x = 0;
+		f->min.y = 0;
+	}
+	else if (f->name == NEWTON)
+	{
+		f->min.x = NEWTON_XMIN;
+		f->min.y = NEWTON_YMIN;
+	}
 }
