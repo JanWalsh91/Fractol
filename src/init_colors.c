@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:32:34 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 11:08:20 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int			reset_color_sets(t_fractal *f)
 	int steps;
 
 	steps = f->i / (COLORS_PER_SET - 1);
-	printf("reset color sets\n");
 	set_limit_colors(f->incr);
 	get_incr(&(f->incr[0][0]), steps);
 	get_incr(&(f->incr[0][1]), steps);
@@ -77,7 +76,6 @@ static void	get_incr(t_incr *incr, float i)
 	incr->g = (((incr->c_2 & mask) - (incr->c_1 & mask)) / i) / 0x100;
 	mask = mask << 8;
 	incr->r = (((incr->c_2 & mask) - (incr->c_1 & mask)) / i) / 0x10000;
-	printf("r: [%a] g: [%a] b: [%a]\n", incr->r, incr->g, incr->b);
 }
 
 static int	set_limit_colors(t_incr **incr)
@@ -91,7 +89,7 @@ static int	set_limit_colors(t_incr **incr)
 	set(&incr[2][0], COL_20, COL_21);
 	set(&incr[2][1], COL_21, COL_22);
 	set(&incr[2][2], COL_22, COL_23);
-		return (1);
+	return (1);
 }
 
 static void	set(t_incr *incr, int c1, int c2)

@@ -6,22 +6,24 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:57:47 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 11:07:09 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	check_arg(char *arg, t_names *names, int *y);
+static void	check_arg(char *arg, t_names *names, int *y, int *instr);
 static void	usage_error(void);
 
 int			main(int argc, char *argv[])
 {
 	int		i;
 	int		y;
+	int		instr;
 	t_names	*names;
 
-	if (argc > MAX_ARG || argc < 2)
+	instr = 0;
+	if (argc > MAX_ARG + 1 || argc < 2)
 		usage_error();
 	init_names(&names);
 	i = 1;
@@ -29,11 +31,10 @@ int			main(int argc, char *argv[])
 	while (i < argc && y < MAX_ARG)
 	{
 		ft_strtoupper(argv[i]);
-		check_arg(argv[i], names, &y);
+		check_arg(argv[i], names, &y, &instr);
 		++i;
 	}
-	printf("main: nb_frac: %i\n", y);
-	y == 0 ? usage_error() : fractol(names, y);
+	y == 0 ? usage_error() : fractol(names, y, instr);
 	return (0);
 }
 
@@ -41,7 +42,7 @@ int			main(int argc, char *argv[])
 ** Checks the argument validity and updates the fractal list.
 */
 
-static void	check_arg(char *arg, t_names *names, int *y)
+static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 {
 	if (ft_strcmp_percent(arg, "MANDELBROT", 0.2))
 		names[(*y)++] = MANDELBROT;
@@ -53,8 +54,10 @@ static void	check_arg(char *arg, t_names *names, int *y)
 		names[(*y)++] = NEWTON;
 	else if (ft_strcmp_percent(arg, "BURNING", 0.2))
 		names[(*y)++] = BURNING_SHIP;
-	else if (ft_strcmp_percent(arg, "CARPET", 0.1) && ++y)
+	else if (ft_strcmp_percent(arg, "CARPET", 0.2) && ++(*y))
 		--(*y);
+	else if (ft_strcmp_percent(arg, "-I", 1.0))
+		*instr == 0 ? *instr = 1 : 0;
 	else
 		usage_error();
 }

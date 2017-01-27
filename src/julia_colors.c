@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:49:09 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:49:18 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 10:38:17 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ** fractal.
 */
 
-static	int	get_color(t_incr incr, int i);
+static int	get_color(t_incr incr, int i);
 
-int	col_1_0(int i, t_fractal *f)
+int			col_1_0(int i, t_fractal *f)
 {
 	int	color;
 	int	y;
@@ -35,7 +35,7 @@ int	col_1_0(int i, t_fractal *f)
 	return (color);
 }
 
-int	col_1_1(int i, t_fractal *f)
+int			col_1_1(int i, t_fractal *f)
 {
 	int	color;
 	int	y;
@@ -51,7 +51,7 @@ int	col_1_1(int i, t_fractal *f)
 	return (color);
 }
 
-int	col_1_2(int i, t_fractal *f)
+int			col_1_2(int i, t_fractal *f)
 {
 	int	color;
 	int	y;
@@ -67,9 +67,9 @@ int	col_1_2(int i, t_fractal *f)
 	return (color);
 }
 
-static	int	get_color(t_incr incr, int i)
+static int	get_color(t_incr incr, int i)
 {
-	return(incr.c_1 + ft_round((i * incr.r)) * 0x10000 +
+	return (incr.c_1 + ft_round((i * incr.r)) * 0x10000 +
 		ft_round((i * incr.g)) * 0x100 +
 		ft_round((i * incr.b)));
 }

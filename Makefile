@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/26 15:01:46 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/27 11:15:21 by tgros            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ SRC_NAME = main \
 			reset_bounds \
 			burning_ship_colors \
 			free \
-			debug
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))
 SRC = $(addsuffix $(EXT), $(SRC_NAME_PATH))
@@ -80,7 +79,6 @@ $(NAME): $(OBJ)
 	@make -C $(LIB_PATH)
 	@make -C $(LIBMATH_PATH)
 	@$(CC) $(FLG) $(MLX) -lpthread $(LIB_PATH)$(LIBFT_NAME) $(LIBMATH_PATH)$(LIBMATHFT_NAME) $(OBJ) -o $(NAME)
-	@rm -rf src/*.o
 	@$(ECHO) "$(C_GREEN)Fractol compilation done.$(C_NONE)"
 
 clean:

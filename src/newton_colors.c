@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 16:49:57 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 15:00:06 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 10:41:58 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 ** This file includes functions for the r g and b values of the Newton fracal.
 */
-
 
 int	col_4_0(int i, t_fractal *f)
 {

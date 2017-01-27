@@ -6,14 +6,14 @@
 /*   By: jfortin <jfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 16:42:55 by jfortin           #+#    #+#             */
-/*   Updated: 2017/01/25 10:49:32 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 10:34:52 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYCODE_MAC_H
 # define KEYCODE_MAC_H
 
-# define MOUSE_MASK			(1L<<6) 
+# define MOUSE_MASK			(1L<<6)
 # define KEY_PRESS_MASK		(1L<<0)
 
 # define MOTION				6

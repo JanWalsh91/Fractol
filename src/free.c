@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 13:22:05 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 14:47:14 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 11:08:34 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	free_fractals(t_win_manager *f)
 	i = -1;
 	if (!f)
 		return (-1);
-	printf("Coucou\n");
 	while (++i < f->nb_frac)
 	{
 		h = -1;

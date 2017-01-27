@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 14:36:10 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 10:39:40 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Definition of the window mouse listener. Acts only if the mouse cursor
-** hovers the window. 
+** hovers the window.
 */
 
 int		mouse_event(int button, int x, int y, t_fractal *f)
@@ -60,6 +60,7 @@ int		switch_julia_constant(t_fractal *f)
 int		red_button_exit(t_win_manager *f_list)
 {
 	static int nb = -1;
+
 	if (nb == -1)
 		nb = f_list->nb_frac;
 	if (--nb == 0)
@@ -67,6 +68,5 @@ int		red_button_exit(t_win_manager *f_list)
 		free_fractals(f_list);
 		exit(0);
 	}
-	// TODO: free stuff
 	return (0);
 }

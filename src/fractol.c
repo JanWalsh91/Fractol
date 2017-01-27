@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:21:15 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:57:01 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 11:08:51 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Opens windows and handles events.
 */
 
-int	fractol(t_names *names, int nb_frac)
+int	fractol(t_names *names, int nb_frac, int instr)
 {
 	int				i;
 	void			*mlx;
@@ -35,14 +35,13 @@ int	fractol(t_names *names, int nb_frac)
 		if (!init_fractal(&f[i], mlx, names[i]) || !calc_colors(&f[i]) ||
 				!init_win(&f[i]) || !draw(&f[i]))
 			return (0);
-		f[i].index = i;
 		if (names[i] == JULIA)
 			mlx_hook(f[i].e.win_mlx, MOTION, MOUSE_MASK, &mouse_motion, &f[i]);
 		mlx_key_hook(f[i].e.win_mlx, &key_released, &f[i]);
 		mlx_mouse_hook(f[i].e.win_mlx, &mouse_event, &f[i]);
 		mlx_hook(f[i].e.win_mlx, DESTROY_EVENT, 0, &red_button_exit, &f_list);
 	}
-	init_instructions(mlx);
+	instr ? init_instructions(mlx) : 0;
 	mlx_loop(mlx);
 	return (1);
 }
