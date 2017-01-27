@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 13:28:50 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 14:28:20 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <stdio.h>
 # include <pthread.h>
 
-# define USAGE "usage: ./fractol Julia Madelbrot ..."
 # define THREAD_COUNT 10
 # define WIN_COUNT 4
 # define MAX_ARG 4
