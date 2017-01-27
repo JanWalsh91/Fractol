@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 13:09:30 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 15:45:20 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,8 @@ int	init_julia(t_fractal *f)
 
 int	init_sierpinsky_carpet(t_fractal *f)
 {
-	IMG_SIZE > 0 ? f->e.h = 27 : 0;
-	IMG_SIZE >= 10 ? f->e.h = 81 : 0;
-	IMG_SIZE >= 50 ? f->e.h = 243 : 0;
-	IMG_SIZE >= 150 ? f->e.h = 729 : 0;
-	f->e.w = f->e.h;
+	f->e.h = 729;
+	f->e.w = 729;
 	f->i = SIERPINSKY_CARPET_I;
 	f->name = SIERPINSKY_CARPET;
 	f->color_set_count = SIERPINSKY_COLOR_SET_COUNT;
