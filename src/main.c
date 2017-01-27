@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 14:28:25 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 14:32:17 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 static void	usage_error(void)
 {
 	ft_putendl_fd("usage: ./fractol <julia, mandelbrot, burning ship, \
-			newton, sierpinsky carpet> [..] [-i]", 2);
+newton, sierpinsky carpet> [...] [-i]", 2);
 	exit(1);
 }
