@@ -6,7 +6,7 @@
 #    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/27 11:15:21 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/27 11:59:05 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,31 +21,31 @@ LIBMATH_PATH = Libmathft/
 
 SRC_NAME = main \
 			fractol \
-			draw \
-			mandelbrot \
-			julia \
-			sierpinsky_carpet \
-			newton \
 			burning_ship \
-			init_fractals \
-			init_fractal \
+			burning_ship_colors \
+			calc_colors \
+			draw \
+			free_fractals \
 			init_colors \
+			init_fractal \
+			init_fractals \
+			init_instructions \
 			init_names \
 			init_win \
-			calc_colors \
-			init_instructions \
-			key_released \
-			mouse_event \
-			zoom \
-			update_iteration \
-			update_color_set \
-			mandelbrot_colors \
+			julia \
 			julia_colors \
-			sierpinsky_carpet_colors \
+			key_released \
+			mandelbrot \
+			mandelbrot_colors \
+			mouse_event \
+			newton \
 			newton_colors \
 			reset_bounds \
-			burning_ship_colors \
-			free \
+			sierpinsky_carpet \
+			sierpinsky_carpet_colors \
+			update_color_set \
+			update_iteration \
+			zoom
 
 SRC_NAME_PATH = $(addprefix $(SRC_PATH), $(SRC_NAME))
 SRC = $(addsuffix $(EXT), $(SRC_NAME_PATH))

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 11:08:20 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 13:29:02 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ int			init_colors(t_fractal *f)
 	int	i;
 
 	if (!(f->colors = ft_memalloc(sizeof(int *) * f->e.h)))
-		return (0);
+		ft_error_exit("Malloc error");
 	i = -1;
 	while (++i < f->e.h)
 		if (!(f->colors[i] = ft_memalloc(sizeof(int) * f->e.w)))
-			return (0);
+			ft_error_exit("Malloc error");
 	if (!(f->get_color = ft_memalloc(sizeof(*(f->get_color)) *
 					f->color_set_count)))
-		return (0);
+		ft_error_exit("Malloc error");
 	if (f->name != SIERPINSKY_CARPET && f->name != NEWTON)
 	{
 		if (!(f->incr = (t_incr **)ft_memalloc(sizeof(t_incr *) *
 			COLOR_SET_COUNT)))
-			return (0);
+			ft_error_exit("Malloc error");
 		i = -1;
 		while (++i < COLOR_SET_COUNT)
 			if (!(f->incr[i] = (t_incr *)ft_memalloc(sizeof(t_incr) *
 				COLORS_PER_SET)))
-				return (0);
+				ft_error_exit("Malloc error");
 		reset_color_sets(f);
 	}
 	return (1);

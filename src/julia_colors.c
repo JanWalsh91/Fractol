@@ -6,14 +6,14 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:49:09 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 10:38:17 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 12:29:15 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-** This file inclues functions for different color sets for the Burning Ship
+** This file includes functions for different color sets for the julia
 ** fractal.
 */
 

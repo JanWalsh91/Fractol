@@ -6,7 +6,7 @@
 /*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 16:44:40 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/26 14:50:18 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 12:05:17 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Determines the colors of the pixels of a fractal.
 */
 
-static void		*calc_colors_sections(void *v);
+static void	*calc_colors_sections(void *v);
 
 int			calc_colors(t_fractal *f)
 {
@@ -28,7 +28,7 @@ int			calc_colors(t_fractal *f)
 	i = -1;
 	ret = NULL;
 	if (!(th = (t_th *)malloc(sizeof(t_th) * THREAD_COUNT)))
-		ft_error("Malloc error");
+		ft_error_exit("Malloc error");
 	while (++i < THREAD_COUNT)
 	{
 		th[i].f = f;
@@ -45,7 +45,7 @@ int			calc_colors(t_fractal *f)
 ** Determines the colors of the pixels of a slice of the image.
 */
 
-static void		*calc_colors_sections(void *v)
+static void	*calc_colors_sections(void *v)
 {
 	t_pt2	i;
 	int		max_x;

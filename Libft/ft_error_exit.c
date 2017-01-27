@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 11:41:29 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/23 11:45:13 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 13:29:08 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@
 void	ft_error_exit(char *error_msg)
 {
 	ft_putendl_fd(error_msg, 2);
-	exit(0);
+	exit(-1);
 }

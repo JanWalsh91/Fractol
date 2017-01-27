@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 11:24:32 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:45:24 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 12:06:48 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int			draw(t_fractal *f)
 		draw_pixel(&f->e.draw, i.y, i.x, color);
 		ft_increment_index(&i.y, &i.x, f->e.w);
 	}
-	mlx_put_image_to_window(f->e.mlx, f->e.win_mlx, f->e.img_mlx, 0, 0);
+	if (!(mlx_put_image_to_window(f->e.mlx, f->e.win_mlx, f->e.img_mlx, 0, 0)))
+		ft_error_exit("mlx_put_image_to_window error");
 	return (1);
 }
 

@@ -6,14 +6,14 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:44:27 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 10:41:17 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 13:22:24 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-** This file inclues functions for different color sets for the Burning Ship
+** This file includes functions for different color sets for the Mandelbrot
 ** fractal.
 */
 

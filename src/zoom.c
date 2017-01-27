@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:52:26 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 13:24:28 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	reset(t_fractal *f);
 
 /*
 ** Updates the min / max values for the given fractal depending on the
-** mouse position. Reset the value to default if Space is pressed
+** mouse position. Resets the value to default if Space is pressed.
 */
 
 int			zoom(t_fractal *f, int button, int y, int x)
@@ -45,7 +45,7 @@ int			zoom(t_fractal *f, int button, int y, int x)
 }
 
 /*
-** Calls the appropriate function depending on the event
+** Calls the appropriate function depending on the event.
 */
 
 static void	update_bounds(t_fractal *f, int *y, int *x, int is_zoom)
@@ -60,7 +60,7 @@ static void	update_bounds(t_fractal *f, int *y, int *x, int is_zoom)
 }
 
 /*
-** Calculates the new min and max values when a zoom in event is triggered
+** Calculates the new min and max values when a zoom in event is triggered.
 */
 
 static void	zoom_in(t_fractal *f, int *y, int *x, t_vec2 *dim)
@@ -81,7 +81,7 @@ static void	zoom_in(t_fractal *f, int *y, int *x, t_vec2 *dim)
 }
 
 /*
-** Calculates the new min and max values when a zoom out event is triggered
+** Calculates the new min and max values when a zoom out event is triggered.
 */
 
 static void	zoom_out(t_fractal *f, int *y, int *x, t_vec2 *dim)
@@ -102,7 +102,7 @@ static void	zoom_out(t_fractal *f, int *y, int *x, t_vec2 *dim)
 }
 
 /*
-** Reset the boundaries to default
+** Resets the boundaries to default values.
 */
 
 static int	reset(t_fractal *f)

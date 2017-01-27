@@ -6,7 +6,7 @@
 /*   By: jfortin <jfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 16:42:55 by jfortin           #+#    #+#             */
-/*   Updated: 2017/01/27 10:34:52 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 12:23:47 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define MOTION				6
 # define DESTROY_EVENT		17
+# define KEY_PRESSED		2
 
 # define MOUSE_LMB			1
 # define MOUSE_RMB			2

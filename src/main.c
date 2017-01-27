@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 11:07:09 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 13:22:00 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			main(int argc, char *argv[])
 	t_names	*names;
 
 	instr = 0;
-	if (argc > MAX_ARG + 1 || argc < 2)
+	if (argc < 2)
 		usage_error();
 	init_names(&names);
 	i = 1;
@@ -56,6 +56,8 @@ static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 		names[(*y)++] = BURNING_SHIP;
 	else if (ft_strcmp_percent(arg, "CARPET", 0.2) && ++(*y))
 		--(*y);
+	else if (ft_strcmp_percent(arg, "SHIP", 0.5) && ++(*y))
+		--(*y);
 	else if (ft_strcmp_percent(arg, "-I", 1.0))
 		*instr == 0 ? *instr = 1 : 0;
 	else
@@ -63,7 +65,7 @@ static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 }
 
 /*
-** Displays an error message in stderr, and quit the programm.
+** Displays an error message in stderr, and quits the programm.
 */
 
 static void	usage_error(void)

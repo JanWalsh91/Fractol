@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:41:32 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/27 13:09:30 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	init_mandelbrot(t_fractal *f)
 	f->name = MANDELBROT;
 	f->color_set_count = COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Mandelbrot")) || !init_colors(f))
-		return (0);
+		ft_error_exit("Malloc error");
 	f->f = &mandelbrot;
 	f->get_color[0] = &col_0_0;
 	f->get_color[1] = &col_0_1;
@@ -32,6 +32,7 @@ int	init_mandelbrot(t_fractal *f)
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
 	reset_bounds(f);
+	f->color_set = 2;
 	return (1);
 }
 
@@ -43,7 +44,7 @@ int	init_julia(t_fractal *f)
 	f->name = JULIA;
 	f->color_set_count = COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Julia")) || !init_colors(f))
-		return (0);
+		ft_error_exit("Malloc error");
 	f->f = &julia;
 	f->get_color[0] = &col_1_0;
 	f->get_color[1] = &col_1_1;
@@ -51,6 +52,7 @@ int	init_julia(t_fractal *f)
 	f->c.r = JULIA_C_R;
 	f->c.i = JULIA_C_I;
 	reset_bounds(f);
+	f->color_set = 1;
 	return (1);
 }
 
@@ -65,7 +67,7 @@ int	init_sierpinsky_carpet(t_fractal *f)
 	f->name = SIERPINSKY_CARPET;
 	f->color_set_count = SIERPINSKY_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Sierpinsky Capret")) || !init_colors(f))
-		return (0);
+		ft_error_exit("Malloc error");
 	f->f = &sierpinsky_carpet;
 	f->get_color[0] = &col_2_0;
 	f->get_color[1] = &col_2_1;
@@ -84,7 +86,7 @@ int	init_newton(t_fractal *f)
 	f->min.y = NEWTON_XMIN;
 	f->color_set_count = NEWTON_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Newton")) || !init_colors(f))
-		return (0);
+		ft_error_exit("Malloc error");
 	f->get_color[0] = &col_4_0;
 	f->get_color[1] = &col_4_1;
 	f->get_color[2] = &col_4_2;
@@ -94,13 +96,13 @@ int	init_newton(t_fractal *f)
 
 int	init_burning_ship(t_fractal *f)
 {
-	f->i = MANDELBROT_I;
+	f->i = BURNING_SHIP_I;
 	f->e.h = IMG_SIZE * MANDELBROT_H;
 	f->e.w = IMG_SIZE * MANDELBROT_W;
 	f->name = BURNING_SHIP;
 	f->color_set_count = BURNING_SHIP_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Burning Ship")) || !init_colors(f))
-		return (0);
+		ft_error_exit("Malloc error");
 	f->f = &burning_ship;
 	f->get_color[0] = &col_3_0;
 	f->get_color[1] = &col_3_1;
@@ -108,5 +110,6 @@ int	init_burning_ship(t_fractal *f)
 	f->c.r = MANDELBROT_C_R;
 	f->c.i = MANDELBROT_C_I;
 	reset_bounds(f);
+	f->color_set = 0;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 10:48:59 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 13:28:50 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define THREAD_COUNT 10
 # define WIN_COUNT 4
 # define MAX_ARG 4
-# define IMG_SIZE 201
+# define IMG_SIZE 200
 # define ZOOM 1
-# define ZOOM_POW 2
+# define ZOOM_POW 1.1
 # define COLORS_PER_SET 4
 # define COLOR_SET_COUNT 3
 
@@ -40,7 +40,7 @@
 ** Mandelbrot
 */
 
-# define MANDELBROT_I 20
+# define MANDELBROT_I 40
 # define MANDELBROT_C_I 0
 # define MANDELBROT_C_R 0
 # define MANDELBROT_XMIN -2.1
@@ -54,15 +54,15 @@
 ** Julia
 */
 
-# define JULIA_I 20
-# define JULIA_C_I 0.04110
-# define JULIA_C_R -0.25
+# define JULIA_I 40
+# define JULIA_C_R -0.835
+# define JULIA_C_I -0.2321
 
 /*
 ** Sierpinsky's Carpet
 */
 
-# define SIERPINSKY_CARPET_I 2
+# define SIERPINSKY_CARPET_I 1
 # define SIERPINSKY_COLOR_SET_COUNT 3
 
 /*
@@ -82,7 +82,13 @@
 ** Burning Ship
 */
 
+# define BURNING_SHIP_I 30
 # define BURNING_SHIP_COLOR_SET_COUNT 3
+
+/*
+** Color sets
+*/
+
 # define COL_00 GOLDEN_ROD
 # define COL_01 GOLD
 # define COL_02 CRIMSON
@@ -112,7 +118,7 @@
 # define LINE_7 "Exit:                  esc"
 # define LINE_8 "Julia:"
 # define LINE_JUJU "Turn mouse on / off    J"
-# define INSTRUCT_COLOR MISTY_ROSE
+# define INSTRUCT_COLOR AZURE
 
 typedef enum		e_names
 {
@@ -194,7 +200,7 @@ typedef struct		s_win_manager
 ** Main
 */
 
-int					fractol(t_names *names, int nb_frac, int instr);
+void				fractol(t_names *names, int nb_frac, int instr);
 int					display_usage(void);
 int					init_names(t_names **names);
 int					init_fractal(t_fractal *f, void *mlx, int y);
@@ -205,12 +211,11 @@ int					init_newton(t_fractal *f);
 int					init_burning_ship(t_fractal *f);
 int					init_colors(t_fractal *f);
 int					init_win(t_fractal *f);
-int					init_instructions(void *mlx);
+int					init_instructions(t_win_manager *f);
 void				reset_bounds(t_fractal *f);
 int					calc_colors(t_fractal *f);
 int					draw(t_fractal *f);
 int					reset_color_sets(t_fractal *f);
-void				display_colors(int **tab, int xmax, int ymax); /////
 
 /*
 ** Fractal algorithms
@@ -227,6 +232,7 @@ int					burning_ship(t_pt2 j, t_fractal *f);
 */
 
 int					key_released(int keycode, t_fractal *f);
+int					key_free_fractals(int keycode, t_win_manager *f);
 int					exit_prog(int keycode, void *mlx);
 int					mouse_event(int button, int x, int y, t_fractal *f);
 int					mouse_motion(int x, int y, t_fractal *f);

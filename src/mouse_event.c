@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 10:39:40 by tgros            ###   ########.fr       */
+/*   Updated: 2017/01/27 13:22:39 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Definition of the window mouse listener. Acts only if the mouse cursor
-** hovers the window.
+** hovers over the window.
 */
 
 int		mouse_event(int button, int x, int y, t_fractal *f)
