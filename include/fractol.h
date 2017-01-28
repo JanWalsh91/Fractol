@@ -6,7 +6,7 @@
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 15:40:41 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/28 13:16:41 by tgros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@
 ** General settings
 */
 
-# define THREAD_COUNT 10
 # define WIN_COUNT 4
 # define MAX_ARG 4
-# define IMG_SIZE 100
+# define IMG_SIZE 200
 # define ZOOM 1
 # define ZOOM_POW 1.1
 # define COLORS_PER_SET 4
