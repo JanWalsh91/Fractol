@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 12:46:20 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 15:45:20 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 13:18:27 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,12 @@ int	init_sierpinsky_carpet(t_fractal *f)
 
 int	init_newton(t_fractal *f)
 {
+	f->img_size = 100;
 	f->e.h = NEWTON_DIM;
 	f->e.w = NEWTON_DIM;
 	f->i = NEWTON_I;
 	f->name = NEWTON;
 	f->zoom = ZOOM;
-	f->min.x = NEWTON_XMIN;
-	f->min.y = NEWTON_XMIN;
 	f->color_set_count = NEWTON_COLOR_SET_COUNT;
 	if (!(f->title = ft_strdup("Newton")) || !init_colors(f))
 		ft_error_exit("Malloc error");
@@ -88,6 +87,7 @@ int	init_newton(t_fractal *f)
 	f->get_color[1] = &col_4_1;
 	f->get_color[2] = &col_4_2;
 	f->f = &newton;
+	reset_bounds(f);
 	return (1);
 }
 

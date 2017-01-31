@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 15:54:38 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 13:22:39 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 13:17:54 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		mouse_motion(int x, int y, t_fractal *f)
 {
 	if (!f->mouse_on || x < 0 || y < 0 || x > f->e.w || y > f->e.h)
 		return (1);
-	f->c.r = (double)x / IMG_SIZE + MANDELBROT_XMIN;
-	f->c.i = (double)y / IMG_SIZE + MANDELBROT_YMIN;
+	f->c.r = (double)x / f->img_size + MANDELBROT_XMIN;
+	f->c.i = (double)y / f->img_size + MANDELBROT_YMIN;
 	calc_colors(f);
 	draw(f);
 	return (0);

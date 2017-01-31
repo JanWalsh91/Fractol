@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 17:03:26 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/28 13:16:41 by tgros            ###   ########.fr       */
+/*   Created: 2017/01/29 11:44:02 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/31 15:17:03 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include <stdio.h>
 # include <pthread.h>
 
 /*
@@ -32,7 +31,7 @@
 
 # define WIN_COUNT 4
 # define MAX_ARG 4
-# define IMG_SIZE 200
+# define IMG_SIZE 100
 # define ZOOM 1
 # define ZOOM_POW 1.1
 # define COLORS_PER_SET 4
@@ -113,12 +112,13 @@
 # define LINE_0 "Fract'ol instructions:"
 # define LINE_1 "Zoom in:               left mouse button / scroll up"
 # define LINE_2 "Zoom out:              right mouse button / scroll down"
-# define LINE_3 "Change color set:      C"
-# define LINE_4 "Increase iterations:   +"
-# define LINE_5 "Decrease iterations:   -"
-# define LINE_6 "Reset:                 space"
-# define LINE_7 "Exit:                  esc"
-# define LINE_8 "Julia:"
+# define LINE_3 "Move around:           arrow keys"
+# define LINE_4 "Change color set:      C"
+# define LINE_5 "Increase iterations:   +"
+# define LINE_6 "Decrease iterations:   -"
+# define LINE_7 "Reset:                 space"
+# define LINE_8 "Exit:                  esc"
+# define LINE_9 "Julia:"
 # define LINE_JUJU "Turn mouse on / off    J"
 # define INSTRUCT_COLOR AZURE
 
@@ -176,6 +176,7 @@ typedef struct		s_fractal
 	t_complex		c;
 	double			zoom;
 	t_pt2			win_size;
+	int				img_size;
 	t_dpt2			max;
 	t_dpt2			min;
 	int				mouse_on;
@@ -242,6 +243,7 @@ int					red_button_exit(t_win_manager *nb_frac);
 int					zoom(t_fractal *f, int button, int y, int x);
 int					update_iteration(t_fractal *f, int button);
 int					update_color_set(t_fractal *f);
+int					move(t_fractal *f, int keycode);
 int					switch_julia_constant(t_fractal *f);
 
 /*

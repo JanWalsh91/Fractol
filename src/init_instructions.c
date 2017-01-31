@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_instructions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/23 12:01:04 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/27 14:51:52 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/29 11:49:36 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/31 15:11:08 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int	init_instructions(t_win_manager *f)
 	mlx_string_put(f->f[0].e.mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_5);
 	mlx_string_put(f->f[0].e.mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_6);
 	mlx_string_put(f->f[0].e.mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_7);
+	mlx_string_put(f->f[0].e.mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_8);
 	mlx_string_put(f->f[0].e.mlx, win, 10, h * (i += 2),
-			INSTRUCT_COLOR, LINE_8);
+			INSTRUCT_COLOR, LINE_9);
 	mlx_string_put(f->f[0].e.mlx, win, 10, h * ++i, INSTRUCT_COLOR, LINE_JUJU);
 	mlx_hook(win, KEY_PRESSED, 0, &key_free_fractals, f);
 	return (1);

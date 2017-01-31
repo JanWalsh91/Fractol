@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reset_bounds.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 12:53:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 15:09:39 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 14:45:25 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../include/fractol.h"
 
 /*
 ** Resets bounds for Mandelbrot, Burning Ship, Julia and Newton fractals.
@@ -29,10 +29,14 @@ void	reset_bounds(t_fractal *f)
 	{
 		f->min.x = 0;
 		f->min.y = 0;
+		f->max.x = MANDELBROT_W;
+		f->max.y = MANDELBROT_H;
 	}
 	else if (f->name == NEWTON)
 	{
 		f->min.x = NEWTON_XMIN;
 		f->min.y = NEWTON_YMIN;
+		f->max.x = NEWTON_XMAX;
+		f->max.y = NEWTON_YMAX;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fractals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:47:37 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 15:09:32 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 12:59:27 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int			init_fractal(t_fractal *f, void *mlx, int y)
 	f->color_set = 0;
 	f->mouse_on = 1;
 	f->zoom = ZOOM;
+	f->img_size = IMG_SIZE;
 	if (y == JULIA)
 		init_julia(f);
 	else if (y == MANDELBROT)

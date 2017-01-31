@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 17:12:43 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/26 17:57:50 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 13:18:39 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	burning_ship(t_pt2 j, t_fractal *f)
 	t_complex	c;
 	int			i;
 
-	c.r = (float)j.x / IMG_SIZE / f->zoom + f->min.x;
-	c.i = (float)j.y / IMG_SIZE / f->zoom + f->min.y;
+	c.r = (float)j.x / f->img_size / f->zoom + f->min.x;
+	c.i = (float)j.y / f->img_size / f->zoom + f->min.y;
 	z.r = MANDELBROT_C_I;
 	z.i = MANDELBROT_C_R;
 	i = -1;

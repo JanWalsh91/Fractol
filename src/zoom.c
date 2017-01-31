@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 16:03:58 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/27 13:24:28 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 14:45:06 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ static void	zoom_in(t_fractal *f, int *y, int *x, t_vec2 *dim)
 	t_vec2	j;
 	t_vec2	zoom;
 
-	j.x = (double)*x / IMG_SIZE / f->zoom * (float)ZOOM_POW + f->min.x;
-	j.y = (double)*y / IMG_SIZE / f->zoom * (float)ZOOM_POW + f->min.y;
+	j.x = (double)*x / f->img_size / f->zoom * (float)ZOOM_POW + f->min.x;
+	j.y = (double)*y / f->img_size / f->zoom * (float)ZOOM_POW + f->min.y;
 	zoom.x = dim->x * (((float)ZOOM_POW - 1) / (float)ZOOM_POW);
 	zoom.y = dim->y * (((float)ZOOM_POW - 1) / (float)ZOOM_POW);
 	j.x = (dim->x - (j.x - f->min.x)) * (ZOOM_POW - 1) / (ZOOM_POW);
@@ -89,8 +89,8 @@ static void	zoom_out(t_fractal *f, int *y, int *x, t_vec2 *dim)
 	t_vec2	j;
 	t_vec2	zoom;
 
-	j.x = (double)*x / IMG_SIZE / f->zoom / (float)ZOOM_POW + f->min.x;
-	j.y = (double)*y / IMG_SIZE / f->zoom / (float)ZOOM_POW + f->min.y;
+	j.x = (double)*x / f->img_size / f->zoom / (float)ZOOM_POW + f->min.x;
+	j.y = (double)*y / f->img_size / f->zoom / (float)ZOOM_POW + f->min.y;
 	zoom.x = dim->x * (ZOOM_POW - 1);
 	zoom.y = dim->y * (ZOOM_POW - 1);
 	j.x = ((dim->x - j.x) + f->min.x) * (ZOOM_POW - 1) / (ZOOM_POW);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_released.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgros <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/18 10:22:53 by tgros             #+#    #+#             */
-/*   Updated: 2017/01/27 12:26:51 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/29 11:50:13 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/31 14:56:42 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int		key_released(int keycode, t_fractal *f)
 		update_color_set(f);
 	else if (keycode == KEY_J && f->name == 2)
 		switch_julia_constant(f);
+	else if (keycode == KEY_UP || keycode == KEY_DOWN ||
+			keycode == KEY_RIGHT || keycode == KEY_LEFT)
+		move(f, keycode);
 	return (0);
 }
 

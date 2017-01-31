@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgros <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/27 11:59:05 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/31 14:57:38 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC_NAME = main \
 			mandelbrot \
 			mandelbrot_colors \
 			mouse_event \
+			move \
 			newton \
 			newton_colors \
 			reset_bounds \
