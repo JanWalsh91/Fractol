@@ -5,12 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/29 11:59:21 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/29 11:59:23 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/31 16:56:06 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/02/01 11:27:03 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libmathft.h"
+
+/*
+** Gets the absolute value of complex number x and returns the result.
+*/
 
 t_complex	c_abs(t_complex x)
 {

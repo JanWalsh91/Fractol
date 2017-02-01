@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/29 12:00:44 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/29 12:00:46 by jwalsh           ###   ########.fr       */
+/*   Created: 2016/12/24 15:36:18 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/02/01 11:20:35 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ typedef struct	s_pt2
 	int			y;
 }				t_pt2;
 
-typedef struct	s_vec2
-{
-	double		x;
-	double		y;
-}				t_vec2;
-
-typedef	struct	s_dpt2
+typedef struct	s_dpt2
 {
 	double		x;
 	double		y;
 }				t_dpt2;
+
+typedef struct	s_vec2
+{
+	float		x;
+	float		y;
+}				t_vec2;
 
 typedef struct	s_vec3
 {
@@ -41,14 +41,16 @@ typedef struct	s_vec3
 	float		z;
 }				t_vec3;
 
-typedef struct	s_complex
-{
-	double		r;
-	double		i;
-}				t_complex;
-
 typedef float	**t_matrix4;
 
+typedef struct	s_complex
+{
+	double	r;
+	double	i;
+}				t_complex;
+
+unsigned long	ft_abs(long n);
+long			ft_power(int n, int p);
 double			to_radian(double a);
 int				ft_round(float i);
 int				ft_rgb_mix(int *colors, int n);
@@ -80,17 +82,22 @@ t_matrix4		new_rotation_matrix4(float angle, char axis);
 t_matrix4		matrix4_translation(t_matrix4 m, t_vec3 v);
 
 /*
-** Complex numbers functions
+** Complex number functions
 */
 
 t_complex		c_add(t_complex x, t_complex y);
+t_complex		c_abs(t_complex x);
+t_complex		c_add_float(t_complex x, double y, double z);
+t_complex		c_divide(t_complex x, t_complex y);
+t_complex		c_product(t_complex x, t_complex y);
+t_complex		c_product_double(t_complex x, double y);
+double			c_modulus(t_complex x);
 t_complex		c_minus(t_complex x, t_complex y);
 t_complex		c_minus_double(t_complex x, double y);
-t_complex		c_add_float(t_complex x, double y, double z);
-t_complex		c_product(t_complex x, t_complex y);
-t_complex		c_product_double(t_complex c, double y);
-t_complex		c_divide(t_complex x, t_complex y);
-double			c_modulus(t_complex x);
-t_complex		c_abs(t_complex x);
+t_complex		c_sin(t_complex x);
+t_complex		c_sphere(t_complex x);
+t_complex		c_horseshoe(t_complex x);
+t_complex		c_swirl(t_complex x);
+t_complex		c_polar(t_complex x);
 
 #endif

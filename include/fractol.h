@@ -6,7 +6,7 @@
 /*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 11:44:02 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/31 15:17:03 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/02/01 11:14:23 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,18 @@
 # define BURNING_SHIP_COLOR_SET_COUNT 3
 
 /*
+** Jan's escape time fractal
+*/
+
+# define JAN_I 20
+# define JAN_XMIN -1
+# define JAN_XMAX 1
+# define JAN_YMIN -1
+# define JAN_YMAX 1
+# define JAN_C_I 0
+# define JAN_C_R 0
+
+/*
 ** Color sets
 */
 
@@ -129,7 +141,7 @@ typedef enum		e_names
 	SIERPINSKY_CARPET = 3,
 	NEWTON = 4,
 	BURNING_SHIP = 5,
-	OTHER = 6
+	JAN = 6
 }					t_names;
 
 typedef struct		s_incr
@@ -212,6 +224,7 @@ int					init_julia(t_fractal *f);
 int					init_sierpinsky_carpet(t_fractal *f);
 int					init_newton(t_fractal *f);
 int					init_burning_ship(t_fractal *f);
+int					init_jan(t_fractal *f);
 int					init_colors(t_fractal *f);
 int					init_win(t_fractal *f);
 int					init_instructions(t_win_manager *f);
@@ -229,6 +242,7 @@ int					julia(t_pt2 j, t_fractal *f);
 int					sierpinsky_carpet(t_pt2 j, t_fractal *f);
 int					newton(t_pt2 j, t_fractal *f);
 int					burning_ship(t_pt2 j, t_fractal *f);
+int					jan(t_pt2 j, t_fractal *f);
 
 /*
 ** MLX functions
@@ -274,5 +288,8 @@ int					col_4_0(int i, t_fractal *f);
 int					col_4_1(int i, t_fractal *f);
 int					col_4_2(int i, t_fractal *f);
 int					col_5_0(int i, t_fractal *f);
+int					col_6_0(int i, t_fractal *f);
+int					col_6_1(int i, t_fractal *f);
+int					col_6_2(int i, t_fractal *f);
 
 #endif

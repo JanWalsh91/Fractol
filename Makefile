@@ -6,7 +6,7 @@
 #    By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 17:02:59 by tgros             #+#    #+#              #
-#    Updated: 2017/01/31 14:57:38 by jwalsh           ###   ########.fr        #
+#    Updated: 2017/01/31 15:38:33 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,11 @@ SRC_NAME = main \
 			init_fractal \
 			init_fractals \
 			init_instructions \
+			init_jan \
 			init_names \
 			init_win \
+			jan \
+			jan_colors \
 			julia \
 			julia_colors \
 			key_released \

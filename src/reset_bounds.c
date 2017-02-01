@@ -6,7 +6,7 @@
 /*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 12:53:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/31 14:45:25 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/02/01 11:19:03 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 ** Resets bounds for Mandelbrot, Burning Ship, Julia and Newton fractals.
 */
 
-void	reset_bounds(t_fractal *f)
+static void	reset_jan_bounds(t_fractal *f);
+
+void		reset_bounds(t_fractal *f)
 {
 	if (f->name == MANDELBROT || f->name == BURNING_SHIP)
 	{
@@ -39,4 +41,14 @@ void	reset_bounds(t_fractal *f)
 		f->max.x = NEWTON_XMAX;
 		f->max.y = NEWTON_YMAX;
 	}
+	else if (f->name == JAN)
+		reset_jan_bounds(f);
+}
+
+static void	reset_jan_bounds(t_fractal *f)
+{
+	f->min.x = JAN_XMIN;
+	f->min.y = JAN_YMIN;
+	f->max.x = JAN_XMAX;
+	f->max.y = JAN_YMAX;
 }

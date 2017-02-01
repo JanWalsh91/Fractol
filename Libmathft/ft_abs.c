@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_modulus.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 15:30:29 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/21 15:31:01 by jwalsh           ###   ########.fr       */
+/*   Created: 2016/12/01 10:58:52 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/21 15:34:32 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmathft.h"
-
 /*
-** Calculates and returns the modulus of the complex number x.
+** Returns the absolute value of int n.
 */
 
-double	c_modulus(t_complex x)
+#include "libmathft.h"
+
+unsigned long	ft_abs(long n)
 {
-	return (sqrt(pow(x.r, 2) + pow(x.i, 2)));
+	unsigned long	result;
+
+	result = (n < 0) ? -n : n;
+	return (result);
 }

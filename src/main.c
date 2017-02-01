@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 14:20:07 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/29 11:50:51 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/02/01 11:34:52 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 {
 	if (ft_strcmp_percent(arg, "MANDELBROT", 0.2))
 		names[(*y)++] = MANDELBROT;
-	else if (ft_strcmp_percent(arg, "JULIA", 0.3))
+	else if (ft_strcmp_percent(arg, "JULIA", 0.4))
 		names[(*y)++] = JULIA;
 	else if (ft_strcmp_percent(arg, "SIERPINSKY", 0.2))
 		names[(*y)++] = SIERPINSKY_CARPET;
@@ -58,6 +58,8 @@ static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 		--(*y);
 	else if (ft_strcmp_percent(arg, "SHIP", 0.5) && ++(*y))
 		--(*y);
+	else if (ft_strcmp_percent(arg, "JAN", 1))
+		names[(*y)++] = JAN;
 	else if (ft_strcmp_percent(arg, "-I", 1.0))
 		*instr == 0 ? *instr = 1 : 0;
 	else
@@ -71,6 +73,6 @@ static void	check_arg(char *arg, t_names *names, int *y, int *instr)
 static void	usage_error(void)
 {
 	ft_putendl_fd("usage: ./fractol <julia, mandelbrot, burning ship, \
-newton, sierpinsky carpet> [...] [-i]", 2);
+newton, sierpinsky carpet, jan> [...] [-i]", 2);
 	exit(1);
 }

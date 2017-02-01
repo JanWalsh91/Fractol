@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_modulus.c                                        :+:      :+:    :+:   */
+/*   c_sin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 15:30:29 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/21 15:31:01 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/31 16:13:51 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/31 16:15:01 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libmathft.h"
 
 /*
-** Calculates and returns the modulus of the complex number x.
+** Returns the sine of  complex number x.
 */
 
-double	c_modulus(t_complex x)
+t_complex	c_sin(t_complex x)
 {
-	return (sqrt(pow(x.r, 2) + pow(x.i, 2)));
+	t_complex res;
+
+	res.r = sin(x.r);
+	res.i = sin(x.i);
+	return (res);
 }

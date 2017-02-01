@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_modulus.c                                        :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 15:30:29 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/21 15:31:01 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/21 15:10:15 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/01/21 15:34:59 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmathft.h"
-
 /*
-** Calculates and returns the modulus of the complex number x.
+** Returns n to the power of p.
 */
 
-double	c_modulus(t_complex x)
+#include "libmathft.h"
+
+long	ft_power(int n, int p)
 {
-	return (sqrt(pow(x.r, 2) + pow(x.i, 2)));
+	long n1;
+
+	n1 = n;
+	if (!p || !n || p < 0)
+		return (0);
+	if (p == 0)
+		return (1);
+	while (p != 1)
+	{
+		n1 *= n;
+		p--;
+	}
+	return (n1);
 }

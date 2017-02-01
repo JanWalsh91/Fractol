@@ -6,11 +6,13 @@
 #    By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 13:07:31 by jwalsh            #+#    #+#              #
-#    Updated: 2017/01/26 15:08:46 by tgros            ###   ########.fr        #
+#    Updated: 2017/01/31 17:10:39 by jwalsh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = 	ft_round.c \
+SRC = 	ft_abs.c \
+		ft_power.c \
+		ft_round.c \
 		ft_rgb_mix.c \
 		ft_to_radian.c \
 		new_matrix4.c \
@@ -27,12 +29,20 @@ SRC = 	ft_round.c \
 		vec3_add.c \
 		vec3_subtract.c \
 		vec3_product.c \
-		c_abs.c \
 		c_add.c \
+		c_add_float.c \
+		c_abs.c \
 		c_divide.c \
+		c_product.c \
+		c_product_double.c \
 		c_minus.c \
+		c_minus_double.c \
 		c_modulus.c \
-		c_product.c
+		c_sin.c \
+		c_sphere.c \
+		c_horseshoe.c \
+		c_swirl.c \
+		c_polar.c
 
 
 NAME = libmathft.a

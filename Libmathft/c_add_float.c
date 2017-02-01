@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_modulus.c                                        :+:      :+:    :+:   */
+/*   c_add_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalsh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 15:30:29 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/21 15:31:01 by jwalsh           ###   ########.fr       */
+/*   Created: 2017/01/21 15:28:09 by jwalsh            #+#    #+#             */
+/*   Updated: 2017/02/01 11:20:04 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libmathft.h"
 
 /*
-** Calculates and returns the modulus of the complex number x.
+** Adds y to the real part of complex number x and z to its imaginary part.
+** Returns the result.
 */
 
-double	c_modulus(t_complex x)
+t_complex	c_add_float(t_complex x, double y, double z)
 {
-	return (sqrt(pow(x.r, 2) + pow(x.i, 2)));
+	t_complex res;
+
+	res.r = x.r + y;
+	res.i = x.i + z;
+	return (res);
 }

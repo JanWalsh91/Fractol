@@ -6,7 +6,7 @@
 /*   By: jwalsh <jwalsh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:47:37 by jwalsh            #+#    #+#             */
-/*   Updated: 2017/01/31 12:59:27 by jwalsh           ###   ########.fr       */
+/*   Updated: 2017/01/31 15:33:09 by jwalsh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int			init_fractal(t_fractal *f, void *mlx, int y)
 		init_newton(f);
 	else if (y == BURNING_SHIP)
 		init_burning_ship(f);
+	else if (y == JAN)
+		init_jan(f);
 	return (1);
 }
