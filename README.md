@@ -14,4 +14,11 @@ The objective of this project was to explore fractals and generate them graphica
 
 Check out some screenshots!
 
-![Julia_1](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Julia_1 "Julia 1")
+![Julia_1](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Julia_1.png "Julia 1")
+![Julia_2](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Julia_2.png "Julia 2")
+![Mandelbrot](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Mandelbrot.png "Mandelbrot")
+![Mandelbrot_Zoom](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Mandelbrot_Zoom.png "Mandebrot Zoom")
+![Burning_Ship](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Burning_Ship.png "Burning Ship")
+![Burning_Ship_Zoom](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Burning_Ship_Zoom.png "Burning Ship Zoomed")
+![Siperpinsky_Carpet](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Sierpinsky_Carpet.png "Sierpinsky Carpet")
+![Jan](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Jan.png "My own fractal!")
