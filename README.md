@@ -14,4 +14,4 @@ The objective of this project was to explore fractals and generate them graphica
 
 Check out some screenshots!
 
-![Julia_1](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Julia_1"Julia 1")
+![Julia_1](https://github.com/JanWalsh91/Fractal/blob/master/screenshots/Julia_1 "Julia 1")
