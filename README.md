@@ -12,6 +12,7 @@ The objective of this project was to explore fractals and generate them graphica
 - There are a varity of color palettes available.
 - Multiple fractals can be opened at the same time.
 - An instruction window is available.
+- Multithreading with CPU.
 
 Check out some screenshots!
 
